@@ -6,7 +6,9 @@ ToDo: About this project
 
 1. Download and install the open-source Arduino Software (IDE) from [arduino.cc](https://www.arduino.cc/en/main/software).
 
-2. Clone this project with `git clone https://github.com/pamasol/PAM3000-Sensor-Visualizer.git`.
+2. Clone this project with `git clone https://github.com/pamasol/PAM3000-Sensor-Visualizer.git` and open the *PAM3000-Sensor-Visualizer.ino* file with the Arduino IDE.
+
+3. Update Arduino IDE settings according wiki page [Arduino IDE Setup](wiki/Arduino-IDE-Setup.md).
 
 ## Helpful sources
 
