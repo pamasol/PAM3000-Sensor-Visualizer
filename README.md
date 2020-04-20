@@ -13,3 +13,6 @@ ToDo: About this project
 ## Helpful sources
 
 * [Arduino language reference](https://www.arduino.cc/reference/en/)
+* [Arduino Adaptor Shield](https://github.com/pamasol/PAM3000-Sensor-Visualizer/files/4503403/4D.Arduino.Adaptor.Shield.pdf) Datasheet
+* [4D Systems 5" Display](https://github.com/pamasol/PAM3000-Sensor-Visualizer/files/4503404/4D.Systems.5Zoll.TP.pdf) Datasheet
+* [DIABLO16 Embedded Graphics Processor](https://github.com/pamasol/PAM3000-Sensor-Visualizer/files/4503399/diablo16_serialcmdmanual_r_2_1.pdf) Serial Command Reference
