@@ -8,3 +8,6 @@ ToDo: About this project
 
 2. Clone this project with `git clone https://github.com/pamasol/PAM3000-Sensor-Visualizer.git`.
 
+## Helpful sources
+
+* [Arduino language reference](https://www.arduino.cc/reference/en/)
