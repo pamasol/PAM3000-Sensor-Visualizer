@@ -2,6 +2,12 @@
 
 ToDo: About this project
 
+## Hardware
+
+* Touch-Panel GEN4-ULCD-50DCT-CLB-SB-AR from [4D Systems](https://4dsystems.com.au/gen4-ulcd-50dct-clb-sb-ar)
+* Arduino Board Due 32-Bit from [Arduino CC](https://www.arduino.cc/en/Guide/ArduinoDue)
+* Grove Base Shield V2.0 for Arduino from [Seeed](https://www.seeedstudio.com/Base-Shield-V2.html)
+
 ## IDE installation and preparation
 
 1. Download and install the open-source Arduino Software (IDE) from [arduino.cc](https://www.arduino.cc/en/main/software).
