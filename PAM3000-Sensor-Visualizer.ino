@@ -602,6 +602,130 @@ void Stoppuhr()
       }
     }
   }
+
+        if ((Stop_Zeit_Stoppuhr[0]== 0) && (Zeiten_Stoppuhr_2[0]== 0))
+        {
+        Display.txt_Height(2);                        //Texthöhe
+  
+        Display.txt_Width(2);                         //Textweite
+  
+        Display.gfx_MoveTo(580, 100);                 //Text Position x,y
+  
+        Display.print("00");          //Wert Anzeigen
+  
+        Display.print(" ms    ");
+  
+        Display.gfx_MoveTo(580, 125);                 //Text Position x,y
+  
+        Display.print("00");          //Wert Anzeigen
+  
+        Display.print(" ms    ");
+  
+        Display.gfx_MoveTo(580, 150);                 //Text Position x,y
+  
+        Display.print("00");          //Wert Anzeigen
+  
+        Display.print(" ms    ");
+
+
+        Display.txt_Height(4);                       //Texthöhe
+  
+        Display.txt_Width(3);                        //Textweite
+  
+        Display.txt_Inverse(OFF);                    //Text invetieren
+  
+        Display.txt_Bold(OFF);
+  
+        Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
+  
+        Display.gfx_MoveTo(80, 100);                 //Text Position x,y
+  
+        Display.print("");
+      
+        Display.print("000");         //Wert Anzeigen
+  
+        Display.print(" ms       ");
+
+
+        Display.txt_Height(2);              //Texthöhe
+  
+        Display.txt_Width(2);               //Textweite
+  
+        Display.gfx_MoveTo(80, 150);        //Text Position x,y
+  
+        Display.print("0");
+  
+        Display.print(" : ");
+  
+        Display.print("0");
+  
+        Display.print(" : ");
+  
+        Display.print("0");
+  
+        Display.print("      ");
+
+
+        Display.txt_Height(2);                        //Texthöhe
+  
+        Display.txt_Width(2);                         //Textweite
+  
+        Display.gfx_MoveTo(580, 225);                 //Text Position x,y
+  
+        Display.print("00");          //Wert Anzeigen
+  
+        Display.print(" ms    ");
+  
+        Display.gfx_MoveTo(580, 250);                 //Text Position x,y
+  
+        Display.print("00");          //Wert Anzeigen
+  
+        Display.print(" ms    ");
+  
+        Display.gfx_MoveTo(580, 275);                 //Text Position x,y
+  
+        Display.print("00");          //Wert Anzeigen
+  
+        Display.print(" ms    ");
+        
+
+        Display.txt_Height(4);                        //Texthöhe
+      
+        Display.txt_Width(3);                         //Textweite
+      
+        Display.txt_Inverse(OFF);                     //Text invetieren
+      
+        Display.txt_Bold(OFF);
+      
+        Display.txt_Set(TEXT_COLOUR, WHITE);
+      
+        Display.gfx_MoveTo(80, 230);                  //Text Position x,y
+      
+        Display.print("");
+      
+        Display.print("000");          //Wert Anzeigen
+      
+        Display.print(" ms       ");
+
+
+        Display.txt_Height(2);                       //Texthöhe 
+      
+        Display.txt_Width(2);                        //Textweite
+      
+        Display.gfx_MoveTo(80, 280);                 //Text Position x,y
+      
+        Display.print("0");
+      
+        Display.print(" : ");
+      
+        Display.print("0");
+      
+        Display.print(" : ");
+      
+        Display.print("0");
+      
+        Display.print("      ");
+        }
 }
 
 void Interrupt ()
