@@ -159,6 +159,7 @@ void setup()
   Stoppuhrinterrupt2 = false;
   Geschwingigkeitinterrupt = false;
 
+
 }
 
 //****************************************************************************************************************************************
@@ -466,7 +467,9 @@ if (digitalRead(8) == LOW)
 
         Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
 
-        Stopp_Zeit_Geschwindigkeit=60/(1000*((millis())- Start_Zeit_Geschwindigkeit));                                     //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
+        Stopp_Zeit_Geschwindigkeit=60/((millis()- Start_Zeit_Geschwindigkeit)/1000);                                     //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
+
+        
 
         Zeiten_Geschwindigkeit_1[9]=Zeiten_Geschwindigkeit_1[8];                                                    //History
         Zeiten_Geschwindigkeit_1[8]=Zeiten_Geschwindigkeit_1[7];
