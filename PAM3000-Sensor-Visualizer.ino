@@ -123,6 +123,9 @@ unsigned long Stopp_Zeit4;               //Start Geschwindikeitsanzeige
 bool Zeit_speichern3;                //Zeiten speichern
 bool Zeit_speichern4;                //Zeiten speichern
 
+bool Geschwindigkeit_Stopp;
+bool Geschwindigkeit_Stopp2;
+
 unsigned long Test;
 //****************************************************************************************************************************************
 
@@ -171,6 +174,7 @@ void setup()
   Stoppuhrinterrupt2 = false;
   Geschwingigkeitinterrupt = false;
   Geschwingigkeitinterrupt2 = false;
+  Geschwindigkeit_Stopp = true;
 }
 
 //****************************************************************************************************************************************
@@ -457,80 +461,86 @@ void loop()
 
       {
         
-      Start_Zeit3 = 0;                                                                                 //Start Zeit Reset
-      Stopp_Zeit3 = 0;
      
       if (Zeit_speichern3 == true)
 
-      {
-        Display.gfx_CircleFilled(40, 120, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen
+        {
+          Display.gfx_CircleFilled(40, 120, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen
 
-        Start_Zeit_Geschwindigkeit = millis();                                                            //Zeit Ablesen seit Start von Arduino
+          Start_Zeit_Geschwindigkeit = millis();                                                            //Zeit Ablesen seit Start von Arduino
 
-        Zeit_speichern3 = false;                                                                       //Zeit Speichern (0)
+          Zeit_speichern3 = false;                                                                       //Zeit Speichern (0)
 
+          Geschwindigkeit_Stopp = false;
+        }
+
+      if (Geschwindigkeit_Stopp == true)
+
+        {    
+
+
+          Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
+  
+          Stopp_Zeit_Geschwindigkeit=(60/((millis()- Start_Zeit_Geschwindigkeit)/1000));                //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
+  
+  
+  
+          Zeiten_Geschwindigkeit_1[9]=Zeiten_Geschwindigkeit_1[8];                                                    //History
+          Zeiten_Geschwindigkeit_1[8]=Zeiten_Geschwindigkeit_1[7];
+          Zeiten_Geschwindigkeit_1[7]=Zeiten_Geschwindigkeit_1[6];
+          Zeiten_Geschwindigkeit_1[6]=Zeiten_Geschwindigkeit_1[5];
+          Zeiten_Geschwindigkeit_1[5]=Zeiten_Geschwindigkeit_1[4];
+          Zeiten_Geschwindigkeit_1[4]=Zeiten_Geschwindigkeit_1[3];
+          Zeiten_Geschwindigkeit_1[3]=Zeiten_Geschwindigkeit_1[2];
+          Zeiten_Geschwindigkeit_1[2]=Zeiten_Geschwindigkeit_1[1];
+          Zeiten_Geschwindigkeit_1[1]=Zeiten_Geschwindigkeit_1[0];
+          Zeiten_Geschwindigkeit_1[0]=Stopp_Zeit_Geschwindigkeit;                
+  
+          Display.txt_Height(2);                        //Texthöhe
+          Display.txt_Width(2);                         //Textweite
+          Display.gfx_MoveTo(580, 100);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_1[0]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+          Display.gfx_MoveTo(580, 125);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_1[1]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+          Display.gfx_MoveTo(580, 150);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_1[2]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+  
+          Display.txt_Height(4);                       //Texthöhe
+          Display.txt_Width(3);                        //Textweite
+          Display.txt_Inverse(OFF);                    //Text invetieren
+          Display.txt_Bold(OFF);
+          Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
+          Display.gfx_MoveTo(80, 100);                 //Text Position x,y
+          Display.print("");
+          Display.print(Zeiten_Geschwindigkeit_1[0]);         //Wert Anzeigen
+          Display.print(" cpm       ");   
+  
+  
+          Zeit_speichern3 = true;             //Zeit_speichern (1)
+  
+          Menue_angewaehlt = 2;              //Menue_angewaehlt (1)
+  
+          Geschwindigkeit_Stopp = true;
+
+       } 
+       else
+         
+          {
+          
+            Menue_angewaehlt = 2;
+        
+           }
       }
+         
 
     
-if (digitalRead(8) == LOW)
 
-      {
-
-        Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
-
-        Stopp_Zeit_Geschwindigkeit=(60/((millis()- Start_Zeit_Geschwindigkeit)/1000));                //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
-
-
-
-        Zeiten_Geschwindigkeit_1[9]=Zeiten_Geschwindigkeit_1[8];                                                    //History
-        Zeiten_Geschwindigkeit_1[8]=Zeiten_Geschwindigkeit_1[7];
-        Zeiten_Geschwindigkeit_1[7]=Zeiten_Geschwindigkeit_1[6];
-        Zeiten_Geschwindigkeit_1[6]=Zeiten_Geschwindigkeit_1[5];
-        Zeiten_Geschwindigkeit_1[5]=Zeiten_Geschwindigkeit_1[4];
-        Zeiten_Geschwindigkeit_1[4]=Zeiten_Geschwindigkeit_1[3];
-        Zeiten_Geschwindigkeit_1[3]=Zeiten_Geschwindigkeit_1[2];
-        Zeiten_Geschwindigkeit_1[2]=Zeiten_Geschwindigkeit_1[1];
-        Zeiten_Geschwindigkeit_1[1]=Zeiten_Geschwindigkeit_1[0];
-        Zeiten_Geschwindigkeit_1[0]=Stopp_Zeit_Geschwindigkeit;                
-
-        Display.txt_Height(2);                        //Texthöhe
-        Display.txt_Width(2);                         //Textweite
-        Display.gfx_MoveTo(580, 100);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_1[0]);          //Wert Anzeigen
-        Display.print(" cpm    ");
-        Display.gfx_MoveTo(580, 125);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_1[1]);          //Wert Anzeigen
-        Display.print(" cpm    ");
-        Display.gfx_MoveTo(580, 150);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_1[2]);          //Wert Anzeigen
-        Display.print(" cpm    ");
-
-        Display.txt_Height(4);                       //Texthöhe
-        Display.txt_Width(3);                        //Textweite
-        Display.txt_Inverse(OFF);                    //Text invetieren
-        Display.txt_Bold(OFF);
-        Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
-        Display.gfx_MoveTo(80, 100);                 //Text Position x,y
-        Display.print("");
-        Display.print(Zeiten_Geschwindigkeit_1[0]);         //Wert Anzeigen
-        Display.print(" cpm       ");   
-
-
-        Zeit_speichern3 = true;             //Zeit_speichern (1)
-
-        Menue_angewaehlt = 2;              //Menue_angewaehlt (1)
-
-       }
-
-      }
-
-
-      else
-      {
-        
-      Menue_angewaehlt = 0;
+     
+     
       
-      }
 
 
     
@@ -553,12 +563,14 @@ if (digitalRead(8) == LOW)
 
         Start_Zeit_Geschwindigkeit2 = millis();                                                            //Zeit Ablesen seit Start von Arduino
 
-        Zeit_speichern4 = false;                                                                       //Zeit Speichern (0)
+        Zeit_speichern4 = false;                                                                        //Zeit Speichern (0)
+
+        Geschwindigkeit_Stopp2 = false;
 
       }
 
     
-if (digitalRead(9) == LOW)
+if (Geschwindigkeit_Stopp2 == true)
 
       {
 
@@ -606,16 +618,18 @@ if (digitalRead(9) == LOW)
 
         Menue_angewaehlt = 2;              //Menue_angewaehlt (1)
 
+        Geschwindigkeit_Stopp2 = true;
+
        }
 
-      }
-
-
+      
       else
       {
         
-      Menue_angewaehlt = 0;
+      Menue_angewaehlt = 2;
       
+      }
+
       }
 
         break;
@@ -633,7 +647,8 @@ void Hauptmenue()
   Stoppuhrinterrupt = false;
   Stoppuhrinterrupt2 = false;
   Geschwingigkeitinterrupt = false;
-
+  Geschwingigkeitinterrupt2 = false;
+  
   Displaystopp = false;
 
   if (Bild_aufgebaut[0] == false) //Überwachung Bildschirm aufgebaut
@@ -987,9 +1002,23 @@ if (Stoppuhrinterrupt == true)
 
 
 if (Geschwingigkeitinterrupt == true)
-{
-  Menue_angewaehlt = 8;                     //Menue_angewaehlt (6) 
-}
+  {
+  
+    if(Geschwindigkeit_Stopp == true)
+  
+      {
+        Menue_angewaehlt = 8;                     //Menue_angewaehlt (6) 
+      }
+
+      if(Geschwindigkeit_Stopp == false)
+       {
+       Menue_angewaehlt = 8;
+       Geschwindigkeit_Stopp = true;
+       }
+
+
+  
+  }
 
 
 }
@@ -999,18 +1028,31 @@ void Interrupt2 ()
 
 {
 
-if (Geschwingigkeitinterrupt == true)
-{
-  Menue_angewaehlt = 9;                     //Menue_angewaehlt (6) 
-}
-
-
 if (Stoppuhrinterrupt == true)
 {
   Menue_angewaehlt = 7;                     //Menue_angewaehlt (7) 
 }
 
 
+if (Geschwingigkeitinterrupt2 == true)
+{
+  Menue_angewaehlt = 9;                     //Menue_angewaehlt (6) 
+
+  
+  if(Geschwindigkeit_Stopp2 == true)
+  
+      {
+        Menue_angewaehlt = 9;                  
+      }
+
+      
+    if(Geschwindigkeit_Stopp2 == false)
+           {
+           Menue_angewaehlt = 9;
+           Geschwindigkeit_Stopp2 = true;
+           }
+      
+  }
 
 
 
@@ -1022,6 +1064,7 @@ void Geschwindigkeitsanzeige()
 {
   
 Geschwingigkeitinterrupt = true;
+Geschwingigkeitinterrupt2 = true;
   
 if (Bild_aufgebaut[2] == false) //Überwachung Bildschirm aufgebaut
 
