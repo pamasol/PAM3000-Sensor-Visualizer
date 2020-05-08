@@ -78,9 +78,11 @@ int Millisekunden;                  //Millisekunden Anzeige 1
 
 bool Displaystopp;
 bool Reset1;                        //Reset Stoppuhr
+bool Reset2;
 bool Stoppuhrinterrupt;             //Stoppuhr Interrupt
 bool Stoppuhrinterrupt2;             //Stoppuhr Interrupt 2
 bool Geschwingigkeitinterrupt;      //Geschwindigkeitsanzeige Interrupt
+bool Geschwingigkeitinterrupt2;      //Geschwindigkeitsanzeige Interrupt
 bool Start_speichern2[2];           //Zeiten speichern
 bool Zeiten_speichern2[2];          //Zeiten speichern 
 bool Zeit_speichern2;               //Zeiten speichern 
@@ -104,16 +106,24 @@ unsigned long Zeiten_Stoppuhr_2[9];      //Zeiten Stoppuhr 2 (0-9)
 unsigned long Start_Zeit2;               //Start Stoppuhr 2
 unsigned long Stopp_Zeit2;               //Start Stoppuhr 2
 
-unsigned long Start_Zeit_Geschwindigkeit;
-float Stopp_Zeit_Geschwindigkeit;
-float Zeiten_Geschwindigkeit_1[9];
+float Start_Zeit_Geschwindigkeit;
+unsigned long Stopp_Zeit_Geschwindigkeit;
+unsigned long Zeiten_Geschwindigkeit_1[9];
 
-
+float Start_Zeit_Geschwindigkeit2;
+unsigned long Stopp_Zeit_Geschwindigkeit2;
+unsigned long Zeiten_Geschwindigkeit_2[9];
 
 unsigned long Start_Zeit3;               //Start Geschwindikeitsanzeige
 unsigned long Stopp_Zeit3;               //Start Geschwindikeitsanzeige
 
+unsigned long Start_Zeit4;               //Start Geschwindikeitsanzeige
+unsigned long Stopp_Zeit4;               //Start Geschwindikeitsanzeige
+
 bool Zeit_speichern3;                //Zeiten speichern
+bool Zeit_speichern4;                //Zeiten speichern
+
+unsigned long Test;
 //****************************************************************************************************************************************
 
 void setup()
@@ -154,12 +164,13 @@ void setup()
   Zeit_speichern = true;                                //Zeiten speichern (1)
   Zeit_speichern2 = true;                               //Zeiten speichern 2 (1)
   Zeit_speichern3 = true;
+  Zeit_speichern4 = true;
   Reset1 = true;
+  Reset2 = true;
   Stoppuhrinterrupt = false;
   Stoppuhrinterrupt2 = false;
   Geschwingigkeitinterrupt = false;
-
-
+  Geschwingigkeitinterrupt2 = false;
 }
 
 //****************************************************************************************************************************************
@@ -467,9 +478,9 @@ if (digitalRead(8) == LOW)
 
         Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
 
-        Stopp_Zeit_Geschwindigkeit=60/((millis()- Start_Zeit_Geschwindigkeit)/1000);                                     //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
+        Stopp_Zeit_Geschwindigkeit=(60/((millis()- Start_Zeit_Geschwindigkeit)/1000));                //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
 
-        
+
 
         Zeiten_Geschwindigkeit_1[9]=Zeiten_Geschwindigkeit_1[8];                                                    //History
         Zeiten_Geschwindigkeit_1[8]=Zeiten_Geschwindigkeit_1[7];
@@ -494,8 +505,6 @@ if (digitalRead(8) == LOW)
         Display.print(Zeiten_Geschwindigkeit_1[2]);          //Wert Anzeigen
         Display.print(" cpm    ");
 
-        Zeiten_speichern[0]=false;                   //Zeiten_speichern (0)
-
         Display.txt_Height(4);                       //Texthöhe
         Display.txt_Width(3);                        //Textweite
         Display.txt_Inverse(OFF);                    //Text invetieren
@@ -519,7 +528,7 @@ if (digitalRead(8) == LOW)
       else
       {
         
-      Menue_angewaehlt = 2;
+      Menue_angewaehlt = 0;
       
       }
 
@@ -527,9 +536,87 @@ if (digitalRead(8) == LOW)
     
         break;
 
+
       case 9:
 
+ if (Displaystopp == true) //Überwachung Bildschirm aufgebaut
 
+      {
+        
+      Start_Zeit4 = 0;                                                                                 //Start Zeit Reset
+      Stopp_Zeit4 = 0;
+     
+      if (Zeit_speichern4 == true)
+
+      {
+        Display.gfx_CircleFilled(40, 250, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen
+
+        Start_Zeit_Geschwindigkeit2 = millis();                                                            //Zeit Ablesen seit Start von Arduino
+
+        Zeit_speichern4 = false;                                                                       //Zeit Speichern (0)
+
+      }
+
+    
+if (digitalRead(9) == LOW)
+
+      {
+
+        Display.gfx_CircleFilled(40, 250, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
+
+        Stopp_Zeit_Geschwindigkeit2=(60/((millis()- Start_Zeit_Geschwindigkeit2)/1000));                //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
+
+
+
+        Zeiten_Geschwindigkeit_2[9]=Zeiten_Geschwindigkeit_2[8];                                                    //History
+        Zeiten_Geschwindigkeit_2[8]=Zeiten_Geschwindigkeit_2[7];
+        Zeiten_Geschwindigkeit_2[7]=Zeiten_Geschwindigkeit_2[6];
+        Zeiten_Geschwindigkeit_2[6]=Zeiten_Geschwindigkeit_2[5];
+        Zeiten_Geschwindigkeit_2[5]=Zeiten_Geschwindigkeit_2[4];
+        Zeiten_Geschwindigkeit_2[4]=Zeiten_Geschwindigkeit_2[3];
+        Zeiten_Geschwindigkeit_2[3]=Zeiten_Geschwindigkeit_2[2];
+        Zeiten_Geschwindigkeit_2[2]=Zeiten_Geschwindigkeit_2[1];
+        Zeiten_Geschwindigkeit_2[1]=Zeiten_Geschwindigkeit_2[0];
+        Zeiten_Geschwindigkeit_2[0]=Stopp_Zeit_Geschwindigkeit2;                
+
+        Display.txt_Height(2);                        //Texthöhe
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(580, 225);                 //Text Position x,y
+        Display.print(Zeiten_Geschwindigkeit_2[0]);          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 250);                 //Text Position x,y
+        Display.print(Zeiten_Geschwindigkeit_2[1]);          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 275);                 //Text Position x,y
+        Display.print(Zeiten_Geschwindigkeit_2[2]);          //Wert Anzeigen
+        Display.print(" cpm    ");
+
+        Display.txt_Height(4);                       //Texthöhe
+        Display.txt_Width(3);                        //Textweite
+        Display.txt_Inverse(OFF);                    //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
+        Display.gfx_MoveTo(80, 230);                 //Text Position x,y
+        Display.print("");
+        Display.print(Zeiten_Geschwindigkeit_2[0]);         //Wert Anzeigen
+        Display.print(" cpm       ");   
+
+
+        Zeit_speichern4 = true;             //Zeit_speichern (1)
+
+        Menue_angewaehlt = 2;              //Menue_angewaehlt (1)
+
+       }
+
+      }
+
+
+      else
+      {
+        
+      Menue_angewaehlt = 0;
+      
+      }
 
         break;
 
@@ -957,8 +1044,75 @@ if (Bild_aufgebaut[2] == false) //Überwachung Bildschirm aufgebaut
 
   }
 
-  Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
 
+if ((Stopp_Zeit_Geschwindigkeit== 0) && (Stopp_Zeit_Geschwindigkeit2== 0) && (Reset2 == true))
+
+       {
+
+       for (int i = 0; i <= 9; i++)
+
+        {
+
+          Zeiten_Geschwindigkeit_1[i] = 0;   //Zeiten Stoppuhr 1 0-9 zurücksetzen
+          Zeiten_Geschwindigkeit_2[i] = 0;   //Zeiten Stoppuhr 2 0-9 zurücksetzen */
+
+        }
+        
+
+        Display.txt_Height(2);                        //Texthöhe
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(580, 100);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 125);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 150);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+
+        Display.txt_Height(4);                       //Texthöhe
+        Display.txt_Width(3);                        //Textweite
+        Display.txt_Inverse(OFF);                    //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
+        Display.gfx_MoveTo(80, 100);                 //Text Position x,y
+        Display.print("");
+        Display.print("000");         //Wert Anzeigen
+        Display.print(" cpm       ");
+
+
+        Display.txt_Height(2);                        //Texthöhe
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(580, 225);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 250);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 275);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+
+        Display.txt_Height(4);                        //Texthöhe
+        Display.txt_Width(3);                         //Textweite
+        Display.txt_Inverse(OFF);                     //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);
+        Display.gfx_MoveTo(80, 230);                  //Text Position x,y
+        Display.print("");
+        Display.print("000");          //Wert Anzeigen
+        Display.print(" cpm       ");
+
+        Reset2 = false;
+        
+        }
+
+
+
+
+
+  Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
 
 
 
@@ -1000,9 +1154,12 @@ if (Bild_aufgebaut[2] == false) //Überwachung Bildschirm aufgebaut
       {
 
         Menue_angewaehlt = 0;        //Menü anwählen
-
+        Reset2 = true;
+        
         Bild_aufgebaut[0] = false;  //Bildschirm aufgebaut zurücksetzen
-
+        
+        Stopp_Zeit_Geschwindigkeit = 0;
+        Stopp_Zeit_Geschwindigkeit2 = 0;
       }
 
     }
@@ -1021,10 +1178,12 @@ if (Bild_aufgebaut[2] == false) //Überwachung Bildschirm aufgebaut
         
         Menue_angewaehlt = 2;        //Menü anwählen
 
-
+        Reset2 = true;
 
         Bild_aufgebaut[2] = false;  //Bildschirm aufgebaut zurücksetzen
         
+        Stopp_Zeit_Geschwindigkeit = 0;
+        Stopp_Zeit_Geschwindigkeit2 = 0;
       }
 
     }
