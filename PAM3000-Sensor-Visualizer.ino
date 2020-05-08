@@ -109,10 +109,12 @@ unsigned long Stopp_Zeit2;               //Start Stoppuhr 2
 float Start_Zeit_Geschwindigkeit;
 unsigned long Stopp_Zeit_Geschwindigkeit;
 unsigned long Zeiten_Geschwindigkeit_1[9];
+unsigned long Hoechstwert;
 
 float Start_Zeit_Geschwindigkeit2;
 unsigned long Stopp_Zeit_Geschwindigkeit2;
 unsigned long Zeiten_Geschwindigkeit_2[9];
+unsigned long Hoechstwert2;
 
 unsigned long Start_Zeit3;               //Start Geschwindikeitsanzeige
 unsigned long Stopp_Zeit3;               //Start Geschwindikeitsanzeige
@@ -472,18 +474,31 @@ void loop()
           Zeit_speichern3 = false;                                                                       //Zeit Speichern (0)
 
           Geschwindigkeit_Stopp = false;
+
+          
         }
 
       if (Geschwindigkeit_Stopp == true)
 
         {    
 
+ 
 
           Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
   
           Stopp_Zeit_Geschwindigkeit=(60/((millis()- Start_Zeit_Geschwindigkeit)/1000));                //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
+
   
-  
+            if (Stopp_Zeit_Geschwindigkeit >= Hoechstwert)
+          
+          {
+          Hoechstwert = Stopp_Zeit_Geschwindigkeit;
+          Display.txt_Height(2);              //Texthöhe
+          Display.txt_Width(2);               //Textweite
+          Display.gfx_MoveTo(83, 160);        //Text Position x,y
+          Display.print(Hoechstwert);
+          Display.print(" Hoechstwert  ");
+          }
   
           Zeiten_Geschwindigkeit_1[9]=Zeiten_Geschwindigkeit_1[8];                                                    //History
           Zeiten_Geschwindigkeit_1[8]=Zeiten_Geschwindigkeit_1[7];
@@ -517,7 +532,7 @@ void loop()
           Display.print("");
           Display.print(Zeiten_Geschwindigkeit_1[0]);         //Wert Anzeigen
           Display.print(" cpm       ");   
-  
+
   
           Zeit_speichern3 = true;             //Zeit_speichern (1)
   
@@ -579,6 +594,16 @@ if (Geschwindigkeit_Stopp2 == true)
         Stopp_Zeit_Geschwindigkeit2=(60/((millis()- Start_Zeit_Geschwindigkeit2)/1000));                //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
 
 
+          if (Stopp_Zeit_Geschwindigkeit2 >= Hoechstwert2)
+          
+          {
+          Hoechstwert2 = Stopp_Zeit_Geschwindigkeit2;
+          Display.txt_Height(2);              //Texthöhe
+          Display.txt_Width(2);               //Textweite
+          Display.gfx_MoveTo(83, 290);        //Text Position x,y
+          Display.print(Hoechstwert2);
+          Display.print(" Hoechstwert  ");
+          }
 
         Zeiten_Geschwindigkeit_2[9]=Zeiten_Geschwindigkeit_2[8];                                                    //History
         Zeiten_Geschwindigkeit_2[8]=Zeiten_Geschwindigkeit_2[7];
@@ -648,6 +673,9 @@ void Hauptmenue()
   Stoppuhrinterrupt2 = false;
   Geschwingigkeitinterrupt = false;
   Geschwingigkeitinterrupt2 = false;
+
+  Stopp_Zeit_Geschwindigkeit = 0;
+  Stopp_Zeit_Geschwindigkeit2 = 0;
   
   Displaystopp = false;
 
@@ -990,7 +1018,7 @@ void Interrupt ()
 
 {
   
-Displaystopp = true;
+
 
 
 if (Stoppuhrinterrupt == true)
@@ -1028,6 +1056,8 @@ void Interrupt2 ()
 
 {
 
+  
+
 if (Stoppuhrinterrupt == true)
 {
   Menue_angewaehlt = 7;                     //Menue_angewaehlt (7) 
@@ -1062,7 +1092,7 @@ if (Geschwingigkeitinterrupt2 == true)
 void Geschwindigkeitsanzeige()
 
 {
-  
+  Displaystopp = true;
 Geschwingigkeitinterrupt = true;
 Geschwingigkeitinterrupt2 = true;
   
@@ -1147,6 +1177,19 @@ if ((Stopp_Zeit_Geschwindigkeit== 0) && (Stopp_Zeit_Geschwindigkeit2== 0) && (Re
         Display.print("000");          //Wert Anzeigen
         Display.print(" cpm       ");
 
+
+        Display.txt_Height(2);              //Texthöhe
+        Display.txt_Width(2);               //Textweite
+        Display.gfx_MoveTo(83, 160);        //Text Position x,y
+        Display.print("00");
+        Display.print(" Hoechstwert  ");
+
+        Display.txt_Height(2);              //Texthöhe
+        Display.txt_Width(2);               //Textweite
+        Display.gfx_MoveTo(83, 290);        //Text Position x,y
+        Display.print("00");
+        Display.print(" Hoechstwert  ");
+
         Reset2 = false;
         
         }
@@ -1203,6 +1246,9 @@ if ((Stopp_Zeit_Geschwindigkeit== 0) && (Stopp_Zeit_Geschwindigkeit2== 0) && (Re
         
         Stopp_Zeit_Geschwindigkeit = 0;
         Stopp_Zeit_Geschwindigkeit2 = 0;
+
+        Hoechstwert = 0;
+        Hoechstwert2 = 0;
       }
 
     }
@@ -1227,6 +1273,9 @@ if ((Stopp_Zeit_Geschwindigkeit== 0) && (Stopp_Zeit_Geschwindigkeit2== 0) && (Re
         
         Stopp_Zeit_Geschwindigkeit = 0;
         Stopp_Zeit_Geschwindigkeit2 = 0;
+
+        Hoechstwert = 0;
+        Hoechstwert2 = 0;
       }
 
     }
@@ -1249,6 +1298,104 @@ void Magnetpolanzeige()
 
 {
 
+ Displaystopp = true;
+
+  
+if (Bild_aufgebaut[4] == false) //Überwachung Bildschirm aufgebaut
+
+  {
+
+    Display.gfx_Cls();                //Display löschen
+
+    Display.gfx_Button(Status_Taste, 40, 10, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Magnetpolanzeige");
+
+    Status_Taste = BUTTON_UP;
+
+    Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Zrug"); //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Taste, 350, 400, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset"); //Taste anzeigen ungedrückt
+    Display.gfx_Rectangle(10, 70, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
+    Display.gfx_Rectangle(10, 330, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    Display.gfx_CircleFilled(40, 250, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
+
+    Bild_aufgebaut[4] = true;                   //Bildschirm aufgebaut setzen
+
+  }
+
+
+  Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
+
+
+
+  if ((Status_Display == TOUCH_PRESSED) || (Status_Display == TOUCH_MOVING)) //Überwachung Touch gedrückt oder bewegt
+
+  {
+
+    X_Pos = Display.touch_Get(TOUCH_GETX);    //X Position auslesen
+    Y_Pos = Display.touch_Get(TOUCH_GETY);    //Y Position auslesen
+
+  }
+
+
+  //Touch Schalter auswertung
+
+
+  if (Status_Display == TOUCH_RELEASED)                       //Überwachung Touch Freigabe
+
+  {
+
+    
+    //Touch Feld Zurück
+
+
+    if ((X_Pos >= 620) && (X_Pos <= 790) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld
+
+    {
+
+      Status_Taste = !Status_Taste;
+
+      Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund_2, Textfarbe_2, Schrifttyp, Textbreite, Textrahmen, "Zrug"); //Taste anzeigen gedrückt
+
+
+      //Menü Hauptmenü anwählen
+
+
+      if (Status_Taste)
+
+      {
+
+        Menue_angewaehlt = 0;        //Menü anwählen
+        
+        
+        Bild_aufgebaut[0] = false;  //Bildschirm aufgebaut zurücksetzen
+
+      }
+
+    }
+ if ((X_Pos >= 320) && (X_Pos <= 500) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld
+
+    {
+
+      Status_Taste = !Status_Taste;
+
+      Display.gfx_Button(Status_Taste, 350, 400, YELLOW, WHITE, Schrifttyp, Textbreite, Textrahmen, "RESET"); //Taste anzeigen gedrückt
+
+
+      if (Status_Taste)
+
+      {
+        
+        Menue_angewaehlt = 4;        //Menü anwählen
+
+   
+
+        Bild_aufgebaut[4] = false;  //Bildschirm aufgebaut zurücksetzen
+        
+
+      }
+
+    }
+  }
 
 
 }
