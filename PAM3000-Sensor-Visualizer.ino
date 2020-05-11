@@ -214,6 +214,8 @@ void setup()
 
   Stopp_Zeit_Geschwindigkeit3 = 0; 
   Stopp_Zeit_Geschwindigkeit4 = 0;
+
+  pinMode(HALL_SENSOR, INPUT);
   
 }
 
@@ -1773,6 +1775,7 @@ void Magnetpolanzeige()
 
 {
 
+ int SensorValue = digitalRead(HALL_SENSOR);
  Displaystopp = true;
 
   
@@ -1797,6 +1800,39 @@ if (Bild_aufgebaut[4] == false) //Überwachung Bildschirm aufgebaut
 
   }
 
+
+  if(SensorValue == LOW)
+  {
+        Display.gfx_CircleFilled(40, 120, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen 
+        Display.txt_Height(4);                        //Texthöhe
+        Display.txt_Width(3);                         //Textweite
+        Display.txt_Inverse(OFF);                     //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);
+        Display.gfx_MoveTo(80, 100);                  //Text Position x,y
+        Display.print("  ");
+        Display.print("Suedpol");          //Wert Anzeigen
+        
+  }
+
+  else
+  {
+        Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen 
+        Display.txt_Height(4);                        //Texthöhe
+        Display.txt_Width(3);                         //Textweite
+        Display.txt_Inverse(OFF);                     //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);
+        Display.gfx_MoveTo(80, 100);                //Text Position x,y
+        Display.print("  ");
+        Display.print("Nordpol");          //Wert Anzeigen
+  }
+
+
+
+
+
+  
 
   Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
 
