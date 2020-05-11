@@ -35,6 +35,7 @@
 //*****************************************************************************************************
 
 #define DisplaySerial Serial
+#define HALL_SENSOR 7
 
 #include <Diablo_Const4D.h>
 #include <Diablo_Serial_4DLib.h>
@@ -786,7 +787,7 @@ if (Geschwindigkeit_Stopp2 == true)
          
           {
           
-            Menue_angewaehlt = 11;
+            Menue_angewaehlt = 10;
         
            }
            
@@ -886,7 +887,7 @@ if (Geschwindigkeit_Stopp2 == true)
          
           {
           
-            Menue_angewaehlt = 12;
+            Menue_angewaehlt = 10;
         
            }
            
