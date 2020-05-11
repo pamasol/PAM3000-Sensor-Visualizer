@@ -128,6 +128,30 @@ bool Zeit_speichern4;                //Zeiten speichern
 bool Geschwindigkeit_Stopp;
 bool Geschwindigkeit_Stopp2;
 
+
+bool Geschwingigkeitinterrupt_Durchschnitt;
+bool Geschwingigkeitinterrupt_Durchschnitt2;
+bool Zeit_speichern5;
+bool Geschwingigkeitinterrupt3;
+bool Geschwingigkeitinterrupt4;
+unsigned long Stopp_Zeit_Geschwindigkeit3;
+unsigned long Stopp_Zeit_Geschwindigkeit4;
+unsigned long Start_Zeit_Geschwindigkeit3;
+unsigned long Start_Zeit_Geschwindigkeit4;
+unsigned long Hoechstwert3 = 0;
+unsigned long Hoechstwert4 = 0;
+bool Reset3;
+unsigned long Zeiten_Geschwindigkeit_3[9];
+long Durchschnittanzahl;
+bool Interrupt_Durchschnitt;
+
+
+bool Reset4;
+bool Zeit_speichern6;
+unsigned long Zeiten_Geschwindigkeit_4[9];
+long Durchschnittanzahl2;
+bool Interrupt_Durchschnitt2;
+
 unsigned long Test;
 //****************************************************************************************************************************************
 
@@ -170,13 +194,26 @@ void setup()
   Zeit_speichern2 = true;                               //Zeiten speichern 2 (1)
   Zeit_speichern3 = true;
   Zeit_speichern4 = true;
+  Zeit_speichern5 = true;
+  Zeit_speichern6 = true;
   Reset1 = true;
   Reset2 = true;
+  Reset3 = true;
+  Reset4 = true;
   Stoppuhrinterrupt = false;
   Stoppuhrinterrupt2 = false;
   Geschwingigkeitinterrupt = false;
   Geschwingigkeitinterrupt2 = false;
+  Geschwingigkeitinterrupt3 = false;
+  Geschwingigkeitinterrupt4 = false;
   Geschwindigkeit_Stopp = true;
+  Interrupt_Durchschnitt = true;
+  Interrupt_Durchschnitt2 = true;
+
+
+  Stopp_Zeit_Geschwindigkeit3 = 0; 
+  Stopp_Zeit_Geschwindigkeit4 = 0;
+  
 }
 
 //****************************************************************************************************************************************
@@ -549,15 +586,7 @@ void loop()
         
            }
       }
-         
-
-    
-
-     
-     
-      
-
-
+   
     
         break;
 
@@ -644,7 +673,7 @@ if (Geschwindigkeit_Stopp2 == true)
         Menue_angewaehlt = 2;              //Menue_angewaehlt (1)
 
         Geschwindigkeit_Stopp2 = true;
-
+        
        }
 
       
@@ -655,11 +684,222 @@ if (Geschwindigkeit_Stopp2 == true)
       
       }
 
+     }
+
+       break;
+
+
+      case 10:
+
+
+
+      Geschwindigkeitsanzeige_Durchschnitt();
+      
+      
+
+      break;
+
+
+      case 11:
+
+
+ if (Displaystopp == true) //Überwachung Bildschirm aufgebaut
+
+      {
+        
+     
+      if (Zeit_speichern5 == true)
+
+        {
+          Display.gfx_CircleFilled(40, 120, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen 
+
+          Start_Zeit_Geschwindigkeit3 = millis();  
+                        
+          Zeit_speichern5 = false;                                                                      
+
+          Durchschnittanzahl = 0;
+        }
+
+
+
+        Interrupt_Durchschnitt = true;
+
+        Stopp_Zeit_Geschwindigkeit3 = (millis() - Start_Zeit_Geschwindigkeit3);
+
+
+
+        
+
+      if (Stopp_Zeit_Geschwindigkeit3 >= 60000)
+
+        {    
+
+ 
+
+          Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
+          
+  
+          Zeiten_Geschwindigkeit_3[9]=Zeiten_Geschwindigkeit_3[8];                                                    //History
+          Zeiten_Geschwindigkeit_3[8]=Zeiten_Geschwindigkeit_3[7];
+          Zeiten_Geschwindigkeit_3[7]=Zeiten_Geschwindigkeit_3[6];
+          Zeiten_Geschwindigkeit_3[6]=Zeiten_Geschwindigkeit_3[5];
+          Zeiten_Geschwindigkeit_3[5]=Zeiten_Geschwindigkeit_3[4];
+          Zeiten_Geschwindigkeit_3[4]=Zeiten_Geschwindigkeit_3[3];
+          Zeiten_Geschwindigkeit_3[3]=Zeiten_Geschwindigkeit_3[2];
+          Zeiten_Geschwindigkeit_3[2]=Zeiten_Geschwindigkeit_3[1];
+          Zeiten_Geschwindigkeit_3[1]=Zeiten_Geschwindigkeit_3[0];
+          Zeiten_Geschwindigkeit_3[0]=Durchschnittanzahl;                
+  
+          Display.txt_Height(2);                        //Texthöhe
+          Display.txt_Width(2);                         //Textweite
+          Display.gfx_MoveTo(580, 100);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_3[0]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+          Display.gfx_MoveTo(580, 125);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_3[1]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+          Display.gfx_MoveTo(580, 150);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_3[2]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+  
+          Display.txt_Height(4);                       //Texthöhe
+          Display.txt_Width(3);                        //Textweite
+          Display.txt_Inverse(OFF);                    //Text invetieren
+          Display.txt_Bold(OFF);
+          Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
+          Display.gfx_MoveTo(80, 100);                 //Text Position x,y
+          Display.print("");
+          Display.print(Zeiten_Geschwindigkeit_3[0]);         //Wert Anzeigen
+          Display.print(" cpm       ");   
+
+  
+          Zeit_speichern5 = true;             //Zeit_speichern (1)
+  
+          Menue_angewaehlt = 10;              //Menue_angewaehlt (1)
+  
+          
+
+       } 
+
+       
+       else
+         
+          {
+          
+            Menue_angewaehlt = 11;
+        
+           }
+           
       }
 
-        break;
 
+
+      
+
+      break;
+
+
+
+ case 12:
+
+
+ if (Displaystopp == true) //Überwachung Bildschirm aufgebaut
+
+      {
+        
+     
+      if (Zeit_speichern6 == true)
+
+        {
+          Display.gfx_CircleFilled(40, 250, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen 
+
+          Start_Zeit_Geschwindigkeit4 = millis();  
+                        
+          Zeit_speichern6 = false;                                                                      
+
+          Durchschnittanzahl2 = 0;
+        }
+
+
+
+        Interrupt_Durchschnitt2 = true;
+
+        Stopp_Zeit_Geschwindigkeit4 = (millis() - Start_Zeit_Geschwindigkeit4);
+
+
+
+        
+
+      if (Stopp_Zeit_Geschwindigkeit4 >= 60000)
+
+        {    
+
+ 
+
+          Display.gfx_CircleFilled(40, 250, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
+          
+  
+          Zeiten_Geschwindigkeit_4[9]=Zeiten_Geschwindigkeit_4[8];                                                    //History
+          Zeiten_Geschwindigkeit_4[8]=Zeiten_Geschwindigkeit_4[7];
+          Zeiten_Geschwindigkeit_4[7]=Zeiten_Geschwindigkeit_4[6];
+          Zeiten_Geschwindigkeit_4[6]=Zeiten_Geschwindigkeit_4[5];
+          Zeiten_Geschwindigkeit_4[5]=Zeiten_Geschwindigkeit_4[4];
+          Zeiten_Geschwindigkeit_4[4]=Zeiten_Geschwindigkeit_4[3];
+          Zeiten_Geschwindigkeit_4[3]=Zeiten_Geschwindigkeit_4[2];
+          Zeiten_Geschwindigkeit_4[2]=Zeiten_Geschwindigkeit_4[1];
+          Zeiten_Geschwindigkeit_4[1]=Zeiten_Geschwindigkeit_4[0];
+          Zeiten_Geschwindigkeit_4[0]=Durchschnittanzahl2;                
+  
+          Display.txt_Height(2);                        //Texthöhe
+          Display.txt_Width(2);                         //Textweite
+          Display.gfx_MoveTo(580, 225);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_4[0]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+          Display.gfx_MoveTo(580, 250);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_4[1]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+          Display.gfx_MoveTo(580, 275);                 //Text Position x,y
+          Display.print(Zeiten_Geschwindigkeit_4[2]);          //Wert Anzeigen
+          Display.print(" cpm    ");
+  
+          Display.txt_Height(4);                       //Texthöhe
+          Display.txt_Width(3);                        //Textweite
+          Display.txt_Inverse(OFF);                    //Text invetieren
+          Display.txt_Bold(OFF);
+          Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
+          Display.gfx_MoveTo(80, 230);                 //Text Position x,y
+          Display.print("");
+          Display.print(Zeiten_Geschwindigkeit_4[0]);         //Wert Anzeigen
+          Display.print(" cpm       ");   
+
+  
+          Zeit_speichern6 = true;             //Zeit_speichern (1)
+  
+          Menue_angewaehlt = 10;              //Menue_angewaehlt (1)
+  
+          
+
+       } 
+
+       
+       else
+         
+          {
+          
+            Menue_angewaehlt = 12;
+        
+           }
+           
       }
+
+
+
+      
+
+      break;
+
+
+  }
 
   }
 
@@ -685,10 +925,12 @@ void Hauptmenue()
 
     Display.gfx_Cls();                //Display löschen
     Display.gfx_Button(Status_Taste, 30, 60, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Stoppuhr");                 //Taste anzeigen ungedrückt
-    Display.gfx_Button(Status_Taste, 30, 140, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Geschwindigkeitsanzeige"); //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Taste, 30, 140, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Geschwindigkeitsanzeige c to c"); //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Taste, 500, 140, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Durchschnitt"); //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Taste, 30, 220, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Analogeanzeige");          //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Taste, 30, 300, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Magnetpolanzeige");        //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Taste, 30, 380, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Einstellungen");           //Taste anzeigen ungedrückt
+    
 
     Bild_aufgebaut[0] = true;      //Bildschirm aufgebaut setzen
 
@@ -734,13 +976,13 @@ void Hauptmenue()
     }
 
 
-    if ((X_Pos >= 10) && (X_Pos <= 790) && (Y_Pos >= 110) && (Y_Pos <= 170)) //Überwachung Touch Feld
+    if ((X_Pos >= 10) && (X_Pos <= 490) && (Y_Pos >= 110) && (Y_Pos <= 170)) //Überwachung Touch Feld
 
     {
 
       Status_Taste = !Status_Taste;
 
-      Display.gfx_Button(Status_Taste, 30, 140, Texthintergrund_2, Textfarbe_2, Schrifttyp, Textbreite, Textrahmen, "Geschwindigkeitsanzeige"); //Taste anzeigen gedrückt
+      Display.gfx_Button(Status_Taste, 30, 140, Texthintergrund_2, Textfarbe_2, Schrifttyp, Textbreite, Textrahmen, "Geschwindigkeitsanzeige c to c"); //Taste anzeigen gedrückt
 
 
       if (Status_Taste)
@@ -750,6 +992,28 @@ void Hauptmenue()
         Menue_angewaehlt = 2;       //Menü anwählen
         
         Bild_aufgebaut[2] = false;  //Bildschirm aufgebaut zurücksetzen
+
+      }
+      
+    }
+
+
+    if ((X_Pos >= 500) && (X_Pos <= 790) && (Y_Pos >= 110) && (Y_Pos <= 170)) //Überwachung Touch Feld
+
+    {
+
+      Status_Taste = !Status_Taste;
+
+      Display.gfx_Button(Status_Taste, 500, 140, Texthintergrund_2, Textfarbe_2, Schrifttyp, Textbreite, Textrahmen, "Durchschnitt"); //Taste anzeigen gedrückt
+
+
+      if (Status_Taste)
+
+      {
+
+        Menue_angewaehlt = 10;       //Menü anwählen
+        
+        Bild_aufgebaut[3] = false;  //Bildschirm aufgebaut zurücksetzen
 
       }
       
@@ -1048,6 +1312,17 @@ if (Geschwingigkeitinterrupt == true)
   
   }
 
+  if(Geschwingigkeitinterrupt3 == true && Interrupt_Durchschnitt == true)
+  {
+    Menue_angewaehlt = 11;
+
+    Durchschnittanzahl = (Durchschnittanzahl + 1);
+
+    Interrupt_Durchschnitt = false;
+        
+     
+  }
+
 
 }
 
@@ -1082,6 +1357,17 @@ if (Geschwingigkeitinterrupt2 == true)
            Geschwindigkeit_Stopp2 = true;
            }
       
+  }
+
+    if(Geschwingigkeitinterrupt4 == true && Interrupt_Durchschnitt2 == true)
+  {
+    Menue_angewaehlt = 12;
+
+    Durchschnittanzahl2 = (Durchschnittanzahl2 + 1);
+
+    Interrupt_Durchschnitt2 = false;
+        
+     
   }
 
 
@@ -1283,6 +1569,194 @@ if ((Stopp_Zeit_Geschwindigkeit== 0) && (Stopp_Zeit_Geschwindigkeit2== 0) && (Re
 
 
 }
+
+
+
+void Geschwindigkeitsanzeige_Durchschnitt()
+{
+  
+  Displaystopp = true;
+  Geschwingigkeitinterrupt3 = true;
+  Geschwingigkeitinterrupt4 = true;
+  Interrupt_Durchschnitt = true;
+  Interrupt_Durchschnitt2 = true;
+
+  
+  if (Bild_aufgebaut[3] == false) //Überwachung Bildschirm aufgebaut
+
+   {
+
+    Display.gfx_Cls();                //Display löschen
+
+    Display.gfx_Button(Status_Taste, 40, 10, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Geschwindigkeitsanzeige Durchschnitt");
+
+    Status_Taste = BUTTON_UP;
+
+    Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Zrug"); //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Taste, 350, 400, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset"); //Taste anzeigen ungedrückt
+    Display.gfx_Rectangle(10, 70, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
+    Display.gfx_Rectangle(10, 330, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    Display.gfx_CircleFilled(40, 250, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
+
+    Bild_aufgebaut[3] = true;                   //Bildschirm aufgebaut setzen
+
+  }
+
+
+if ((Stopp_Zeit_Geschwindigkeit3 == 0) && (Stopp_Zeit_Geschwindigkeit4 == 0) && (Reset3 == true))
+
+       {
+
+       for (int i = 0; i <= 9; i++)
+
+        {
+
+          Zeiten_Geschwindigkeit_3[i] = 0;   //Zeiten Stoppuhr 1 0-9 zurücksetzen
+          Zeiten_Geschwindigkeit_3[i] = 0;   //Zeiten Stoppuhr 2 0-9 zurücksetzen */
+
+        }
+        
+
+        Display.txt_Height(2);                        //Texthöhe
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(580, 100);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 125);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 150);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+
+        Display.txt_Height(4);                       //Texthöhe
+        Display.txt_Width(3);                        //Textweite
+        Display.txt_Inverse(OFF);                    //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
+        Display.gfx_MoveTo(80, 100);                 //Text Position x,y
+        Display.print("");
+        Display.print("000");         //Wert Anzeigen
+        Display.print(" cpm       ");
+
+
+        Display.txt_Height(2);                        //Texthöhe
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(580, 225);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 250);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 275);                 //Text Position x,y
+        Display.print("00");          //Wert Anzeigen
+        Display.print(" cpm    ");
+
+        Display.txt_Height(4);                        //Texthöhe
+        Display.txt_Width(3);                         //Textweite
+        Display.txt_Inverse(OFF);                     //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);
+        Display.gfx_MoveTo(80, 230);                  //Text Position x,y
+        Display.print("");
+        Display.print("000");          //Wert Anzeigen
+        Display.print(" cpm       ");
+
+        Reset3 = false;
+        
+        }
+
+
+
+
+
+  Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
+
+
+
+  if ((Status_Display == TOUCH_PRESSED) || (Status_Display == TOUCH_MOVING)) //Überwachung Touch gedrückt oder bewegt
+
+  {
+
+    X_Pos = Display.touch_Get(TOUCH_GETX);    //X Position auslesen
+    Y_Pos = Display.touch_Get(TOUCH_GETY);    //Y Position auslesen
+
+  }
+
+
+  //Touch Schalter auswertung
+
+
+  if (Status_Display == TOUCH_RELEASED)                       //Überwachung Touch Freigabe
+
+  {
+
+    
+    //Touch Feld Zurück
+
+
+    if ((X_Pos >= 620) && (X_Pos <= 790) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld
+
+    {
+
+      Status_Taste = !Status_Taste;
+
+      Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund_2, Textfarbe_2, Schrifttyp, Textbreite, Textrahmen, "Zrug"); //Taste anzeigen gedrückt
+
+
+      //Menü Hauptmenü anwählen
+
+
+      if (Status_Taste)
+
+      {
+
+        Menue_angewaehlt = 0;        //Menü anwählen
+        Reset3 = true;
+        Zeit_speichern5 = true;
+        Bild_aufgebaut[0] = false;  //Bildschirm aufgebaut zurücksetzen
+        
+        Stopp_Zeit_Geschwindigkeit3 = 0;
+        Stopp_Zeit_Geschwindigkeit4 = 0;
+
+        Hoechstwert3 = 0;
+        Hoechstwert4 = 0;
+      }
+
+    }
+ if ((X_Pos >= 320) && (X_Pos <= 500) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld
+
+    {
+
+      Status_Taste = !Status_Taste;
+
+      Display.gfx_Button(Status_Taste, 350, 400, YELLOW, WHITE, Schrifttyp, Textbreite, Textrahmen, "RESET"); //Taste anzeigen gedrückt
+
+
+      if (Status_Taste)
+
+      {
+        
+        Menue_angewaehlt = 10;        //Menü anwählen
+
+        Reset3 = true;
+        Zeit_speichern5 = true;
+        Bild_aufgebaut[3] = false;  //Bildschirm aufgebaut zurücksetzen
+        
+        Stopp_Zeit_Geschwindigkeit3 = 0;
+        Stopp_Zeit_Geschwindigkeit4 = 0;
+
+        Hoechstwert3 = 0;
+        Hoechstwert4 = 0;
+      }
+
+    }
+  }  
+}
+
+
+
 
 
 void Analogeanzeige()
