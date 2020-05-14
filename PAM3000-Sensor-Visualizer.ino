@@ -43,7 +43,7 @@
 #include <Wire.h>
 #include <Adafruit_INA219.h> // You will need to download this library
 
-Adafruit_INA219 ina219; // Declare and instance of INA219
+Adafruit_INA219 sensor219; // Declare and instance of INA219
 
 Diablo_Serial_4DLib Display(&DisplaySerial);  //Serielle Kommunikation mit Display
 
@@ -84,16 +84,16 @@ int Minuten;                        //Minuten Anzeige 1
 int Sekunden;                       //Sekunden Anzeige 1
 int Millisekunden;                  //Millisekunden Anzeige 1
 
-bool Displaystopp;
+bool Displaystopp;                  //Displaystopp
 bool Reset1;                        //Reset Stoppuhr
-bool Reset2;
+bool Reset2;                        //Reset Stoppuhr 2
 bool Stoppuhrinterrupt;             //Stoppuhr Interrupt
 bool Stoppuhrinterrupt2;             //Stoppuhr Interrupt 2
 bool Geschwingigkeitinterrupt;      //Geschwindigkeitsanzeige Interrupt
-bool Geschwingigkeitinterrupt2;      //Geschwindigkeitsanzeige Interrupt
-bool Start_speichern2[2];           //Zeiten speichern
-bool Zeiten_speichern2[2];          //Zeiten speichern 
-bool Zeit_speichern2;               //Zeiten speichern 
+bool Geschwingigkeitinterrupt2;      //Geschwindigkeitsanzeige Interrupt 2
+bool Start_speichern2[2];           //Zeiten speichern 2
+bool Zeiten_speichern2[2];          //Zeiten speichern 2
+bool Zeit_speichern2;               //Zeiten speichern 2
 
 int Stunden2;                       //Stunden Anzeige 2
 int Minuten2;                       //Minuten Anzeige 2
@@ -114,34 +114,34 @@ unsigned long Zeiten_Stoppuhr_2[9];      //Zeiten Stoppuhr 2 (0-9)
 unsigned long Start_Zeit2;               //Start Stoppuhr 2
 unsigned long Stopp_Zeit2;               //Start Stoppuhr 2
 
-float Start_Zeit_Geschwindigkeit;
-unsigned long Stopp_Zeit_Geschwindigkeit;
-unsigned long Zeiten_Geschwindigkeit_1[9];
-unsigned long Hoechstwert;
+float Start_Zeit_Geschwindigkeit;         //Start Zeit für Geschwindigkeitsanzeige
+unsigned long Stopp_Zeit_Geschwindigkeit; //Stopp Zeit für Geschwindigkeitsanzeige
+unsigned long Zeiten_Geschwindigkeit_1[9];//Geschwindigeitswert Speichern
+unsigned long Hoechstwert;                // Hoechstwert von Geschwindigkeitsanzeige
 
-float Start_Zeit_Geschwindigkeit2;
-unsigned long Stopp_Zeit_Geschwindigkeit2;
-unsigned long Zeiten_Geschwindigkeit_2[9];
-unsigned long Hoechstwert2;
+float Start_Zeit_Geschwindigkeit2;        //Start Zeit für Geschwindigkeitsanzeige 2
+unsigned long Stopp_Zeit_Geschwindigkeit2;//Stopp Zeit für Geschwindigkeitsanzeige 2
+unsigned long Zeiten_Geschwindigkeit_2[9];//Geschwindigeitswert 2 Speichern
+unsigned long Hoechstwert2;               // Hoechstwert von Geschwindigkeitsanzeige 2
 
 unsigned long Start_Zeit3;               //Start Geschwindikeitsanzeige
-unsigned long Stopp_Zeit3;               //Start Geschwindikeitsanzeige
+unsigned long Stopp_Zeit3;               //Stopp Geschwindikeitsanzeige
 
-unsigned long Start_Zeit4;               //Start Geschwindikeitsanzeige
-unsigned long Stopp_Zeit4;               //Start Geschwindikeitsanzeige
+unsigned long Start_Zeit4;               //Start Geschwindikeitsanzeige 2
+unsigned long Stopp_Zeit4;               //Stopp Geschwindikeitsanzeige 2
 
-bool Zeit_speichern3;                //Zeiten speichern
-bool Zeit_speichern4;                //Zeiten speichern
+bool Zeit_speichern3;                //Zeiten speichern Geschwindigkeitsanzeige
+bool Zeit_speichern4;                //Zeiten speichern Geschwindigkeitsanzeige
 
-bool Geschwindigkeit_Stopp;
-bool Geschwindigkeit_Stopp2;
+bool Geschwindigkeit_Stopp;          //Stoppzeit Geschwindigkeitsanzeige
+bool Geschwindigkeit_Stopp2;         //Stoppzeit Geschwindigkeitsanzeige 2
 
 
-bool Geschwingigkeitinterrupt_Durchschnitt;
-bool Geschwingigkeitinterrupt_Durchschnitt2;
-bool Zeit_speichern5;
-bool Geschwingigkeitinterrupt3;
-bool Geschwingigkeitinterrupt4;
+bool Geschwingigkeitinterrupt_Durchschnitt;  //Durchschnitt Geschwindigkeitsanzeige
+bool Geschwingigkeitinterrupt_Durchschnitt2; //Durchschnitt Geschwindigkeitsanzeige 2
+bool Zeit_speichern5;                        //Zeiten Speichern
+bool Geschwingigkeitinterrupt3;             //Geschwindigkeitsanzeige Durchschnitt Interrupt
+bool Geschwingigkeitinterrupt4;             //Geschwindigkeitsanzeige Durchschnitt Interrupt 2
 unsigned long Stopp_Zeit_Geschwindigkeit3;
 unsigned long Stopp_Zeit_Geschwindigkeit4;
 unsigned long Start_Zeit_Geschwindigkeit3;
@@ -159,6 +159,8 @@ bool Zeit_speichern6;
 unsigned long Zeiten_Geschwindigkeit_4[9];
 long Durchschnittanzahl2;
 bool Interrupt_Durchschnitt2;
+
+float Druck;
 
 unsigned long Test;
 //****************************************************************************************************************************************
@@ -1785,14 +1787,14 @@ void Analogeanzeige()
 
     Display.gfx_Cls();                //Display löschen
 
-    Display.gfx_Button(Status_Taste, 40, 10, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Geschwindigkeitsanzeige Durchschnitt");
+    Display.gfx_Button(Status_Taste, 40, 10, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Analogeanzeige");
 
     Status_Taste = BUTTON_UP;
 
     Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Zrug"); //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Taste, 350, 400, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset"); //Taste anzeigen ungedrückt
-    Display.gfx_Rectangle(10, 70, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
-    Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
+    Display.gfx_Rectangle(10, 70, 790, 280, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    
 
     Bild_aufgebaut[6] = true;                   //Bildschirm aufgebaut setzen
 
@@ -1802,45 +1804,36 @@ void Analogeanzeige()
   float busVoltage = 0;
   float current = 0; // Measure in milli amps
   float power = 0;
-
+  Druck = 0;
+  
   busVoltage = sensor219.getBusVoltage_V();
   current = sensor219.getCurrent_mA();
   power = busVoltage * (current/1000); // Calculate the Power
-  
-  
-  Serial.print("Bus Voltage:   "); 
-  Serial.print(busVoltage); 
-  Serial.println(" V");  
-  
-  Serial.print("Current:       "); 
-  Serial.print(current); 
-  Serial.println(" mA");
-  
-  Serial.print("Power:         "); 
-  Serial.print(power); 
-  Serial.println(" W");  
-  
-  Serial.println("");  
-  
-   Display.txt_Height(2);                        //Texthöhe
-   Display.txt_Width(2);                         //Textweite
-   Display.gfx_MoveTo(580, 100);                 //Text Position x,y
+
+  Druck = ((current-4)*0.625);
+
+   Display.txt_Height(3);                        //Texthöhe
+   Display.txt_Width(3);                         //Textweite
+   Display.gfx_MoveTo(200, 100);        //Text Position x,y
+   Display.print("Spannung: ");
    Display.print(busVoltage);          //Wert Anzeigen
    Display.print(" V");
-   Display.gfx_MoveTo(580, 125);                 //Text Position x,y
+   Display.gfx_MoveTo(200, 150);                 //Text Position x,y
+   Display.print("Strom   : ");
    Display.print(current);          //Wert Anzeigen
    Display.print(" mA");
-   Display.gfx_MoveTo(580, 150);                 //Text Position x,y
+   Display.gfx_MoveTo(200, 200);                 //Text Position x,y
+   Display.print("Leistung: ");
    Display.print(power);          //Wert Anzeigen
    Display.print(" W");
 
        
-   delay(2000);
+   
    
 
     Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
 
-
+  
 
   if ((Status_Display == TOUCH_PRESSED) || (Status_Display == TOUCH_MOVING)) //Überwachung Touch gedrückt oder bewegt
 
