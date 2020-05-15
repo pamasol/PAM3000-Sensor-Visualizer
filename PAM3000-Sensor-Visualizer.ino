@@ -1846,7 +1846,7 @@ void Analogeanzeige()
    Display.print(power);          //Wert Anzeigen
    Display.print(" W     ");
    
-  }    
+     
     
     Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
 
