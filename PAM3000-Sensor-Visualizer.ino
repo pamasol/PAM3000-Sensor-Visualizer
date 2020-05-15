@@ -153,14 +153,20 @@ unsigned long Zeiten_Geschwindigkeit_3[9];
 long Durchschnittanzahl;
 bool Interrupt_Durchschnitt;
 
-
+long Leistung;
 bool Reset4;
 bool Zeit_speichern6;
 unsigned long Zeiten_Geschwindigkeit_4[9];
 long Durchschnittanzahl2;
 bool Interrupt_Durchschnitt2;
 
-float Druck;
+float DruckSensor;
+long Max_Bar;
+long Max_mA;
+long Min_mA;
+float busVoltage = 0;
+float current = 0; // Measure in milli amps
+float power = 0;
 
 unsigned long Test;
 //****************************************************************************************************************************************
@@ -173,6 +179,8 @@ void setup()
 
   pinMode(interruptPin2, INPUT);                         // Interrupt Pin 9 Input
   attachInterrupt(interruptPin2, Interrupt2, RISING);    // Interrupt Void Interrupt2
+
+  pinMode(2, OUTPUT);                                    // Pin für Buzzer
 
 
   DisplaySerial.begin(9600);              //9600 Geschwindigkeit Serielle Schnittstelle
@@ -223,6 +231,9 @@ void setup()
 
   Stopp_Zeit_Geschwindigkeit3 = 0; 
   Stopp_Zeit_Geschwindigkeit4 = 0;
+
+  Leistung = 0;
+
 
   pinMode(HALL_SENSOR, INPUT);
 
@@ -1051,7 +1062,7 @@ void Hauptmenue()
 
         Menue_angewaehlt = 3;       //Menü anwählen
         
-        Bild_aufgebaut[3] = false;  //Bildschirm aufgebaut zurücksetzen
+        Bild_aufgebaut[6] = false;  //Bildschirm aufgebaut zurücksetzen
 
       }
 
@@ -1614,6 +1625,8 @@ void Geschwindigkeitsanzeige_Durchschnitt()
     Display.gfx_Button(Status_Taste, 350, 400, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset"); //Taste anzeigen ungedrückt
     Display.gfx_Rectangle(10, 70, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
     Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
+    Display.gfx_Rectangle(10, 330, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    Display.gfx_CircleFilled(40, 250, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
 
     Bild_aufgebaut[3] = true;                   //Bildschirm aufgebaut setzen
 
@@ -1798,39 +1811,43 @@ void Analogeanzeige()
 
     Bild_aufgebaut[6] = true;                   //Bildschirm aufgebaut setzen
 
+    
+
   }
 
+  
 
-  float busVoltage = 0;
-  float current = 0; // Measure in milli amps
-  float power = 0;
-  Druck = 0;
+  DruckSensor = 0;
+  Max_Bar = 10;
+  Max_mA = 20;
+  Min_mA = 4;
   
   busVoltage = sensor219.getBusVoltage_V();
   current = sensor219.getCurrent_mA();
   power = busVoltage * (current/1000); // Calculate the Power
 
-  Druck = ((current-4)*0.625);
+  DruckSensor = ((current-Min_mA)*(Max_Bar/(Max_mA-Min_mA)));       //Variable für Druck Sensor. Werte einzugeben, Max Bar, Max Strom, Min Strom
 
    Display.txt_Height(3);                        //Texthöhe
    Display.txt_Width(3);                         //Textweite
+   Display.txt_Inverse(OFF);                     //Text invetieren
+   Display.txt_Bold(OFF);
+   Display.txt_Set(TEXT_COLOUR, WHITE);
    Display.gfx_MoveTo(200, 100);        //Text Position x,y
    Display.print("Spannung: ");
    Display.print(busVoltage);          //Wert Anzeigen
-   Display.print(" V");
+   Display.print(" V    ");
    Display.gfx_MoveTo(200, 150);                 //Text Position x,y
    Display.print("Strom   : ");
    Display.print(current);          //Wert Anzeigen
-   Display.print(" mA");
+   Display.print(" mA    ");
    Display.gfx_MoveTo(200, 200);                 //Text Position x,y
    Display.print("Leistung: ");
    Display.print(power);          //Wert Anzeigen
-   Display.print(" W");
-
-       
+   Display.print(" W     ");
    
-   
-
+  }    
+    
     Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
 
   
@@ -1874,31 +1891,31 @@ void Analogeanzeige()
 
         Menue_angewaehlt = 0;        //Menü anwählen
 
-        Bild_aufgebaut[6] = false;  //Bildschirm aufgebaut zurücksetzen
+        Bild_aufgebaut[0] = false;  //Bildschirm aufgebaut zurücksetzen
 
       }
 
     }
- if ((X_Pos >= 320) && (X_Pos <= 500) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld
+     if ((X_Pos >= 320) && (X_Pos <= 500) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld
 
     {
 
       Status_Taste = !Status_Taste;
-
+      
       Display.gfx_Button(Status_Taste, 350, 400, YELLOW, WHITE, Schrifttyp, Textbreite, Textrahmen, "RESET"); //Taste anzeigen gedrückt
-
+      
 
       if (Status_Taste)
 
       {
-        
         Menue_angewaehlt = 3;        //Menü anwählen
-
         Bild_aufgebaut[6] = false;  //Bildschirm aufgebaut zurücksetzen
-
       }
 
+
+
     }
+ 
   }  
 }
 
@@ -1926,8 +1943,7 @@ if (Bild_aufgebaut[4] == false) //Überwachung Bildschirm aufgebaut
     Display.gfx_Button(Status_Taste, 350, 400, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset"); //Taste anzeigen ungedrückt
     Display.gfx_Rectangle(10, 70, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
     Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
-    Display.gfx_Rectangle(10, 330, 790, 200, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
-    Display.gfx_CircleFilled(40, 250, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)
+
 
     Bild_aufgebaut[4] = true;                   //Bildschirm aufgebaut setzen
 
@@ -1945,6 +1961,7 @@ if (Bild_aufgebaut[4] == false) //Überwachung Bildschirm aufgebaut
         Display.gfx_MoveTo(80, 100);                  //Text Position x,y
         Display.print("  ");
         Display.print("Suedpol");          //Wert Anzeigen
+        digitalWrite(2, HIGH);
         
   }
 
@@ -1959,6 +1976,7 @@ if (Bild_aufgebaut[4] == false) //Überwachung Bildschirm aufgebaut
         Display.gfx_MoveTo(80, 100);                //Text Position x,y
         Display.print("  ");
         Display.print("Nordpol");          //Wert Anzeigen
+        digitalWrite(2, LOW);
   }
 
 
