@@ -129,7 +129,7 @@ void Stoppuhr()
         if ((X_Pos >= 620) && (X_Pos <= 790) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld^
         {
    
-          Status_Taste = !Status_Taste;
+          Status_Taste = !Status_Taste;                                           //Status_Taste Invertieren
           
           Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund_2, Textfarbe_2, Schrifttyp, Textbreite, Textrahmen, "Zrug");  //Zurücktaste anzeigen gedrückt
     
@@ -156,7 +156,7 @@ void Stoppuhr()
         if ((X_Pos >= 320) && (X_Pos <= 500) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld    
         {
     
-          Status_Taste = !Status_Taste;
+          Status_Taste = !Status_Taste;                                           //Status_Taste Invertieren
     
           Display.gfx_Button(Status_Taste, 350, 400, YELLOW, WHITE, Schrifttyp, Textbreite, Textrahmen, "RESET");                  //Taste anzeigen gedrückt
     

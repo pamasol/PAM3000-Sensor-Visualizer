@@ -17,16 +17,35 @@ void Analogeanzeige()
     Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund, Textfarbe, Schrifttyp, Textbreite, Textrahmen, "Zrug"); //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Taste, 350, 400, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset"); //Taste anzeigen ungedrückt
     Display.gfx_Rectangle(10, 70, 790, 280, AQUA); //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+
+    
+   Display.txt_Height(3);                        //Texthöhe
+   Display.txt_Width(3);                         //Textweite
+   Display.txt_Inverse(OFF);                     //Text invetieren
+   Display.txt_Bold(OFF);
+   Display.txt_Set(TEXT_COLOUR, WHITE);
+   Display.gfx_MoveTo(200, 100);        //Text Position x,y
+   Display.print("Spannung: ");
+   Display.print("0.00");          //Wert Anzeigen
+   Display.print(" V    ");
+   Display.gfx_MoveTo(200, 150);                 //Text Position x,y
+   Display.print("Strom   : ");
+   Display.print("0.00");          //Wert Anzeigen
+   Display.print(" mA    ");
+   Display.gfx_MoveTo(200, 200);                 //Text Position x,y
+   Display.print("Leistung: ");
+   Display.print("0.00");          //Wert Anzeigen
+   Display.print(" W     ");
     
 
     Bild_aufgebaut[6] = true;                   //Bildschirm aufgebaut setzen
 
-    
+    current = 0;
 
   }
 
-  
-
+if ((sensor219.getCurrent_mA()>= current+0.5) || (sensor219.getCurrent_mA()<= current-0.5))  
+{
   DruckSensor = 0;
   Max_Bar = 10;
   Max_mA = 20;
@@ -55,7 +74,7 @@ void Analogeanzeige()
    Display.print("Leistung: ");
    Display.print(power);          //Wert Anzeigen
    Display.print(" W     ");
-   
+}   
      
     
     Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
@@ -120,6 +139,7 @@ void Analogeanzeige()
       {
         Menue_angewaehlt = 3;        //Menü anwählen
         Bild_aufgebaut[6] = false;  //Bildschirm aufgebaut zurücksetzen
+
       }
 
 
