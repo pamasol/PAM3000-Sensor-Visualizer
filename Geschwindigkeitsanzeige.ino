@@ -42,128 +42,133 @@ void Geschwindigkeitsanzeige()
       Zeiten_Geschwindigkeit_2[i] = 0;                //Zeiten Geschwindigkeit 2 0-9 zurücksetzen 
       }
         
-    Display.txt_Height(2);                        //Texthöhe
-    Display.txt_Width(2);                         //Textweite
-    Display.gfx_MoveTo(580, 100);                 //Text Position x,y
-    Display.print("00");          //Wert Anzeigen
+    Display.txt_Height(2);                            //Texthöhe
+    Display.txt_Width(2);                             //Textweite
+    Display.gfx_MoveTo(580, 100);                     //Text Position x,y
+    Display.print("00");                              //Wert Anzeigen
     Display.print(" cpm    ");
-    Display.gfx_MoveTo(580, 125);                 //Text Position x,y
-    Display.print("00");          //Wert Anzeigen
+    Display.gfx_MoveTo(580, 125);                     //Text Position x,y
+    Display.print("00");                              //Wert Anzeigen
     Display.print(" cpm    ");
-    Display.gfx_MoveTo(580, 150);                 //Text Position x,y
-    Display.print("00");          //Wert Anzeigen
+    Display.gfx_MoveTo(580, 150);                     //Text Position x,y
+    Display.print("00");                              //Wert Anzeigen
     Display.print(" cpm    ");
 
-    Display.txt_Height(4);                       //Texthöhe
-    Display.txt_Width(3);                        //Textweite
-    Display.txt_Inverse(OFF);                    //Text invetieren
+    Display.txt_Height(4);                            //Texthöhe
+    Display.txt_Width(3);                             //Textweite
+    Display.txt_Inverse(OFF);                         //Text invetieren
     Display.txt_Bold(OFF);
-    Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
-    Display.gfx_MoveTo(80, 100);                 //Text Position x,y
+    Display.txt_Set(TEXT_COLOUR, WHITE);              //Textfarbe Weiss
+    Display.gfx_MoveTo(80, 100);                      //Text Position x,y
     Display.print("");
-    Display.print("000");         //Wert Anzeigen
+    Display.print("000");                             //Wert Anzeigen
     Display.print(" cpm       ");
 
-    Display.txt_Height(2);                        //Texthöhe
-    Display.txt_Width(2);                         //Textweite
-    Display.gfx_MoveTo(580, 225);                 //Text Position x,y
-    Display.print("00");          //Wert Anzeigen
+    Display.txt_Height(2);                            //Texthöhe
+    Display.txt_Width(2);                             //Textweite
+    Display.gfx_MoveTo(580, 225);                     //Text Position x,y
+    Display.print("00");                              //Wert Anzeigen
     Display.print(" cpm    ");
-    Display.gfx_MoveTo(580, 250);                 //Text Position x,y
-    Display.print("00");          //Wert Anzeigen
+    Display.gfx_MoveTo(580, 250);                     //Text Position x,y
+    Display.print("00");                              //Wert Anzeigen
     Display.print(" cpm    ");
-    Display.gfx_MoveTo(580, 275);                 //Text Position x,y
-    Display.print("00");          //Wert Anzeigen
+    Display.gfx_MoveTo(580, 275);                     //Text Position x,y
+    Display.print("00");                              //Wert Anzeigen
     Display.print(" cpm    ");
 
-    Display.txt_Height(4);                        //Texthöhe
-    Display.txt_Width(3);                         //Textweite
-    Display.txt_Inverse(OFF);                     //Text invetieren
+    Display.txt_Height(4);                            //Texthöhe
+    Display.txt_Width(3);                             //Textweite
+    Display.txt_Inverse(OFF);                         //Text invetieren
     Display.txt_Bold(OFF);
-    Display.txt_Set(TEXT_COLOUR, WHITE);
-    Display.gfx_MoveTo(80, 230);                  //Text Position x,y
+    Display.txt_Set(TEXT_COLOUR, WHITE);              //Textfarbe Weiss
+    Display.gfx_MoveTo(80, 230);                      //Text Position x,y
     Display.print("");
-    Display.print("000");          //Wert Anzeigen
+    Display.print("000");                             //Wert Anzeigen
     Display.print(" cpm       ");
 
-    Display.txt_Height(2);              //Texthöhe
-    Display.txt_Width(2);               //Textweite
-    Display.gfx_MoveTo(83, 160);        //Text Position x,y
+    Display.txt_Height(2);                            //Texthöhe
+    Display.txt_Width(2);                             //Textweite
+    Display.gfx_MoveTo(83, 160);                      //Text Position x,y
     Display.print("00");
     Display.print(" Hoechstwert  ");
 
-    Display.txt_Height(2);              //Texthöhe
-    Display.txt_Width(2);               //Textweite
-    Display.gfx_MoveTo(83, 290);        //Text Position x,y
+    Display.txt_Height(2);                            //Texthöhe
+    Display.txt_Width(2);                             //Textweite
+    Display.gfx_MoveTo(83, 290);                      //Text Position x,y
     Display.print("00");
     Display.print(" Hoechstwert  ");
 
-    Reset2 = false;       
+    Reset2 = false;                                   //Reset2 auf fasle setzen
     }
 
-  Status_Display = Display.touch_Get(TOUCH_STATUS);    //Status Touch Screen
+  Status_Display = Display.touch_Get(TOUCH_STATUS);   //Status Touch Screen
 
 
-    if ((Status_Display == TOUCH_PRESSED) || (Status_Display == TOUCH_MOVING)) //Überwachung Touch gedrückt oder bewegt
+    if ((Status_Display == TOUCH_PRESSED) || (Status_Display == TOUCH_MOVING))    //Überwachung Touch gedrückt oder bewegt
     {
 
-    X_Pos = Display.touch_Get(TOUCH_GETX);    //X Position auslesen
-    Y_Pos = Display.touch_Get(TOUCH_GETY);    //Y Position auslesen
+    X_Pos = Display.touch_Get(TOUCH_GETX);            //X Position auslesen
+    Y_Pos = Display.touch_Get(TOUCH_GETY);            //Y Position auslesen
     }
 
-    if (Status_Display == TOUCH_RELEASED)                       //Überwachung Touch Freigabe
+    if (Status_Display == TOUCH_RELEASED)             //Überwachung Touch Freigabe
 
     {
 
-      if ((X_Pos >= 620) && (X_Pos <= 790) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld
+/* Hier wir nach der Zrug Taste abgefragt */
+
+      if ((X_Pos >= 620) && (X_Pos <= 790) && (Y_Pos >= 370) && (Y_Pos <= 430))   //Überwachung Touch Feld
       {
 
-      Status_Taste = !Status_Taste;
+      Status_Taste = !Status_Taste;                                               //Status_Taste Invertieren
 
-      Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund_2, Textfarbe_2, Schrifttyp, Textbreite, Textrahmen, "Zrug"); //Taste anzeigen gedrückt
+      Display.gfx_Button(Status_Taste, 650, 400, Texthintergrund_2, Textfarbe_2, Schrifttyp, Textbreite, Textrahmen, "Zrug");  //Taste anzeigen gedrückt
 
+/* Das wird ausgeführt sobald die Zrug Taste betätigt wird */
 
         if (Status_Taste)
         {
 
-        Menue_angewaehlt = 0;        //Menü anwählen
-        Reset2 = true;
+        Menue_angewaehlt = 0;                         //Menü anwählen
+        Reset2 = true;                                //Reset2 setzen
         
-        Bild_aufgebaut[0] = false;  //Bildschirm aufgebaut zurücksetzen
+        Bild_aufgebaut[0] = false;                    //Bildschirm aufgebaut0 zurücksetzen
         
-        Stopp_Zeit_Geschwindigkeit = 0;
-        Stopp_Zeit_Geschwindigkeit2 = 0;
+        Stopp_Zeit_Geschwindigkeit = 0;               //Stopp_Zeit_Geschwindigkeit zurücksetzen
+        Stopp_Zeit_Geschwindigkeit2 = 0;              //Stopp_Zeit_Geschwindigkeit2 zurücksetzen
 
-        Hoechstwert = 0;
-        Hoechstwert2 = 0;
+        Hoechstwert = 0;                              //Hoechstwert zurücksetzen
+        Hoechstwert2 = 0;                             //Hoechstwert2 zurücksetzen
         }
 
       }
-      
-      if ((X_Pos >= 320) && (X_Pos <= 500) && (Y_Pos >= 370) && (Y_Pos <= 430)) //Überwachung Touch Feld
+
+/* Hier wir nach der Reset Taste abgefragt */
+
+      if ((X_Pos >= 320) && (X_Pos <= 500) && (Y_Pos >= 370) && (Y_Pos <= 430))   //Überwachung Touch Feld
       {
 
-      Status_Taste = !Status_Taste;
+      Status_Taste = !Status_Taste;                                               //Status_Taste Invertieren
 
-      Display.gfx_Button(Status_Taste, 350, 400, YELLOW, WHITE, Schrifttyp, Textbreite, Textrahmen, "RESET"); //Taste anzeigen gedrückt
+      Display.gfx_Button(Status_Taste, 350, 400, YELLOW, WHITE, Schrifttyp, Textbreite, Textrahmen, "RESET");                  //Taste anzeigen gedrückt
 
+/* Das wird ausgeführt sobald die Reset Taste betätigt wird */
 
         if (Status_Taste)
         {
         
-        Menue_angewaehlt = 2;        //Menü anwählen
+        Menue_angewaehlt = 2;                         //Menü angewählt (2)
 
-        Reset2 = true;
+        Reset2 = true;                                //Reset2 setzen      
 
-        Bild_aufgebaut[2] = false;  //Bildschirm aufgebaut zurücksetzen
+        Bild_aufgebaut[2] = false;                    //Bildschirm aufgebaut2 zurücksetzen
         
-        Stopp_Zeit_Geschwindigkeit = 0;
-        Stopp_Zeit_Geschwindigkeit2 = 0;
+        Stopp_Zeit_Geschwindigkeit = 0;               //Stopp_Zeit_Geschwindigkeit zurücksetzen
+        Stopp_Zeit_Geschwindigkeit2 = 0;              //Stopp_Zeit_Geschwindigkeit2 zurücksetzen
 
-        Hoechstwert = 0;
-        Hoechstwert2 = 0;
+        Hoechstwert = 0;                              //Hoechstwert zurücksetzen
+        Hoechstwert2 = 0;                             //Hoechstwert2 zurücksetzen
         }
-
       }
     }
 }
