@@ -47,7 +47,7 @@ void Analogeanzeige()
     current = 0;
     }
 
-    if ((sensor219.getCurrent_mA()>= current+0.5) || (sensor219.getCurrent_mA()<= current-0.5))   
+    if ((sensor219.getCurrent_mA()>=current+0.5)||(sensor219.getCurrent_mA()<=current-0.5)||(sensor219.getBusVoltage_V()>=busVoltage+0.5)||(sensor219.getBusVoltage_V()<=busVoltage-0.5))   
     {
     
     Max_Bar = 10;                              //Wert eintragen von Max Bar Wert bei Sensor

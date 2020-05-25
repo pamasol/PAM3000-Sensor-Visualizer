@@ -609,7 +609,7 @@ void loop()
 
         Start_Zeit_Geschwindigkeit2 = millis();                                                       //Zeit Ablesen seit Start von Arduino
 
-        Zeit_speichern4 = false;                                                                      //Zeit Speichern auf fasle setzen
+        Zeit_speichern4 = false;                                                                      //Zeit Speichern 4 auf fasle setzen
 
         Geschwindigkeit_Stopp2 = false;                                                               //Geschwindigkeit_Stopp2 auf false setzen
         }
@@ -713,15 +713,15 @@ void loop()
 
     Interrupt_Durchschnitt = true;                       //Interrupt_Durchschnitt setzen
 
-    Stopp_Zeit_Geschwindigkeit3 = (millis() - Start_Zeit_Geschwindigkeit3);
+    Stopp_Zeit_Geschwindigkeit3 = (millis() - Start_Zeit_Geschwindigkeit3);           //Zeit seit start ausrechnen
 
 
-        if (Stopp_Zeit_Geschwindigkeit3 >= 60000)
+        if (Stopp_Zeit_Geschwindigkeit3 >= 60000)                                     //Zeit abfragen nach 60s
         {    
 
-        Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen  
+        Display.gfx_CircleFilled(40, 120, 20, RED);                                   //Display Roter Punkt Anzeigen  
   
-        Zeiten_Geschwindigkeit_3[9]=Zeiten_Geschwindigkeit_3[8];                                                    //History
+        Zeiten_Geschwindigkeit_3[9]=Zeiten_Geschwindigkeit_3[8];                      //History
         Zeiten_Geschwindigkeit_3[8]=Zeiten_Geschwindigkeit_3[7];
         Zeiten_Geschwindigkeit_3[7]=Zeiten_Geschwindigkeit_3[6];
         Zeiten_Geschwindigkeit_3[6]=Zeiten_Geschwindigkeit_3[5];
@@ -735,69 +735,70 @@ void loop()
         Display.txt_Height(2);                        //Texthöhe
         Display.txt_Width(2);                         //Textweite
         Display.gfx_MoveTo(580, 100);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_3[0]);          //Wert Anzeigen
+        Display.print(Zeiten_Geschwindigkeit_3[0]);   //Wert Anzeigen
         Display.print(" cpm    ");
         Display.gfx_MoveTo(580, 125);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_3[1]);          //Wert Anzeigen
+        Display.print(Zeiten_Geschwindigkeit_3[1]);   //Wert Anzeigen
         Display.print(" cpm    ");
         Display.gfx_MoveTo(580, 150);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_3[2]);          //Wert Anzeigen
+        Display.print(Zeiten_Geschwindigkeit_3[2]);   //Wert Anzeigen
         Display.print(" cpm    ");
   
-        Display.txt_Height(4);                       //Texthöhe
-        Display.txt_Width(3);                        //Textweite
-        Display.txt_Inverse(OFF);                    //Text invetieren
+        Display.txt_Height(4);                        //Texthöhe
+        Display.txt_Width(3);                         //Textweite
+        Display.txt_Inverse(OFF);                     //Text invetieren
         Display.txt_Bold(OFF);
-        Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
-        Display.gfx_MoveTo(80, 100);                 //Text Position x,y
+        Display.txt_Set(TEXT_COLOUR, WHITE);          //Textfarbe Weiss
+        Display.gfx_MoveTo(80, 100);                  //Text Position x,y
         Display.print("");
-        Display.print(Zeiten_Geschwindigkeit_3[0]);         //Wert Anzeigen
+        Display.print(Zeiten_Geschwindigkeit_3[0]);   //Wert Anzeigen
         Display.print(" cpm       ");   
   
-        Zeit_speichern5 = true;             //Zeit_speichern (1)
+        Zeit_speichern5 = true;                       //Zeit_speichern 5 setzen
   
-        Menue_angewaehlt = 10;              //Menue_angewaehlt (1)
+        Menue_angewaehlt = 10;                        //Menue_angewaehlt auf 10 setzen
         } 
 
         else         
         {
 
-        Menue_angewaehlt = 10;
+        Menue_angewaehlt = 10;                        //Menue_angewaehlt auf 10 setzen
         }    
       }
 
     break;
 
+//Geschwindigkeitsanzeige_Durchschnitt Interrupt
 
     case 12:
 
-      if (Displaystopp == true) //Überwachung Bildschirm aufgebaut
+      if (Displaystopp == true)                       //Überwachung Bildschirm aufgebaut
       {
         
      
         if (Zeit_speichern6 == true)
         {
           
-          Display.gfx_CircleFilled(40, 250, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen 
+          Display.gfx_CircleFilled(40, 250, 20, GREEN);                           //Display Gruener Punkt Anzeigen 
 
-          Start_Zeit_Geschwindigkeit4 = millis();  
+          Start_Zeit_Geschwindigkeit4 = millis();                                 //Zeit Ablesen seit Start von Arduino
                         
-          Zeit_speichern6 = false;                                                                      
+          Zeit_speichern6 = false;                                                //Zeit_speichern6 auf false setzen                      
 
-          Durchschnittanzahl2 = 0;
+          Durchschnittanzahl2 = 0;                                                //Durchschnittanzahl 2 Reset
         }
 
-        Interrupt_Durchschnitt2 = true;
+        Interrupt_Durchschnitt2 = true;                                           //Interrupt_Durchschnitt 2 setzen
 
-        Stopp_Zeit_Geschwindigkeit4 = (millis() - Start_Zeit_Geschwindigkeit4);
+        Stopp_Zeit_Geschwindigkeit4 = (millis() - Start_Zeit_Geschwindigkeit4);   //Zeit seit start ausrechnen
 
 
-        if (Stopp_Zeit_Geschwindigkeit4 >= 60000)
+        if (Stopp_Zeit_Geschwindigkeit4 >= 60000)                                 //Zeit abfragen nach 60s
         {    
 
-        Display.gfx_CircleFilled(40, 250, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
+        Display.gfx_CircleFilled(40, 250, 20, RED);                               //Display Roter Punkt Anzeigen
           
-        Zeiten_Geschwindigkeit_4[9]=Zeiten_Geschwindigkeit_4[8];                                                    //History
+        Zeiten_Geschwindigkeit_4[9]=Zeiten_Geschwindigkeit_4[8];                  //History
         Zeiten_Geschwindigkeit_4[8]=Zeiten_Geschwindigkeit_4[7];
         Zeiten_Geschwindigkeit_4[7]=Zeiten_Geschwindigkeit_4[6];
         Zeiten_Geschwindigkeit_4[6]=Zeiten_Geschwindigkeit_4[5];
@@ -811,34 +812,34 @@ void loop()
         Display.txt_Height(2);                        //Texthöhe
         Display.txt_Width(2);                         //Textweite
         Display.gfx_MoveTo(580, 225);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_4[0]);          //Wert Anzeigen
+        Display.print(Zeiten_Geschwindigkeit_4[0]);   //Wert Anzeigen
         Display.print(" cpm    ");
         Display.gfx_MoveTo(580, 250);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_4[1]);          //Wert Anzeigen
+        Display.print(Zeiten_Geschwindigkeit_4[1]);   //Wert Anzeigen
         Display.print(" cpm    ");
         Display.gfx_MoveTo(580, 275);                 //Text Position x,y
-        Display.print(Zeiten_Geschwindigkeit_4[2]);          //Wert Anzeigen
+        Display.print(Zeiten_Geschwindigkeit_4[2]);   //Wert Anzeigen
         Display.print(" cpm    ");
   
-        Display.txt_Height(4);                       //Texthöhe
-        Display.txt_Width(3);                        //Textweite
-        Display.txt_Inverse(OFF);                    //Text invetieren
+        Display.txt_Height(4);                        //Texthöhe
+        Display.txt_Width(3);                         //Textweite
+        Display.txt_Inverse(OFF);                     //Text invetieren
         Display.txt_Bold(OFF);
-        Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
-        Display.gfx_MoveTo(80, 230);                 //Text Position x,y
+        Display.txt_Set(TEXT_COLOUR, WHITE);          //Textfarbe Weiss
+        Display.gfx_MoveTo(80, 230);                  //Text Position x,y
         Display.print("");
-        Display.print(Zeiten_Geschwindigkeit_4[0]);         //Wert Anzeigen
+        Display.print(Zeiten_Geschwindigkeit_4[0]);   //Wert Anzeigen
         Display.print(" cpm       ");   
 
-        Zeit_speichern6 = true;             //Zeit_speichern (1)
+        Zeit_speichern6 = true;             //Zeit_speichern 6 setzen
   
-        Menue_angewaehlt = 10;              //Menue_angewaehlt (1)
+        Menue_angewaehlt = 10;              //Menue_angewaehlt auf 10 setzen
         } 
 
         else
         {
   
-        Menue_angewaehlt = 10;
+        Menue_angewaehlt = 10;              //Menue_angewaehlt auf 10 setzen
         }  
       }
 
