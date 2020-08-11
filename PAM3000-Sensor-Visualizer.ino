@@ -5,7 +5,7 @@
     Prozessor:      Arduino Due
     Clock:          16MHz
 
-    Version:        001
+    Version:        002
     Datum:          01.05.2020
 
     Programmierer:  D.Bernhard, J.Glaus
