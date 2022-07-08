@@ -14,16 +14,13 @@ void mycallback(int ErrCode, unsigned char Errorbyte)
 
     if (ErrCode == Err4D_NAK)
     {
-
-    Serial.print(F(" returned data= "));
-    Serial.println(Errorbyte);
+      Serial.print(F(" returned data= "));
+      Serial.println(Errorbyte);
     }
 
     else
-
-    Serial.println(F(""));
-
-      while (1);               
+      Serial.println(F(""));
+    while (1);               
 
 #else
                                
@@ -31,11 +28,10 @@ void mycallback(int ErrCode, unsigned char Errorbyte)
 
         while (1)
         {
-
-        digitalWrite(led, HIGH);   //LED 13 auf HIGH
-        delay(200);                //Verzögerung 200ms
-        digitalWrite(led, LOW);    //LED 13 auf LOW
-        delay(200);                //Verzögerung 200ms
+          digitalWrite(led, HIGH);   //LED 13 auf HIGH
+          delay(200);                //Verzögerung 200ms
+          digitalWrite(led, LOW);    //LED 13 auf LOW
+          delay(200);                //Verzögerung 200ms
         }
 
 #endif
