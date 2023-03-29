@@ -24,18 +24,11 @@
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
-<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");                                         //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                                                                   //Taste anzeigen ungedrückt
     if (Listen_Startwert_Stoppuhr > 0) Display.gfx_Button(Status_Touch_Taste, 50, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, " -20 ");      //Taste anzeigen ungedrückt
     if (Listen_Startwert_Stoppuhr < 40) Display.gfx_Button(Status_Touch_Taste, 200, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, " +20 ");    //Taste anzeigen ungedrückt   
     Display.gfx_Button(Status_Touch_Taste, 500, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Export");                                                                    //Taste anzeigen ungedrückt
-=======
-    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");                                         //Taste anzeigen ungedrückt
-    Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                                                                   //Taste anzeigen ungedrückt
-    if (Listen_Startwert_Stoppuhr > 0) Display.gfx_Button(Status_Touch_Taste, 50, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, " -20 ");      //Taste anzeigen ungedrückt
-    if (Listen_Startwert_Stoppuhr < 40) Display.gfx_Button(Status_Touch_Taste, 200, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, " +20 ");    //Taste anzeigen ungedrückt   
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                                                         //Taste anzeigen gedrückt
 
     /* Grafik anzeigen */
@@ -91,7 +84,6 @@
     
 /********************************************************************************************************************/
     
-<<<<<<< HEAD
     /* Touch Feld abfragen [Zrugg] Taste gedrückt */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
     {
@@ -99,15 +91,6 @@
       if (Status_Touch_Taste)
       {      
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");  //Taste anzeigen gedrückt
-=======
-    /* Touch Feld abfragen [Zrug] Taste gedrückt */
-    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
-    {
-      /* Touch Feld [Zrug] Taste ausführen */
-      if (Status_Touch_Taste)
-      {      
-        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");  //Taste anzeigen gedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Buzzer */
         Buzzer(100);                          //Aufruf Funktion Buzzer(int Buzzer_Zeit)
@@ -193,7 +176,6 @@
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
    /* Touch Feld abfragen [Export] Taste gedrückt */
     if ((X_Pos_Touch >= 470) && (X_Pos_Touch <= 570) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
     {     
@@ -253,8 +235,6 @@
     
 /********************************************************************************************************************/
 
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     /* Touch Feld abfragen [i] Taste gedrückt */
     if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
     {
@@ -269,11 +249,7 @@
         Menue_angewaehlt = 7;                 //Menü Info anwählen
         Bild_aufgebaut[7] = false;            //Bildschirm Info aufgebaut zurücksetzen
         Letztes_Menue = 17;                   //Letztes angewähltes Menü     
-<<<<<<< HEAD
         Info_Seite = 13;                      //Info Seite anwählen
-=======
-        Info_Seite = 15;                      //Info Seite anwählen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       }
     }
       

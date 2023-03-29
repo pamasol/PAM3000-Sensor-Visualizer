@@ -70,7 +70,6 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
       Display.gfx_Button(Status_Touch_Taste, 30, 90, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "I2C Scanner");    //Taste anzeigen ungedrückt
       Display.gfx_Button(Status_Touch_Taste, 30, 150, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Zeit");          //Taste anzeigen ungedrückt
     
-<<<<<<< HEAD
       /* Buzzer eingeschalten */
       if (Buzzer_Einstellungen == 1)      //Überwachung Buzzer eingeschalten
       {
@@ -78,18 +77,11 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
       }
       
       /* Buzzer ausgeschalten */
-=======
-      if (Buzzer_Einstellungen == 0)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 30, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Buzzer");    //Taste anzeigen ungedrückt
-      }
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       else
       {
         Display.gfx_Button(Status_Touch_Taste, 30, 210, RED, WHITE, Schrifttyp, Textbreite, Textrahmen, "Buzzer");    //Taste anzeigen ungedrückt
       }
 
-<<<<<<< HEAD
       /* Buzzer ausgeschalten oder maximum Lautstärke */
       if ((Buzzer_Einstellungen == 0) || (Buzzer_Lautstaerke == 255))        //Überwachung Buzzer maximum Lautstärke
       {
@@ -97,17 +89,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
       }
       
       /* Buzzer eingeschalten und nicht maximum Lautstärke */
-=======
-      if (Buzzer_Lautstaerke == 255)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 240, 210, GRAY, WHITE, Schrifttyp, Textbreite, Textrahmen, " + ");     //Taste anzeigen 
-      }
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       else
       {
         Display.gfx_Button(Status_Touch_Taste, 240, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " + ");     //Taste anzeigen ungedrückt
       }
-<<<<<<< HEAD
 
       /* Buzzer ausgeschalten oder minimum Lautstärke */
       if ((Buzzer_Einstellungen == 0) || (Buzzer_Lautstaerke == 5))        //Überwachung Buzzer minimum Lautstärke
@@ -116,26 +101,14 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
       }  
 
       /* Buzzer eingeschalten und nicht minimum Lautstärke */
-=======
-      
-      if (Buzzer_Lautstaerke == 5)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 150, 210, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");     //Taste anzeigen 
-      }  
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       else
       {
         Display.gfx_Button(Status_Touch_Taste, 150, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " - ");     //Taste anzeigen ungedrückt
       }
     }
     
-<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");          //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                           //Taste anzeigen gedrückt
-=======
-    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");         //Taste anzeigen ungedrückt
-    Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                         //Taste anzeigen gedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     
     if (Zeit_Button == true)
     {
@@ -176,11 +149,7 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
     Display.txt_Width(3);                             //Textweite
     Display.txt_Set(TEXT_COLOUR, Textfarbe);          //Textfarbe
 
-<<<<<<< HEAD
     Display.gfx_MoveTo(100, 200);                     //Text Position (x,y)
-=======
-    Display.gfx_MoveTo(100, 200);               //Text Position (x,y)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
     /* Zeit */
     if (Stunden < 10) Display.print("0");       //Bei einstelligen Zahlen eine 0 davor stellen  
@@ -257,7 +226,6 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
     
-<<<<<<< HEAD
     /* Touch Feld abfragen [Zrugg] Taste gedrückt */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))     //Überwachung Touch Feld
     {
@@ -265,15 +233,6 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");   //Taste anzeigen gedrückt
-=======
-    /* Touch Feld abfragen [Zrug] Taste gedrückt */
-    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [Zrug] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen gedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         if (Zeit_Button == false)
         {
@@ -336,29 +295,19 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 /********************************************************************************************************************/
 
     /* Touch Feld abfragen [Buzzer] Taste gedrückt */
-<<<<<<< HEAD
     if ((Buzzer_Einstellungen == 1) && (Zeit_Button == false) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 130) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 240))     //Überwachung Touch Feld
-=======
-    if ((Buzzer_Einstellungen == 0) && (Zeit_Button == false) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 130) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 240))     //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {
       /* Touch Feld [Buzzer] Taste ausführen */
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 30, 210, RED, WHITE, Schrifttyp, Textbreite, Textrahmen, "Buzzer");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 150, 210, GRAY, WHITE, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste nicht drückbar anzeigen
         Display.gfx_Button(Status_Touch_Taste, 240, 210, GRAY, WHITE, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste nicht drückbar anzeigen
           
         /* Buzzer */
         Buzzer(100);                      //Aufruf Funktion Buzzer(int Buzzer_Zeit)
         Buzzer_Einstellungen = 0;         //Buzzer Einstellungen zurücksetzen
-=======
-        /* Buzzer */
-        Buzzer(100);                      //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-        Buzzer_Einstellungen = 1;      //Buzzer Einstellungen setzen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Buzzer Ein/Aus auf SD Karte schreiben */
         SD.remove("Settings/buzzer.txt");                                               //buzzer File löschen
@@ -380,16 +329,11 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 /********************************************************************************************************************/
 
     /* Touch Feld abfragen [Buzzer] Taste gedrückt */
-<<<<<<< HEAD
     if ((Buzzer_Einstellungen == 0) && (Zeit_Button == false) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 130) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 240))     //Überwachung Touch Feld
-=======
-    if ((Buzzer_Einstellungen == 1) && (Zeit_Button == false) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 130) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 240))     //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {
       /* Touch Feld [Buzzer] Taste ausführen */
       if (Status_Touch_Taste)
       {
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 30, 210, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Buzzer");   //Taste anzeigen gedrückt
 
         Display.gfx_Button(Status_Touch_Taste, 150, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste drückbar anzeigen
@@ -402,17 +346,6 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
         /* Buzzer Ein/Aus auf SD Karte schreiben */
         SD.remove("Settings/buzzer.txt");                                               //Buzzer File löschen
         File buzzer = SD.open("Settings/buzzer.txt", FILE_WRITE);                       //Buzzer File in Ordner Settings im Schreibmodus auf SD Karte öffnen
-=======
-        Display.gfx_Button(Status_Touch_Taste, 30, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Buzzer");   //Taste anzeigen gedrückt
-
-        /* Buzzer */
-        Buzzer_Einstellungen = 0;           //Buzzer Einstellungen zurücksetzen
-        Buzzer(100);                        //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-
-        /* Buzzer Ein/Aus auf SD Karte schreiben */
-        SD.remove("Settings/buzzer.txt");                                               //buzzer File löschen
-        File buzzer = SD.open("Settings/buzzer.txt", FILE_WRITE);                       //buzzer File in Ordner Settings im Schreibmodus auf SD Karte öffnen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Buzzer_Ein_Aus_String = String(Buzzer_Einstellungen);                           //Buzzer Ein/Aus an String anhängen     
      
         if (buzzer) 
@@ -429,7 +362,6 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
     
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [-] Taste gedrückt (Buzzer) */
     if ((Buzzer_Einstellungen == 1) && (Zeit_Button == false) && (X_Pos_Touch >= 140) && (X_Pos_Touch <= 230) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 240))     //Überwachung Touch Feld
     {
@@ -438,21 +370,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
       {
 
         if (Buzzer_Lautstaerke != 5)          //Überwachung Buzzer Lautstärke
-=======
-    /* Touch Feld abfragen [ - Buzzer] Taste gedrückt */
-    if ((Zeit_Button == false) && (X_Pos_Touch >= 140) && (X_Pos_Touch <= 230) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 240))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ - Buzzer] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-
-        if (Buzzer_Lautstaerke != 5)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         {
           Display.gfx_Button(Status_Touch_Taste, 150, 210, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
           Display.gfx_Button(Status_Touch_Taste, 240, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
                  
-<<<<<<< HEAD
           if ((Buzzer_Lautstaerke <= 255) && (Buzzer_Lautstaerke > 115))      //Überwachung Buzzer Lautstärke
           {
             Buzzer_Lautstaerke = 125;                                         //Verstellwert Buzzer guter Ton
@@ -460,31 +381,15 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
           
           /* Buzzer */
           Buzzer_Lautstaerke = (Buzzer_Lautstaerke - 10);       //Buzzer Lautstärke reduzieren
-=======
-          if ((Buzzer_Lautstaerke <= 255) && (Buzzer_Lautstaerke > 115))
-          {
-            Buzzer_Lautstaerke = 125;                           //Verstellwert Buzzer guter Ton
-          }
-          
-          /* Buzzer */
-          Buzzer_Lautstaerke = (Buzzer_Lautstaerke -10);        //Buzzer Lautstärke reduzieren
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           Buzzer(100);                                          //Aufruf Funktion Buzzer(int Buzzer_Zeit)
 
           Display.gfx_Button(Status_Touch_Taste, 150, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
         }
         
-<<<<<<< HEAD
         if (Buzzer_Lautstaerke <= 5)        //Überwachung Buzzer Lautstärke
         {
           Buzzer_Lautstaerke = 5;           //Verstellwert begrenzen
           Display.gfx_Button(Status_Touch_Taste, 150, 210, GRAY, WHITE, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste nicht drückbar anzeigen
-=======
-        if (Buzzer_Lautstaerke <= 5)
-        {
-          Buzzer_Lautstaerke = 5;                               //Verstellwert begrenzen
-          Display.gfx_Button(Status_Touch_Taste, 150, 210, GRAY, WHITE, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         }   
         
         /* Buzzer Lautstärke auf SD Karte schreiben */
@@ -503,7 +408,6 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
     
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [+] Taste gedrückt (Buzzer) */
     if ((Buzzer_Einstellungen == 1) && (Zeit_Button == false) && (X_Pos_Touch >= 230) && (X_Pos_Touch <= 320) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 240))     //Überwachung Touch Feld
     {
@@ -512,25 +416,11 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
       {
  
         if (Buzzer_Lautstaerke != 255)    //Überwachung Buzzer Lautstärke
-=======
-    /* Touch Feld abfragen [ + Buzzer] Taste gedrückt */
-    if ((Zeit_Button == false) && (X_Pos_Touch >= 230) && (X_Pos_Touch <= 320) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 240))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ + Buzzer] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
- 
-        if (Buzzer_Lautstaerke != 255)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         {
           Display.gfx_Button(Status_Touch_Taste, 240, 210, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
           Display.gfx_Button(Status_Touch_Taste, 150, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
          
-<<<<<<< HEAD
           if ((Buzzer_Lautstaerke < 255) && (Buzzer_Lautstaerke >= 115))      //Überwachung Buzzer Lautstärke
-=======
-          if ((Buzzer_Lautstaerke < 255) && (Buzzer_Lautstaerke >= 115))
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           {
             Buzzer_Lautstaerke = 245;                           //Verstellwert Buzzer guter Ton
           }
@@ -542,17 +432,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
           Display.gfx_Button(Status_Touch_Taste, 240, 210, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
         }
        
-<<<<<<< HEAD
         if (Buzzer_Lautstaerke >= 255)    //Überwachung Buzzer Lautstärke
         {
           Buzzer_Lautstaerke = 255;       //Verstellwert begrenzen
           Display.gfx_Button(Status_Touch_Taste, 240, 210, GRAY, WHITE, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste nicht drückbar anzeigen
-=======
-        if (Buzzer_Lautstaerke >= 255)
-        {
-          Buzzer_Lautstaerke = 255;                             //Verstellwert begrenzen
-          Display.gfx_Button(Status_Touch_Taste, 240, 210, GRAY, WHITE, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         } 
         
         /* Buzzer Lautstärke auf SD Karte schreiben */
@@ -571,36 +454,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
     
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [+] Taste gedrückt (Stunden) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 95) && (X_Pos_Touch <= 145) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
     {
       /* Touch Feld [+] Taste ausführen (Stunden) */
-=======
-    /* Touch Feld abfragen [i] Taste gedrückt */
-    if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
-    {
-      /* Touch Feld [i] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, GRAY, Schrifttyp, Textbreite, Textrahmen, "i");                  //Taste anzeigen gedrückt
-
-        /* Buzzer */
-        Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-        
-        Menue_angewaehlt = 7;               //Menü Info anwählen
-        Bild_aufgebaut[7] = false;          //Bildschirm Info aufgebaut zurücksetzen
-        Letztes_Menue = 5;                  //Letztes angewähltes Menü   
-      }
-    }
-
-/********************************************************************************************************************/
-
-    /* Touch Feld abfragen [ + ] Taste gedrückt (+ Stunden) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 95) && (X_Pos_Touch <= 145) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ + ] Taste ausführen (+ Stunden) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 95, 150, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
@@ -617,17 +474,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [-] Taste gedrückt (Stunden) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 95) && (X_Pos_Touch <= 145) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
     {
       /* Touch Feld [-] Taste ausführen (Stunden) */
-=======
-    /* Touch Feld abfragen [ - ] Taste gedrückt (- Stunden) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 95) && (X_Pos_Touch <= 145) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ - ] Taste ausführen (- Stunden) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 95, 250, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
@@ -645,17 +495,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [+] Taste gedrückt (Minuten) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 170) && (X_Pos_Touch <= 220) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
     {
       /* Touch Feld [+] Taste ausführen (Minuten) */
-=======
-    /* Touch Feld abfragen [ + ] Taste gedrückt (+ Minuten) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 170) && (X_Pos_Touch <= 220) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ + ] Taste ausführen (+ Minuten) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 170, 150, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
@@ -672,17 +515,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [-] Taste gedrückt (Minuten) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 170) && (X_Pos_Touch <= 220) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
     {
       /* Touch Feld [-] Taste ausführen (Minuten) */
-=======
-    /* Touch Feld abfragen [ - ] Taste gedrückt (- Minuten) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 170) && (X_Pos_Touch <= 220) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ - ] Taste ausführen (- Minuten) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 170, 250, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
@@ -699,17 +535,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [+] Taste gedrückt (Tag) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 340) && (X_Pos_Touch <= 390) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
     {
       /* Touch Feld [+] Taste ausführen (Tag) */
-=======
-    /* Touch Feld abfragen [ + ] Taste gedrückt (+ Tag) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 340) && (X_Pos_Touch <= 390) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ + ] Taste ausführen (+ Tag) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 340, 150, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
@@ -726,17 +555,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [-] Taste gedrückt (Tag) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 340) && (X_Pos_Touch <= 390) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
     {
       /* Touch Feld [-] Taste ausführen (Tag) */
-=======
-    /* Touch Feld abfragen [ - ] Taste gedrückt (- Tag) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 340) && (X_Pos_Touch <= 390) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ - ] Taste ausführen (- Tag) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 340, 250, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
@@ -753,17 +575,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [+] Taste gedrückt (Monat) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 415) && (X_Pos_Touch <= 465) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
     {
       /* Touch Feld [+] Taste ausführen (Monat) */
-=======
-    /* Touch Feld abfragen [ + ] Taste gedrückt (+ Monat) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 415) && (X_Pos_Touch <= 465) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ + ] Taste ausführen (+ Monat) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 415, 150, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
@@ -780,17 +595,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [-] Taste gedrückt (Monat) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 415) && (X_Pos_Touch <= 465) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
     {
       /* Touch Feld [-] Taste ausführen (Monat) */
-=======
-    /* Touch Feld abfragen [ - ] Taste gedrückt (- Monat) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 415) && (X_Pos_Touch <= 465) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ - ] Taste ausführen (- Monat) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 415, 250, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
@@ -807,17 +615,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [+] Taste gedrückt (Jahr) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 505) && (X_Pos_Touch <= 555) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
     {
       /* Touch Feld [+] Taste ausführen (Jahr) */
-=======
-    /* Touch Feld abfragen [ + ] Taste gedrückt (+ Jahr) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 505) && (X_Pos_Touch <= 555) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ + ] Taste ausführen (+ Jahr) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 505, 150, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
@@ -834,17 +635,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [-] Taste gedrückt (Jahr) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 505) && (X_Pos_Touch <= 555) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
     {
       /* Touch Feld [-] Taste ausführen (Jahr) */
-=======
-    /* Touch Feld abfragen [ - ] Taste gedrückt (- Jahr) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 505) && (X_Pos_Touch <= 555) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ - ] Taste ausführen (- Jahr) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 505, 250, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
@@ -861,17 +655,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
  
-<<<<<<< HEAD
     /* Touch Feld abfragen [+] Taste gedrückt (Wochentag) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 625) && (X_Pos_Touch <= 675) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
     {
       /* Touch Feld [+] Taste ausführen (Wochentag) */
-=======
-    /* Touch Feld abfragen [ + ] Taste gedrückt (+ Wochentag) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 625) && (X_Pos_Touch <= 675) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ + ] Taste ausführen (+ Wochentag) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 625, 150, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
@@ -888,17 +675,10 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [-] Taste gedrückt (Wochentag) */
     if ((Zeit_Button == true) && (X_Pos_Touch >= 625) && (X_Pos_Touch <= 675) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
     {
       /* Touch Feld [-] Taste ausführen (Wochentag) */
-=======
-    /* Touch Feld abfragen [ - ] Taste gedrückt (- Wochentag) */
-    if ((Zeit_Button == true) && (X_Pos_Touch >= 625) && (X_Pos_Touch <= 675) && (Y_Pos_Touch >= 220) && (Y_Pos_Touch <= 280))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ - ] Taste ausführen (- Wochentag) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 625, 250, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
@@ -930,11 +710,7 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
           Minuten = 0;
           Tag = 1;
           Monat = 1; 
-<<<<<<< HEAD
           Jahr = 2023;        
-=======
-          Jahr = 2022;        
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         }
 
         /* Zeit setzen */
@@ -983,7 +759,6 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
     }
 
 /********************************************************************************************************************/
-<<<<<<< HEAD
 
     /* Touch Feld abfragen [i] Taste gedrückt */
     if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
@@ -1004,8 +779,6 @@ void Einstellungen(bool Bildaufbau, bool Werte_Reset)          //Funktion Einste
     }
 
 /********************************************************************************************************************/
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   
   }     //Touch Freigabe Ende
 

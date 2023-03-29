@@ -21,18 +21,13 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
-<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");     //Taste anzeigen ungedrückt
-=======
-    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Export");                                 //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                                //Taste anzeigen ungedrückt 
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                     //Taste anzeigen gedrückt
     Display.gfx_Button(Status_Touch_Taste, 200, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Analog");                                //Taste anzeigen ungedrückt
 
-<<<<<<< HEAD
     /* Grafik zu Tasten anzeigen */ 
     if (Graphik_Freigabe == true) 
     {  
@@ -85,28 +80,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       Display.gfx_Triangle(385, 300, 385, 340, 425, 320, WHITE);            //Dreieck Port Auswahl Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
       Display.gfx_TriangleFilled(100, 300, 100, 340, 60, 320, BLACK);       //Dreieck Port Auswahl Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
       Display.gfx_Triangle(100, 300, 100, 340, 60, 320, WHITE);             //Dreieck Port Auswahl Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
-=======
-    /* Touch Zeit Achse Tasten ungedrückt anzeigen */
-    if(Graphik_Freigabe == false)
-    {
-      Display.gfx_Button(Status_Touch_Taste, 50, 150, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "2s");                       //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 200, 150, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "5s");                      //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 350, 150, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "10s");                     //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 500, 150, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "30s");                     //Taste anzeigen ungedrückt 
-      Display.gfx_Button(Status_Touch_Taste, 650, 150, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "60s");                     //Taste anzeigen gedrückt
-
-      Display.gfx_Button(Status_Touch_Taste, 50, 200, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "2min");                     //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 200, 200, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "5min");                    //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 350, 200, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "10min");                   //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 500, 200, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "30min");                   //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 650, 200, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "60min");                   //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Strom Sensor     ");      //Taste anzeigen ungedrückt
-
-      Display.gfx_TriangleFilled(385, 300, 385, 340, 425, 320, BLUE);      //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
-      Display.gfx_Triangle(385, 300, 385, 340, 425, 320, WHITE);           //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
-      Display.gfx_TriangleFilled(100, 300, 100, 340, 60, 320, BLUE);       //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
-      Display.gfx_Triangle(100, 300, 100, 340, 60, 320, WHITE);            //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
       Display.txt_Height(2);                      //Texthöhe
       Display.txt_Width(2);                       //Textweite
@@ -158,42 +131,26 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       Display.print("\t");                        //Text anzeigen 
     }
     
-<<<<<<< HEAD
     /* Einheit bar */
     if ((Einheit_Analog >= 1)  && (Einheit_Analog <= 9)) //Überwachung Einheiten
-=======
-    if (Einheit_Analog <= 9)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {
       Display.print("bar");                       //Text anzeigen 
     }
 
-<<<<<<< HEAD
     /* Einheit Nl/min */
     if ((Einheit_Analog >= 10) && (Einheit_Analog <= 19))     //Überwachung Einheiten
-=======
-    if ((Einheit_Analog >= 10) && (Einheit_Analog <= 19))
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {
       Display.print("Nl/min");                    //Text anzeigen 
     }
 
-<<<<<<< HEAD
     /* Einheit Grad */
     if ((Einheit_Analog >= 20) && (Einheit_Analog <= 29))   //Überwachung Einheiten
-=======
-    if ((Einheit_Analog >= 20) && (Einheit_Analog <= 29))
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {
       Display.print("Grad");                      //Text anzeigen 
     }
     
-<<<<<<< HEAD
     /* Einheit V */
     if ((Einheit_Analog >= 30) && (Einheit_Analog <= 39))  //Überwachung Einheiten
-=======
-    if ((Einheit_Analog >= 30) && (Einheit_Analog <= 39))
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {
       Display.print("V");                         //Text anzeigen 
     }
@@ -202,22 +159,12 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
     Display.print(Graphik_Text_Anzeige);          //Text anzeigen 
     Display.print("\t");                          //Text anzeigen 
 
-<<<<<<< HEAD
     /* x Achsen Einheit anzeigen */
     if (Graphik_x_Einheit == false)             //Überwachung x Achsen Einheit
     {        
       Display.print("s");                     //Text anzeigen        
     }
     else
-=======
-    /* Einheit anzeigen */
-    if (Einheit_Abfrage == false)             //Überwachung Graphik Einheit Abfrage s
-    {        
-      Display.print("s");                     //Text anzeigen        
-    }
-     
-    if (Einheit_Abfrage == true)              //Überwachung Graphik Einheit Abfrage min
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {
       Display.print("min");                   //Text anzeigen                
     }
@@ -229,14 +176,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
   /* Graph Aufzeichnen */
   while (Messung_Ein_Analog == true)             //Überwachung Messung aktiv
-<<<<<<< HEAD
   {       
 
     switch (Ports_Graphik)                       //Überwachen Port Auswahl
-=======
-  {    
-    switch (Ports_Graphik)                       //Überwachen letztes Menü
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {
       /* Strom Sensor */  
       case 0:
@@ -348,7 +290,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
         y_Achse_Float = (digitalRead(DE_Sensor_2) * 290);             //y Achse berechnen
         break;   
     }
-<<<<<<< HEAD
 
 
     /* Filter eingeschalten */
@@ -365,10 +306,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
 
     int y = (390 - round(y_Achse_Float) - y_Offset);                //y Achse Wert in Pixel
-=======
-    
-    int y = (390 - round(y_Achse_Float));                           //y Achse Drucksensor Wert in Pixel
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     unsigned long Aktuelle_Zeit_Graphik = millis();                 //Zeit seit start Arduino
 
     long Zeit_Verzeogerung = (Graphik_Zeit / 550);                  //x Achse Zeit Verzögerung
@@ -384,12 +321,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
     if (Graphik_Stopp == true)
     {
-<<<<<<< HEAD
       /* x Achse begrenzen */
       if (x <= 101) x = 101;            //x Achse start Position  
 
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       Display.gfx_MoveTo(x, y);                                 //Text Position (x,y)
       Display.gfx_Set(OBJECT_COLOUR, YELLOW);                   //Objektfarbe
 
@@ -461,7 +395,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
           break;   
       }
 
-<<<<<<< HEAD
       Analogwert_Zeit[Messungen_Analog] = (Zeit_Verzeogerung * Messungen_Analog) / 1000.0;    //Zeit Messung der Liste hinzufügen
       
       /* Messungs Anzahl hochzählen */
@@ -485,27 +418,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
 
     /* Graph Fenster löschen */
-=======
-      Zeit_Messung[Messungen_Zeit_Analog] = (Zeit_Verzeogerung * Messungen_Zeit_Analog) / 1000.0;    //Zeit Messung der Liste hinzufügen
-      
-      Messungen_Analog++;                                               //Messungs Anzahl hochzählen
-      Messungen_Zeit_Analog++;                                          //Messungen Zeit Analog hochzählen
-      Anzahl_Messungen++;                                               //Messungen hochzählen
-      
-      if (Anzahl_Messungen > 10000)
-      {
-        Anzahl_Messungen_Merker = true;                                 //Anzahl Messungen Merker setzen
-        Anzahl_Messungen = 0;                                           //Messungen zurücksetzen
-        Messungen_Analog = 0;                                           //Messungs Anzahl zurücksetzen
-      }
-      
-      if (Messungen_Zeit_Analog > 10000)
-      {
-        Messungen_Zeit_Analog = 0;                                      //Messungen zurücksetzen
-      }
-    }
-
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     if ((Endlos_Ein == true) && (x >= 650))                             //Endlos Button Ein und Graphik fertig
     {
       Display.gfx_RectangleFilled(101, 389, 650, 100, BLACK);           //Graphlinien übermalen
@@ -541,7 +453,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       { 
         Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                                //Taste anzeigen gedrückt
           
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");     //Taste anzeigen ungedrückt
         Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
         Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Export");                                 //Taste anzeigen ungedrückt 
@@ -577,22 +488,10 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
         Display.print("min ");                    //Text anzeigen 
         Display.print(Analogwert_Min);            //Wert anzeigen
 
-=======
-        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen ungedrückt
-        Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
-        Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Export");                                 //Taste anzeigen ungedrückt 
-        Display.gfx_Button(Status_Touch_Taste, 200, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Graphik");                               //Taste anzeigen ungedrückt
-     
-        /* Messung Aus */      
-        Messung_Ein_Analog = false;           //Messung Ein Analogeanzeige zurücksetzen 
-        Graphik_Stopp = true;                 //Graphik Stopp setzen
-                    
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         /* Buzzer */
         Buzzer(500);                          //Aufruf Funktion Buzzer(int Buzzer_Zeit)             
       }
     }
-<<<<<<< HEAD
 
 /********************************************************************************************************************/    
 
@@ -630,11 +529,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
 /********************************************************************************************************************/    
 
-=======
-        
-/********************************************************************************************************************/
-
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   }   //Touch Freigabe Ende
 
 /********************************************************************************************************************/
@@ -666,7 +560,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
 /********************************************************************************************************************/    
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [Zrugg] Taste gedrückt */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
     {
@@ -674,36 +567,18 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
        if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");   //Taste anzeigen gedrückt
-=======
-    /* Touch Feld abfragen [Zrug] Taste gedrückt */
-    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
-    {
-      /* Touch Feld [Zrug] Taste ausführen */
-       if (Status_Touch_Taste)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen gedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         Graph_Raster = false;                         //Graphik Raster zurücksetzen
         Messung_Ein_Analog = false;                   //Messung Ein Analogeanzeige zurücksetzen
         Graph_Messung_Start = false;                  //Graphik Messung Start zurücksetzen
         Graphik_Stopp = false;                        //Graphik Stopp zurücksetzen 
         Graphik_Freigabe = false;                     //Graphik Freigabe zurücksetzen 
-<<<<<<< HEAD
-=======
-        Analog_Filter_Ein = false;                    //Analog Filter Ein zurücksetzen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         
         /* Buzzer */
         Buzzer(100);                                  //Aufruf Funktion Buzzer(int Buzzer_Zeit)
 
-<<<<<<< HEAD
         Menue_angewaehlt = 3;                         //Analogeanzeige anwählen
         Bild_aufgebaut[3] = false;                    //Bildschirm aufgebaut zurücksetzen
-=======
-        Menue_angewaehlt = 0;                         //Hauptmenü anwählen
-        Bild_aufgebaut[0] = false;                    //Bildschirm aufgebaut zurücksetzen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Bild_aufgebaut[18] = false;                   //Bildschirm aufgebaut zurücksetzen 
         
         digitalWrite(DA_Versorgung_24VDC, LOW);       //Digital Ausgang Versorgung 24VDC zurücksetzen        
@@ -727,15 +602,11 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
         } 
 
         Messungen_Analog = 0;               //Anzahl Messungen zurücksetzen
-<<<<<<< HEAD
         Analogwert_Max = 0;                 //Analogwert Max zurücksetzen
         Analogwert_Min = Max_Wert_Analog;   //Analogwert Min auf Max Wert setzen
         Letzte_Messung_Analog = 0;          //Letzte Messung Analog zurücksetzen
         y_Offset = 0;                       //y Offset zurücksetzen
         y_auslesen = 0;                     //y auslesen zurücksetzen
-=======
-        
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graph_Raster = false;               //Graphik Raster zurücksetzen
         Messung_Ein_Analog = false;         //Messung Ein Analogeanzeige zurücksetzen  
         Graph_Messung_Start = false;        //Graphik Messung Start zurücksetzen
@@ -749,7 +620,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
         Bild_aufgebaut[18] = false;         //Bildschirm aufgebaut zurücksetzen
       }
     }
-<<<<<<< HEAD
 
 /********************************************************************************************************************/
 
@@ -827,9 +697,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       }
     }
 
-=======
-    
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 /********************************************************************************************************************/ 
 
     /* Touch Feld abfragen [Export] Taste gedrückt */
@@ -840,7 +707,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {       
         Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, "Export");                  //Taste anzeigen gedrückt 
 
-<<<<<<< HEAD
        /* Datenausgabe auf USB Schnittstelle */  
         if (!SerialUSB)      //Überwachung Schnittstelle nicht verfügbar
         {
@@ -918,23 +784,12 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       
       SerialUSB.println("MSG,Export beendet");    //Meldung ausgeben
                 
-=======
-        /* Buzzer */
-        Buzzer(100);                                  //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-
-        if (Anzahl_Messungen_Merker == true)
-        {
-          Anzahl_Messungen = 10000;                   //Anzahl Messungen auf Max setzen
-        }
-
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         /* Graphik Messungen auf SD Karte schreiben */
         SD.remove("Graphik/Messung.txt");                                 //File löschen
         File Messung = SD.open("Graphik/Messung.txt", FILE_WRITE);        //File in Ordner im Schreibmodus auf SD Karte öffnen      
         
         if (Messung) 
         {
-<<<<<<< HEAD
           Messung.println("Messungen;Zeit;Einheit");
 
           for (Messungen_Analog = 0; Messungen_Analog < Letzte_Messung_Analog; Messungen_Analog++)
@@ -942,22 +797,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
             Messung.print(Analogwert[Messungen_Analog]);                    //Analogwert auf SD Karte schreiben
             Messung.print(";");                                             //Semikolon auf SD Karte schreiben
             Messung.print(Analogwert_Zeit[Messungen_Analog]);               //Zeit Messung auf SD Karte schreiben
-=======
-          SerialUSB.println("Messungen");
-          SerialUSB.println("");
-          Messung.println("Messungen;Zeit;Einheit");
-
-          Anzahl_Messungen--;                                               //Messungen runter zählen
-          Messungen_Zeit_Analog = 0;                                        //Messungen Zeit Analog zurücksetzen
-      
-          for (Messungen_Analog = 0; Messungen_Analog <= Anzahl_Messungen; Messungen_Analog++)
-          {  
-            SerialUSB.println(Analogwert[Messungen_Analog]);                //Ausgabe Aktueller Messwert auf USB Schnittstelle
-            Messung.print(Analogwert[Messungen_Analog]);                    //Analogwert auf SD Karte schreiben
-            Messung.print(";");                                             //Semikolon auf SD Karte schreiben
-            Messung.print(Zeit_Messung[Messungen_Zeit_Analog]);             //Zeit Messung auf SD Karte schreiben
-            Messungen_Zeit_Analog++;                                        //Messung Zeit Analog hochzählen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             
             if (Einheit_Analog <= 9)
             {
@@ -1003,12 +842,7 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
           Graphik_Freigabe = false;         //Graphik Freigabe zurücksetzen
           Graph_Raster = false;             //Graphik Raster gezeichnet zurücksetzen
           Graphik_Stopp = false;            //Graphik Stopp zurücksetzen 
-<<<<<<< HEAD
           
-=======
-          Analog_Filter_Ein = false;        //Analog Filter Ein zurücksetzen 
-
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           /* Buzzer */
           Buzzer(100);                      //Aufruf Funktion Buzzer(int Buzzer_Zeit)
 
@@ -1116,7 +950,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
         /* Touch Feld [Start] Taste ausführen */
         if (Status_Touch_Taste)
         {       
-<<<<<<< HEAD
           Display.gfx_Button(Status_Touch_Taste, 500, 420, RED, WHITE, Schrifttyp, Textbreite, Textrahmen, "Stopp");          //Taste anzeigen gedrückt 
 
           Display.gfx_Button(Status_Touch_Taste, 650, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zrugg");         //Taste anzeigen nicht drückbar
@@ -1143,34 +976,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
           Messungen_Analog = 0;               //Messungen Analog zurücksetzen
           Analogwert_Max = 0;                 //Analogwert Max zurücksetzen
           Analogwert_Min = Max_Wert_Analog;   //Analogwert Min auf Max Wert setzen
-=======
-          Display.gfx_Button(Status_Touch_Taste, 500, 420, RED, WHITE, Schrifttyp, Textbreite, Textrahmen, "Stopp");                  //Taste anzeigen gedrückt 
-
-          Display.gfx_Button(Status_Touch_Taste, 650, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zrug");                  //Taste anzeigen nicht drückbar
-          Display.gfx_Button(Status_Touch_Taste, 350, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                 //Taste anzeigen nicht drückbar
-          Display.gfx_Button(Status_Touch_Taste, 50, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Export");                 //Taste anzeigen nicht drückbar 
-          Display.gfx_Button(Status_Touch_Taste, 200, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Graphik");               //Taste anzeigen nicht drückbar
-
-          /* Messung Ein */
-          Messung_Ein_Analog = true;         //Messung Ein Analogeanzeige setzen
-          Messungen_Analog = 0;              //Messungs Anzahl zurücksetzen
-          Messungen_Zeit_Analog = 0;                                      //Messungen Zeit Analog zurücksetzen
-
-          for (Messungen_Analog = 0; Messungen_Analog <= 10000; Messungen_Analog++)
-          {
-             Analogwert[Messungen_Analog] = 0;                            //Aktueller Wert Analog zurücksetzen   
-          }
-          
-          for (Messungen_Zeit_Analog = 0; Messungen_Zeit_Analog <= 10000; Messungen_Zeit_Analog++)
-          {
-             Zeit_Messung[Messungen_Zeit_Analog] = 0;                            //Zeit Messung zurücksetzen 
-          }
-
-          Anzahl_Messungen_Merker = false;                                //Anzahl Messungen Merker zurücksetzen
-          Anzahl_Messungen = 0;                                           //Messungen zurücksetzen
-          Messungen_Zeit_Analog = 0;                                      //Messungen Zeit Analog zurücksetzen
-          Messungen_Analog = 0;                                           //Messungs Anzahl zurücksetzen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
           /* Buzzer */
           Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
@@ -1179,30 +984,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
     
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
-=======
-    /* Touch Feld abfragen [i] Taste gedrückt */
-    if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
-    {
-      /* Touch Feld [i] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, GRAY, Schrifttyp, Textbreite, Textrahmen, "i");                  //Taste anzeigen gedrückt
-
-        /* Buzzer */
-        Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-
-        Graph_Raster = false;               //Graphik Raster setzen
-        Menue_angewaehlt = 7;               //Menü Info anwählen
-        Bild_aufgebaut[7] = false;          //Bildschirm Info aufgebaut zurücksetzen
-        Letztes_Menue = 18;                 //Letztes angewähltes Menü
-        Info_Seite = 16;                    //Info Seite anwählen
-      }
-    }
-      
-/********************************************************************************************************************/
-
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     /* Touch Feld abfragen [2s] Taste gedrückt */
     if ((Graphik_Freigabe == false) && (X_Pos_Touch >= 20) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 120) && (Y_Pos_Touch <= 180))   //Überwachung Touch Feld
     {
@@ -1211,15 +992,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 50, 150, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "2s");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 2000;                  //2x1000ms
         Graphik_Text_Anzeige = 2;             //2s
         Graphik_x_Einheit = false;            //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 2000;
-        Graphik_Text_Anzeige = 2;
-        Einheit_Abfrage = false;            //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1239,15 +1014,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 200, 150, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "5s");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 5000;                  //5x1000ms
         Graphik_Text_Anzeige = 5;             //5s
         Graphik_x_Einheit = false;            //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 5000;
-        Graphik_Text_Anzeige = 5;
-        Einheit_Abfrage = false;            //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1267,15 +1036,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 350, 150, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "10s");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 10000;                 //10x1000ms
         Graphik_Text_Anzeige = 10;            //10s
         Graphik_x_Einheit = false;            //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 10000;
-        Graphik_Text_Anzeige = 10;
-        Einheit_Abfrage = false;            //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1295,15 +1058,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 500, 150, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "30s");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 30000;                 //30x1000ms
         Graphik_Text_Anzeige = 30;            //30s
         Graphik_x_Einheit = false;            //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 30000;
-        Graphik_Text_Anzeige = 30;
-        Einheit_Abfrage = false;            //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1323,15 +1080,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 650, 150, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "60s");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 60000;                 //60x1000ms
         Graphik_Text_Anzeige = 60;            //60s
         Graphik_x_Einheit = false;            //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 60000;
-        Graphik_Text_Anzeige = 60;
-        Einheit_Abfrage = false;            //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1351,15 +1102,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 50, 200, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "2min");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 120000;                //120x1000ms
         Graphik_Text_Anzeige = 2;             //2min
         Graphik_x_Einheit = true;             //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 120000;
-        Graphik_Text_Anzeige = 2;
-        Einheit_Abfrage = true;             //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1379,15 +1124,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 200, 200, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "5min");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 300000;                //300x1000ms
         Graphik_Text_Anzeige = 5;             //5min
         Graphik_x_Einheit = true;             //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 300000;
-        Graphik_Text_Anzeige = 5;
-        Einheit_Abfrage = true;             //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1407,15 +1146,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 350, 200, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "10min");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 600000;                //600x1000ms
         Graphik_Text_Anzeige = 10;            //10min
         Graphik_x_Einheit = true;             //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 600000;
-        Graphik_Text_Anzeige = 10;
-        Einheit_Abfrage = true;             //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1435,15 +1168,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 500, 200, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "30min");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 1800000;               //1800x1000ms
         Graphik_Text_Anzeige = 30;            //30min
         Graphik_x_Einheit = true;             //Graphik x Einheit (false=s, true=min)  
-=======
-        Graphik_Zeit = 1800000;
-        Graphik_Text_Anzeige = 30;
-        Einheit_Abfrage = true;             //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
 
         /* Buzzer */
@@ -1463,15 +1190,9 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       {
         Display.gfx_Button(Status_Touch_Taste, 650, 200, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "60min");   //Taste anzeigen gedrückt
 
-<<<<<<< HEAD
         Graphik_Zeit = 3600000;               //3600x1000ms
         Graphik_Text_Anzeige = 60;            //60min
         Graphik_x_Einheit = true;             //Graphik x Einheit (false=s, true=min)        
-=======
-        Graphik_Zeit = 3600000;
-        Graphik_Text_Anzeige = 60;
-        Einheit_Abfrage = true;             //Graphik Einheit Abfrage true = min false = s
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Graphik_Freigabe = true;
         
         /* Buzzer */
@@ -1483,28 +1204,17 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
  
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [< Ports] Taste gedrückt */
     if ((Graphik_Freigabe == false) && (X_Pos_Touch >= 40) && (X_Pos_Touch <= 120) && (Y_Pos_Touch >= 280) && (Y_Pos_Touch <= 360))     //Überwachung Touch Feld
     {
       /* Touch Feld [< Ports] Taste ausführen */
-=======
-    /* Touch Feld abfragen [ < Ports ] Taste gedrückt ( < Ports) */
-    if ((Graphik_Freigabe == false) && (X_Pos_Touch >= 40) && (X_Pos_Touch <= 120) && (Y_Pos_Touch >= 280) && (Y_Pos_Touch <= 360))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ < Ports ] Taste ausführen ( < Ports) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Triangle(100, 300, 100, 340, 60, 320, BLACK);           //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
 
         Ports_Graphik--; 
         
-<<<<<<< HEAD
         if (Ports_Graphik <= 0) Ports_Graphik = 0;     //Verstellwert begrenzen
-=======
-        if (Ports_Graphik < 0) Ports_Graphik = 10;     //Verstellwert begrenzen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         SerialUSB.println(Ports_Graphik);
  
@@ -1530,11 +1240,7 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
           /* Adapter Typ */
           case 3:
           Einheit_Analog = 30;              //Einheit Analog vorgeben
-<<<<<<< HEAD
           Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Adapter Typ      ");      //Taste anzeigen ungedrückt
-=======
-          Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Adapter Typ   ");      //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           break;
 
           /* Buzzer */
@@ -1569,11 +1275,7 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
           /* Sesnor 2 */
           case 10:         
-<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Sensor 2         ");      //Taste anzeigen ungedrückt
-=======
-            Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Sensor 2        ");      //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;   
         }
           
@@ -1586,37 +1288,20 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [Ports >] Taste gedrückt */
     if ((Graphik_Freigabe == false) && (X_Pos_Touch >= 365) && (X_Pos_Touch <= 445) && (Y_Pos_Touch >= 280) && (Y_Pos_Touch <= 360))     //Überwachung Touch Feld
     {
       /* Touch Feld [Ports >] Taste ausführen */
-=======
-    /* Touch Feld abfragen [ > Ports ] Taste gedrückt ( > Ports) */
-    if ((Graphik_Freigabe == false) && (X_Pos_Touch >= 365) && (X_Pos_Touch <= 445) && (Y_Pos_Touch >= 280) && (Y_Pos_Touch <= 360))     //Überwachung Touch Feld
-    {
-      /* Touch Feld [ > Ports ] Taste ausführen ( > Ports) */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Triangle(385, 300, 385, 340, 425, 320, BLACK);           //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
         
         Ports_Graphik++; 
-<<<<<<< HEAD
         if (Ports_Graphik >= 10) Ports_Graphik = 10;     //Verstellwert begrenzen
  
         switch(Ports_Graphik)                    //Überwachen letztes Menü
         {
           /* Strom Sensor */
-=======
-        if (Ports_Graphik > 10) Ports_Graphik = 0;     //Verstellwert begrenzen
-
-        SerialUSB.println(Ports_Graphik);
- 
-        switch(Ports_Graphik)                    //Überwachen letztes Menü
-        {
-          /* Strom Sesnor */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           case 0:
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Strom Sensor     ");      //Taste anzeigen ungedrückt          
             break;
@@ -1636,11 +1321,7 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
           /* Adapter Typ */
           case 3:
             Einheit_Analog = 30;              //Einheit Analog vorgeben
-<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Adapter Typ      ");      //Taste anzeigen ungedrückt
-=======
-            Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Adapter Typ   ");      //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
 
           /* Buzzer */
@@ -1675,11 +1356,7 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
           /* Sensor 2 */
           case 10:        
-<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Sensor 2         ");      //Taste anzeigen ungedrückt
-=======
-            Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Sensor 2        ");      //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;   
         }
         
@@ -1692,7 +1369,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [i] Taste gedrückt */
     if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
     {
@@ -1714,8 +1390,6 @@ void Graphik(bool Bildaufbau, bool Werte_Reset)           //Funktion Graphik
       
 /********************************************************************************************************************/
 
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   }     //Touch Freigabe Ende
   
 /********************************************************************************************************************/

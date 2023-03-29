@@ -2,7 +2,6 @@
    
    Sobald der Pin 8 von LOW auf HIGH geht aktiviert der Interrupt der im Void Setup deklariert ist. 
    Nach dem Interrupt läuft das Programm am "alten" Ort weiter.  
-<<<<<<< HEAD
 
    Mode: Definiert, wann der Interrupt getriggert werden soll. 4 Konstanten sind dafür definiert:
 
@@ -14,8 +13,6 @@
    Die Due-, Zero- und MKR1000-Boards erlauben zusätzlich:
    HIGH Interrupt wird getriggert, wenn der Pin HIGH ist
 
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 */
 
 void Interrupt_Pin_8()                //Funktion Interrupt Pin 8
@@ -24,7 +21,6 @@ void Interrupt_Pin_8()                //Funktion Interrupt Pin 8
 /********************************************************************************************************************/
 
   /* Sollte das Programm vorher im void Geschwindigkeitsanzeige Sortierer gewesen sein, wir dies ausgeführt */
-<<<<<<< HEAD
   if (Messung_Ein_Geschw_Sort == true)        //Überwachung Geschwindigkeitsanzeige Sortierer aktiv
   {
     /* Zähler 
@@ -33,22 +29,11 @@ void Interrupt_Pin_8()                //Funktion Interrupt Pin 8
     {
       /* Zähler */
       Zaehlwert_Geschw_Sort_1++;       //Zählwert addieren Geschwindigkeit Sortierer 1 
-=======
-  if (Menue_angewaehlt == 10)                    //Überwachung Menü Geschwindigkeitsanzeige Sortierer aktiv
-  {
-    /* Zähler 
-       Flankenauswertung */ 
-    if (Zaehler_Geschw_Sort_1 == true)
-    {
-      /* Zähler */
-      Zaehlwert_Geschw_Sort_1 = ++Zaehlwert_Geschw_Sort_1;        //Zählwert Geschwindigkeit Sortierer 1 
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         
       /* Wertbegrenzung */
       if (Zaehlwert_Geschw_Sort_1 >= Wertbegrenzung_Geschw_Sort) Zaehlwert_Geschw_Sort_1 = Wertbegrenzung_Geschw_Sort; 
 
       /* Zählwert addiert */  
-<<<<<<< HEAD
       Freigabe_Interrupt_Geschw_Sort_1 = false;         //Zählwert addiert      
     }          
   }
@@ -71,9 +56,6 @@ void Interrupt_Pin_8()                //Funktion Interrupt Pin 8
 
       /* Zählwert addiert */  
       Freigabe_Interrupt_Zaehler_1 = false;               //Zählwert addiert      
-=======
-      Zaehler_Geschw_Sort_1 = false;         //Zählwert addiert      
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     }          
   }
 

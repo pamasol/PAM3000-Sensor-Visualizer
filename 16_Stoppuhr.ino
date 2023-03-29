@@ -25,18 +25,11 @@ void Stoppuhr(bool Bildaufbau, bool Werte_Reset)       //Funktion Stoppuhr
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
-<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");    //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Liste");                                  //Taste anzeigen ungedrückt 
     Display.gfx_Button(Status_Touch_Taste, 180, 420, ORANGE, BLACK, Schrifttyp, Textbreite, Textrahmen, "Referenz");                            //Taste anzeigen ungedrückt 
     Display.gfx_Button(Status_Touch_Taste, 500, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Live");                                  //Taste anzeigen ungedrückt
-=======
-    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen ungedrückt
-    Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
-    Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Liste");                                  //Taste anzeigen ungedrückt 
-    Display.gfx_Button(Status_Touch_Taste, 180, 420, ORANGE, BLACK, Schrifttyp, Textbreite, Textrahmen, "Referenz");                            //Taste anzeigen ungedrückt 
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                     //Taste anzeigen gedrückt
 
     /* Text anzeigen */
@@ -341,11 +334,6 @@ void Stoppuhr(bool Bildaufbau, bool Werte_Reset)       //Funktion Stoppuhr
         Zeiten_Stoppuhr[21] = Zeiten_Stoppuhr[20]; 
         Zeiten_Stoppuhr[20] = Zeiten_Stoppuhr[19];
         
-<<<<<<< HEAD
-=======
-        /* History 
-           Schieberegister letzten zwanzig Werte. */
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Zeiten_Stoppuhr[19] = Zeiten_Stoppuhr[18]; 
         Zeiten_Stoppuhr[18] = Zeiten_Stoppuhr[17]; 
         Zeiten_Stoppuhr[17] = Zeiten_Stoppuhr[16]; 
@@ -435,7 +423,6 @@ void Stoppuhr(bool Bildaufbau, bool Werte_Reset)       //Funktion Stoppuhr
     
 /********************************************************************************************************************/  
     
-<<<<<<< HEAD
       /* Touch Feld abfragen [Zrugg] Taste gedrückt */       
       if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))     //Überwachung Touch Feld^
       {      
@@ -443,15 +430,6 @@ void Stoppuhr(bool Bildaufbau, bool Werte_Reset)       //Funktion Stoppuhr
         if (Status_Touch_Taste)
         {      
           Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");  //Zurücktaste anzeigen gedrückt
-=======
-      /* Touch Feld abfragen [Zrug] Taste gedrückt */       
-      if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))     //Überwachung Touch Feld^
-      {      
-        /* Touch Feld [Zrug] Taste ausführen */    
-        if (Status_Touch_Taste)
-        {      
-          Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");  //Zurücktaste anzeigen gedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
           /* Buzzer */
           Buzzer(100);                                  //Aufruf Funktion Buzzer(int Buzzer_Zeit)
@@ -537,7 +515,6 @@ void Stoppuhr(bool Bildaufbau, bool Werte_Reset)       //Funktion Stoppuhr
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
 
   /* Touch Feld abfragen [Live] Taste gedrückt */
     if ((X_Pos_Touch >= 470) && (X_Pos_Touch <= 570) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
@@ -576,8 +553,6 @@ void Stoppuhr(bool Bildaufbau, bool Werte_Reset)       //Funktion Stoppuhr
     
 /********************************************************************************************************************/
 
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       /* Touch Feld abfragen [i] Taste gedrückt */
       if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
       {
@@ -592,11 +567,7 @@ void Stoppuhr(bool Bildaufbau, bool Werte_Reset)       //Funktion Stoppuhr
           Menue_angewaehlt = 7;                 //Menü Info anwählen
           Bild_aufgebaut[7] = false;            //Bildschirm Info aufgebaut zurücksetzen
           Letztes_Menue = 16;                   //Letztes angewähltes Menü   
-<<<<<<< HEAD
           Info_Seite = 2;                       //Info Seite anwählen
-=======
-          Info_Seite = 14;                      //Info Seite anwählen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         }
       }
 

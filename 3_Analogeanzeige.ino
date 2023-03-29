@@ -24,22 +24,14 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
-<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");     //Taste anzeigen ungedrückt
-=======
-    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Export");                                 //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                                //Taste anzeigen ungedrückt 
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                     //Taste anzeigen gedrückt
     Display.gfx_Button(Status_Touch_Taste, 200, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Graphik");                               //Taste anzeigen ungedrückt
-<<<<<<< HEAD
     if (Einheit_Analog == 10) Display.gfx_Button(Status_Touch_Taste, 50, 360, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Berechnung");   //Taste anzeigen ungedrückt
     if (Einheit_Analog != 10) Display.gfx_Button(Status_Touch_Taste, 50, 360, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Berechnung");   //Taste anzeigen nicht drückbar
-=======
-    Display.gfx_Button(Status_Touch_Taste, 50, 360, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Berechnung");                             //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 50, 300, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Set 0");                                  //Taste anzeigen ungedrückt 
    
     /* Grafik zu Tasten anzeigen */    
@@ -70,7 +62,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
     delay(1000);                                  //Verzögerung 1000ms   
       
     current = 0;
-<<<<<<< HEAD
     //offset_current = 0;
     
     /* Grundeinstellung */   
@@ -78,19 +69,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
     Min_mA_Analog = 4;          //Minimum Strom Grenzwert 4mA   
         
     Zeitraster_Messung = 1;     //100ms
-=======
-    offset_current = 0;
-    
-    /* Grundeinstellung */
-    //Display.gfx_Button(Status_Touch_Taste, 0, 135, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");                  //Taste anzeigen gedrückt 
-    //Max_Wert_Analog = 20;                     //Maximum Druckbereich 20bar
-    
-    Max_mA_Analog = 20;                      //Maximum Strom Grenzwert 20mA
-    Min_mA_Analog = 4;                       //Minimum Strom Grenzwert 4mA   
-        
-    Zeitraster_Messung = 1;           //100ms
-    Anzahl_Messungen = 10000;         //10Messungen  
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
     /* Buzzer */
     Buzzer(100);                          //Aufruf Funktion Buzzer(int Buzzer_Zeit) 
@@ -109,7 +87,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
       
 /********************************************************************************************************************/
      
-<<<<<<< HEAD
     /* 0.Druck Liste 1 */
     case 0:   
       Display.gfx_RectangleFilled(0, 80, 180, 270, BLACK);           //Graphik Linien übermalen
@@ -166,40 +143,10 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
       Druck_Liste_1_anzeigen = false;           //Druck List 1 anzeigen zurücksetzen      
       Druck_Liste_2_anzeigen = false;           //Druck Liste 2 anzeigen zurücksetzen
       Temperatur_Liste_1_anzeigen = false;      //Temperatur Liste 1 anzeigen zurücksetzen     
-=======
-    /* 0.Druck Liste */
-    case 0:   
-      Display.gfx_RectangleFilled(0, 80, 180, 270, BLACK);           //Graphik Linien übermalen
-      Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "10 bar");          //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");         //Taste anzeigen ungedrückt 
-      Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "50 bar");         //Taste anzeigen ungedrückt     
-      Display.gfx_Button(Status_Touch_Taste, 0, 235, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 bar");        //Taste anzeigen ungedrückt
-      
-      Mess_Auswahl_Liste_aufgebaut = true;      //Mess Auswahl Liste aufgebaut setzen
-
-      Druck_Liste_anzeigen = true;              //Druck List anzeigen setzen        
-      Durchfluss_Liste_anzeigen = false;        //Durchfluss Liste anzeigen zurücksetzen
-      Temperatur_Liste_anzeigen = false;        //Temperatur Liste anzeigen zurücksetzen      
       break;
 
 /********************************************************************************************************************/
      
-    /* 1.Durchfluss Liste */
-    case 1:  
-      Display.gfx_RectangleFilled(0, 80, 180, 270, BLACK);           //Graphlinien übermalen 
-      Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "2500 Nl/min");          //Taste anzeigen ungedrückt
-
-      Mess_Auswahl_Liste_aufgebaut = true;      //Mess Auswahl Liste aufgebaut setzen
-
-      Durchfluss_Liste_anzeigen = true;         //Durchfluss List anzeigen setzen
-      Druck_Liste_anzeigen = false;             //Druck Liste anzeigen zurücksetzen
-      Temperatur_Liste_anzeigen = false;        //Temperatur Liste anzeigen zurücksetzen     
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
-      break;
-
-/********************************************************************************************************************/
-     
-<<<<<<< HEAD
     /* 3.Temperatur Liste */
     case 3:  
       Display.gfx_RectangleFilled(0, 80, 180, 270, BLACK);           //Graphlinien übermalen
@@ -219,20 +166,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
       Druck_Liste_1_anzeigen = false;           //Druck List 1 anzeigen zurücksetzen      
       Druck_Liste_2_anzeigen = false;           //Druck Liste 2 anzeigen zurücksetzen
       Durchfluss_Liste_1_anzeigen = false;      //Durchfluss Liste anzeigen zurücksetzen       
-=======
-    /* 2.Druck */
-    case 2:  
-      Display.gfx_RectangleFilled(0, 80, 180, 270, BLACK);           //Graphlinien übermalen
-      Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 Grad");          //Taste anzeigen ungedrückt
-      Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "150 Grad");         //Taste anzeigen ungedrückt 
-      Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "350 Grad");         //Taste anzeigen ungedrückt     
-
-      Mess_Auswahl_Liste_aufgebaut = true;      //Mess Auswahl Liste aufgebaut setzen
-
-      Temperatur_Liste_anzeigen = true;          //Temperatur Liste anzeigen setzen
-      Druck_Liste_anzeigen = false;              //Druck Liste anzeigen zurücksetzen
-      Durchfluss_Liste_anzeigen = false;         //Durchfluss Liste anzeigen zurücksetzen       
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       break;
       
 /********************************************************************************************************************/
@@ -256,11 +189,7 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 
         busVoltage = sensor219.getBusVoltage_V();                   //Spannung berechnen
         current = offset_current + sensor219.getCurrent_mA();       //Strom berechnen
-<<<<<<< HEAD
         power = busVoltage * (current / 1000.0);                      //Leistung berechnen
-=======
-        power = busVoltage * (current/1000);                        //Leistung berechnen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Aktuelle Werte anzeigen */
         Display.txt_Height(3);                      //Texthöhe
@@ -284,7 +213,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
         /* Aktuelle Einheit       
            0=Nichts Angewählt           
            
@@ -297,22 +225,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
            Temperatur
            20=100Grad, 21=150Grad, 22=350Grad, 23=?, 24=?, 25=?, 26=?, 27=?, 28=?, 29=?  
                  
-=======
-        /* Aktuelle Einheit
-        
-           0=Nichts Angewählt
-            
-           1=Druck 10bar
-           2=Druck 20bar
-           3=Druck 50bar
-           4=Druck 100bar
-
-           10=Durchfluss 10000Nl/min
-             
-           20=Temperatur 100Grad
-           21=Temperatur 150Grad
-           22=Temperatur 350Grad        
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         */
         Display.gfx_MoveTo(260, 300);               //Text Position (x,y)        
         
@@ -391,7 +303,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 
 /********************************************************************************************************************/
     
-<<<<<<< HEAD
     /* Touch Feld abfragen [Zrugg] Taste gedrückt */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
     {
@@ -401,17 +312,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");   //Taste anzeigen gedrückt
 
         //offset_current = 0;                               //offset Zurücksetzen 
-=======
-    /* Touch Feld abfragen [Zrug] Taste gedrückt */
-    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
-    {
-      /* Touch Feld [Zrug] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen gedrückt
-
-        offset_current = 0;                               //offset Zurücksetzen 
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Mess_Auswahl_Liste_aufgebaut = false;             //Mess Auswahl Liste aufgebaut zurücksetzen
 
         /* Buzzer */
@@ -443,10 +343,7 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         
         Messungen_Analog = 0;                             //Anzahl Messungen zurücksetzen  
         offset_current = 0;                               //offset Zurücksetzen  
-<<<<<<< HEAD
         Einheit_Analog = 0;                               //Einheit Analog zurücksetzen
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Mess_Auswahl_Liste_aufgebaut = false;             //Mess Auswahl Liste aufgebaut zurücksetzen    
 
         /* Buzzer */
@@ -477,11 +374,7 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         /* Buzzer */
         Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
         
-<<<<<<< HEAD
         for (Messungen_Analog = 0; Messungen_Analog <= 10000; Messungen_Analog++)
-=======
-        for (Messungen_Analog = 0; Messungen_Analog <= Anzahl_Messungen; Messungen_Analog++)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         {  
           Analogwert[Messungen_Analog] = Aktueller_Wert_Analog;         //Messwert übergeben
           SerialUSB.println();                                 
@@ -521,11 +414,7 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 /********************************************************************************************************************/
 
       /* Touch Feld abfragen [Berechnung] Taste gedrückt */
-<<<<<<< HEAD
       if ((X_Pos_Touch >= 20) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 330) && (Y_Pos_Touch <= 390) && (Einheit_Analog == 10))   //Überwachung Touch Feld
-=======
-      if ((X_Pos_Touch >= 20) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 330) && (Y_Pos_Touch <= 390))   //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       {         
         /* Touch Feld [Berechnung] Taste ausführen */
         if (Status_Touch_Taste)
@@ -545,16 +434,11 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 /********************************************************************************************************************/
 
     /* Touch Feld abfragen [10 bar] Taste gedrückt */
-<<<<<<< HEAD
     if ((Druck_Liste_1_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 65) && (Y_Pos_Touch <= 105))   //Überwachung Touch Feld
-=======
-    if ((Druck_Liste_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 65) && (Y_Pos_Touch <= 105))   //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {     
       /* Touch Feld [10 bar] Taste ausführen */
       if (Status_Touch_Taste)
       {       
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");        //Taste anzeigen ungedrückt   
         Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "40 bar");        //Taste anzeigen ungedrückt     
         Display.gfx_Button(Status_Touch_Taste, 0, 235, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "50 bar");        //Taste anzeigen ungedrückt             
@@ -562,15 +446,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         Display.gfx_Button(Status_Touch_Taste, 0, 85, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "10 bar");        //Taste anzeigen gedrückt               
 
         Display.gfx_Button(Status_Touch_Taste, 50, 360, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Berechnung");   //Taste anzeigen nicht drückbar
-=======
-        /* [20 bar], [50 bar] und [100 bar] Taste anzeigen Funktion deaktiviert */
-        Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");                   //Taste anzeigen ungedrückt   
-        Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "50 bar");                   //Taste anzeigen ungedrückt     
-        Display.gfx_Button(Status_Touch_Taste, 0, 235, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 bar");                  //Taste anzeigen ungedrückt             
-                
-        /* [10 bar] Taste anzeigen Funktion aktiv */
-        Display.gfx_Button(Status_Touch_Taste, 0, 85, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "10 bar");                  //Taste anzeigen gedrückt               
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Vorgaben */
         Einheit_Analog = 1;               //Einheit Analog vorgeben (1=Druck 10bar)
@@ -586,16 +461,11 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 /********************************************************************************************************************/
 
     /* Touch Feld abfragen [20 bar] Taste gedrückt */
-<<<<<<< HEAD
     if ((Druck_Liste_1_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 115) && (Y_Pos_Touch <= 155))   //Überwachung Touch Feld
-=======
-    if ((Druck_Liste_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 115) && (Y_Pos_Touch <= 155))   //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {      
       /* Touch Feld [20 bar] Taste ausführen */
       if (Status_Touch_Taste)
       {       
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "10 bar");         //Taste anzeigen ungedrückt
         Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "40 bar");        //Taste anzeigen ungedrückt     
         Display.gfx_Button(Status_Touch_Taste, 0, 235, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "50 bar");        //Taste anzeigen ungedrückt             
@@ -603,15 +473,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         Display.gfx_Button(Status_Touch_Taste, 0, 135, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");       //Taste anzeigen gedrückt               
 
         Display.gfx_Button(Status_Touch_Taste, 50, 360, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Berechnung");   //Taste anzeigen nicht drückbar
-=======
-        /* [10 bar], [50 bar] und [100 bar] Taste anzeigen Funktion deaktiviert */
-        Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "10 bar");                   //Taste anzeigen ungedrückt
-        Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "50 bar");                   //Taste anzeigen ungedrückt     
-        Display.gfx_Button(Status_Touch_Taste, 0, 235, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 bar");                  //Taste anzeigen ungedrückt             
-                
-        /* [20 bar] Taste anzeigen Funktion aktiv */
-        Display.gfx_Button(Status_Touch_Taste, 0, 135, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");                  //Taste anzeigen gedrückt               
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Vorgaben */
         Einheit_Analog = 2;               //Einheit Analog vorgeben (2=Druck 20bar)
@@ -626,7 +487,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [40 bar] Taste gedrückt */
     if ((Druck_Liste_1_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 165) && (Y_Pos_Touch <= 205))   //Überwachung Touch Feld
     {     
@@ -656,15 +516,10 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 
     /* Touch Feld abfragen [50 bar] Taste gedrückt */
     if ((Druck_Liste_1_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 215) && (Y_Pos_Touch <= 255))   //Überwachung Touch Feld
-=======
-    /* Touch Feld abfragen [50 bar] Taste gedrückt */
-    if ((Druck_Liste_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 165) && (Y_Pos_Touch <= 205))   //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {     
       /* Touch Feld [50 bar] Taste ausführen */
       if (Status_Touch_Taste)
       {       
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "10 bar");         //Taste anzeigen ungedrückt   
         Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");        //Taste anzeigen ungedrückt 
         Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "40 bar");        //Taste anzeigen ungedrückt     
@@ -675,18 +530,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 
         /* Vorgaben */
         Einheit_Analog = 4;               //Einheit Analog vorgeben (4=Druck 100bar)
-=======
-        /* [10 bar], [20 bar] und [100 bar] Taste anzeigen Funktion deaktiviert */
-        Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "10 bar");                   //Taste anzeigen ungedrückt     
-        Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");                   //Taste anzeigen ungedrückt     
-        Display.gfx_Button(Status_Touch_Taste, 0, 235, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 bar");                  //Taste anzeigen ungedrückt     
-               
-        /* [50 bar] Taste anzeigen Funktion aktiv */
-        Display.gfx_Button(Status_Touch_Taste, 0, 185, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "50 bar");                  //Taste anzeigen gedrückt         
-        
-        /* Vorgaben */
-        Einheit_Analog = 3;               //Einheit Analog vorgeben (3=Druck 50bar)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Min_mA_Analog = 4;                //Minimum Strom Grenzwert 4mA  
         Max_mA_Analog = 20;               //Maximum Strom Grenzwert 20mA
         Max_Wert_Analog = 50;             //Maximum Analog Grenzwert
@@ -699,7 +542,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 /********************************************************************************************************************/
 
     /* Touch Feld abfragen [100 bar] Taste gedrückt */
-<<<<<<< HEAD
     if ((Druck_Liste_2_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 65) && (Y_Pos_Touch <= 105))   //Überwachung Touch Feld
     {     
       /* Touch Feld [100 bar] Taste ausführen */
@@ -711,23 +553,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 
         /* Vorgaben */
         Einheit_Analog = 5;               //Einheit Analog vorgeben (4=Druck 100bar)
-=======
-    if ((Druck_Liste_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 215) && (Y_Pos_Touch <= 255))   //Überwachung Touch Feld
-    {     
-      /* Touch Feld [100 bar] Taste ausführen */
-      if (Status_Touch_Taste)
-      {       
-        /* [10 bar], [20 bar] und [50 bar] Taste anzeigen Funktion deaktiviert */
-        Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "10 bar");                   //Taste anzeigen ungedrückt   
-        Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "20 bar");                   //Taste anzeigen ungedrückt 
-        Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "50 bar");                   //Taste anzeigen ungedrückt     
-        
-        /* [100 bar] Taste anzeigen Funktion aktiv */
-        Display.gfx_Button(Status_Touch_Taste, 0, 235, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 bar");                  //Taste anzeigen gedrückt         
-
-        /* Vorgaben */
-        Einheit_Analog = 4;               //Einheit Analog vorgeben (4=Druck 100bar)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Min_mA_Analog = 4;                //Minimum Strom Grenzwert 4mA  
         Max_mA_Analog = 20;               //Maximum Strom Grenzwert 20mA
         Max_Wert_Analog = 100;            //Maximum Analog Grenzwert
@@ -740,23 +565,14 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 /********************************************************************************************************************/
 
     /* Touch Feld abfragen [2500 Nl/min] Taste gedrückt */
-<<<<<<< HEAD
     if ((Durchfluss_Liste_1_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 65) && (Y_Pos_Touch <= 105))   //Überwachung Touch Feld
-=======
-    if ((Durchfluss_Liste_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 65) && (Y_Pos_Touch <= 105))   //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {     
       /* Touch Feld [2500 Nl/min] Taste ausführen */
       if (Status_Touch_Taste)
       {                      
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 0, 85, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "2500 Nl/min");   //Taste anzeigen gedrückt               
         
         Display.gfx_Button(Status_Touch_Taste, 50, 360, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Berechnung");   //Taste anzeigen ungedrückt
-=======
-        /* [2500 Nl/min] Taste anzeigen Funktion aktiv */
-        Display.gfx_Button(Status_Touch_Taste, 0, 85, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "2500 Nl/min");                  //Taste anzeigen gedrückt               
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Vorgaben */
         Einheit_Analog = 10;              //Einheit Analog vorgeben (10=Durchfluss 1000Nl/min)
@@ -772,30 +588,17 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 /********************************************************************************************************************/
 
      /* Touch Feld abfragen [100 Grad] Taste gedrückt */
-<<<<<<< HEAD
     if ((Temperatur_Liste_1_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 65) && (Y_Pos_Touch <= 105))   //Überwachung Touch Feld
-=======
-    if ((Temperatur_Liste_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 65) && (Y_Pos_Touch <= 105))   //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {     
       /* Touch Feld [100 Grad] Taste ausführen */
       if (Status_Touch_Taste)
       {       
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "150 Grad");      //Taste anzeigen ungedrückt 
         Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "350 Grad");      //Taste anzeigen ungedrückt     
 
         Display.gfx_Button(Status_Touch_Taste, 0, 85, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 Grad");      //Taste anzeigen gedrückt               
 
         Display.gfx_Button(Status_Touch_Taste, 50, 360, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Berechnung");   //Taste anzeigen nicht drückbar
-=======
-        /* [150 Grad] und [350 Grad] Taste anzeigen Funktion deaktiviert */
-        Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "150 Grad");         //Taste anzeigen ungedrückt 
-        Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "350 Grad");         //Taste anzeigen ungedrückt     
-
-        /* [100 Grad] Taste anzeigen Funktion aktiv */
-        Display.gfx_Button(Status_Touch_Taste, 0, 85, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 Grad");          //Taste anzeigen gedrückt               
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Vorgaben */
         Einheit_Analog = 20;              //Einheit Analog vorgeben (20=Temperatur 100Grad)
@@ -811,30 +614,17 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 /********************************************************************************************************************/
 
     /* Touch Feld abfragen [150 Grad] Taste gedrückt */
-<<<<<<< HEAD
     if ((Temperatur_Liste_1_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 115) && (Y_Pos_Touch <= 155))   //Überwachung Touch Feld
-=======
-    if ((Temperatur_Liste_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 115) && (Y_Pos_Touch <= 155))   //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {      
       /* Touch Feld [150 Grad] Taste ausführen */
       if (Status_Touch_Taste)
       {                   
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 Grad");       //Taste anzeigen ungedrückt
         Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "350 Grad");      //Taste anzeigen ungedrückt     
 
         Display.gfx_Button(Status_Touch_Taste, 0, 135, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "150 Grad");     //Taste anzeigen gedrückt               
 
         Display.gfx_Button(Status_Touch_Taste, 50, 360, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Berechnung");   //Taste anzeigen nicht drückbar
-=======
-        /* [100 Grad] und [350 Grad] Taste anzeigen Funktion deaktiviert */
-        Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 Grad");          //Taste anzeigen ungedrückt
-        Display.gfx_Button(Status_Touch_Taste, 0, 185, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "350 Grad");         //Taste anzeigen ungedrückt     
-
-        /* [150 Grad] Taste anzeigen Funktion aktiv */
-        Display.gfx_Button(Status_Touch_Taste, 0, 135, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "150 Grad");         //Taste anzeigen gedrückt               
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Vorgaben */
         Einheit_Analog = 21;              //Einheit Analog vorgeben (21=Temperatur 150Grad)
@@ -850,30 +640,17 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 /********************************************************************************************************************/
 
     /* Touch Feld abfragen [350 Grad] Taste gedrückt */
-<<<<<<< HEAD
     if ((Temperatur_Liste_1_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 165) && (Y_Pos_Touch <= 205))   //Überwachung Touch Feld
-=======
-    if ((Temperatur_Liste_anzeigen == true) && (X_Pos_Touch >= 0) && (X_Pos_Touch <= 150) && (Y_Pos_Touch >= 165) && (Y_Pos_Touch <= 205))   //Überwachung Touch Feld
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {     
       /* Touch Feld [350 Grad] Taste ausführen */
       if (Status_Touch_Taste)
       {       
-<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 Grad");       //Taste anzeigen ungedrückt
         Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "150 Grad");      //Taste anzeigen ungedrückt 
                            
         Display.gfx_Button(Status_Touch_Taste, 0, 185, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "350 Grad");     //Taste anzeigen gedrückt               
 
         Display.gfx_Button(Status_Touch_Taste, 50, 360, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Berechnung");   //Taste anzeigen nicht drückbar
-=======
-        /* [100 Grad] und [150 Grad] Taste anzeigen Funktion deaktiviert */
-        Display.gfx_Button(Status_Touch_Taste, 0, 85, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "100 Grad");          //Taste anzeigen ungedrückt
-        Display.gfx_Button(Status_Touch_Taste, 0, 135, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "150 Grad");         //Taste anzeigen ungedrückt 
-                           
-        /* [350 Grad] Taste anzeigen Funktion aktiv */
-        Display.gfx_Button(Status_Touch_Taste, 0, 185, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "350 Grad");         //Taste anzeigen gedrückt               
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Vorgaben */
         Einheit_Analog = 22;              //Einheit Analog vorgeben (22=Temperatur 350Grad)
@@ -898,20 +675,12 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         Display.gfx_Button(Status_Touch_Taste, 50, 300, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Set 0");                  //Taste anzeigen gedrückt
 
         /* Offset berechnen */
-<<<<<<< HEAD
         offset_current = 4.0 - sensor219.getCurrent_mA();       //Offset berechnen
-=======
-        offset_current = 4 - sensor219.getCurrent_mA();       //Offset berechnen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         delay(1000);  //Verzögerung 1000ms
         Display.gfx_Button(Status_Touch_Taste, 50, 300, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Set 0");                     //Taste anzeigen ungedrückt
 
-<<<<<<< HEAD
         SerialUSB.println(offset_current);    //Ausgabe auf USB zur testzwecke!
-=======
-        SerialUSB.println(offset_current);
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Buzzer */
         Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)                                                                           
@@ -929,11 +698,7 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         {       
           Display.gfx_Button(Status_Touch_Taste, 500, 420, RED, WHITE, Schrifttyp, Textbreite, Textrahmen, "Stopp");                  //Taste anzeigen gedrückt 
 
-<<<<<<< HEAD
           Display.gfx_Button(Status_Touch_Taste, 650, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zrugg");                  //Taste anzeigen nicht drückbar
-=======
-          Display.gfx_Button(Status_Touch_Taste, 650, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zrug");                  //Taste anzeigen nicht drückbar
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           Display.gfx_Button(Status_Touch_Taste, 350, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                 //Taste anzeigen nicht drückbar
           Display.gfx_Button(Status_Touch_Taste, 50, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Export");                 //Taste anzeigen nicht drückbar 
           Display.gfx_Button(Status_Touch_Taste, 200, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Graphik");               //Taste anzeigen nicht drückbar
@@ -961,11 +726,7 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         { 
           Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                                //Taste anzeigen gedrückt
           
-<<<<<<< HEAD
           Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");     //Taste anzeigen ungedrückt
-=======
-          Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
           Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Export");                                 //Taste anzeigen ungedrückt 
           Display.gfx_Button(Status_Touch_Taste, 200, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Graphik");                               //Taste anzeigen ungedrückt
@@ -982,7 +743,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [▲] Taste gedrückt (Auswahlliste scrollen) */
     if ((X_Pos_Touch >= 150) && (X_Pos_Touch <= 250) && (Y_Pos_Touch >= 100) && (Y_Pos_Touch <= 180))    //Überwachung Touch Feld
     {
@@ -1023,8 +783,6 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
 
 /********************************************************************************************************************/
 
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     /* Touch Feld abfragen [i] Taste gedrückt */
     if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
     {
@@ -1039,65 +797,11 @@ void Analogeanzeige(bool Bildaufbau, bool Werte_Reset)         //Funktion Analog
         Menue_angewaehlt = 7;               //Menü Info anwählen
         Bild_aufgebaut[7] = false;          //Bildschirm Info aufgebaut zurücksetzen
         Letztes_Menue = 3;                  //Letztes angewähltes Menü   
-<<<<<<< HEAD
         Info_Seite = 6;                     //Info Seite anwählen
-=======
-        Info_Seite = 4;                     //Info Seite anwählen
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       }
     }
       
 /********************************************************************************************************************/
-<<<<<<< HEAD
-=======
-
-    /* Touch Feld abfragen [▲] Taste gedrückt */
-    if ((X_Pos_Touch >= 150) && (X_Pos_Touch <= 250) && (Y_Pos_Touch >= 100) && (Y_Pos_Touch <= 180))    //Überwachung Touch Feld
-    {
-      /* Touch Feld [▲] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        Mess_Auswahl_Liste_aufgebaut = false;           //Mess Auswahl Liste aufgebaut zurücksetzen
-
-        /* Mess Auswahl Listen Seiten begrenzen */
-        if(Mess_Auswahl_Liste <= 0)                     //Mess Auswahl Liste anzahl Seiten begrenzen
-        {
-          Mess_Auswahl_Liste = 3;                       //Mess Auswahl Liste hinten beginnen + 1
-        }
-        
-        Mess_Auswahl_Liste--;                           //Mess Auswahl Liste nach oben wechseln
-
-        /* Buzzer */
-        Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)            
-      }
-    }
-
-/********************************************************************************************************************/
-
-    /* Touch Feld abfragen [▼] Taste gedrückt */
-    if ((X_Pos_Touch >= 150) && (X_Pos_Touch <= 250) && (Y_Pos_Touch >= 170) && (Y_Pos_Touch <= 250))    //Überwachung Touch Feld
-    {
-      /* Touch Feld [▼] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        Mess_Auswahl_Liste_aufgebaut = false;             //Mess Auswahl Liste aufgebaut zurücksetzen
-
-        /* Mess Auswahl Listen Seiten begrenzen */
-        if(Mess_Auswahl_Liste >= 2)                       //Mess Auswahl Liste anzahl Seiten begrenzen
-        {
-          Mess_Auswahl_Liste = -1;                        //Mess Auswahl Liste hinten beginnen - 1
-        }        
-
-        Mess_Auswahl_Liste++;                             //Mess Auswahl Liste nach unten wechseln       
-      
-        /* Buzzer */
-        Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-      }
-    }
-
-/********************************************************************************************************************/
-
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   }       //Touch Freigabe Ende
 
 /********************************************************************************************************************/

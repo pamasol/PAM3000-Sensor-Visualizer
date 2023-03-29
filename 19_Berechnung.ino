@@ -24,11 +24,7 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
-<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");     //Taste anzeigen ungedrückt
-=======
-    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Export");                                 //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                                //Taste anzeigen ungedrückt 
@@ -182,11 +178,7 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
         { 
           Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                                //Taste anzeigen gedrückt
           
-<<<<<<< HEAD
           Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");     //Taste anzeigen ungedrückt
-=======
-          Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen ungedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
           Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Export");                                 //Taste anzeigen ungedrückt 
       
@@ -227,7 +219,6 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
 
 /********************************************************************************************************************/
     
-<<<<<<< HEAD
     /* Touch Feld abfragen [Zrugg] Taste gedrückt */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
     {
@@ -235,15 +226,6 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");   //Taste anzeigen gedrückt
-=======
-    /* Touch Feld abfragen [Zrug] Taste gedrückt */
-    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
-    {
-      /* Touch Feld [Zrug] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen gedrückt
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         Gesamt_Spitzenwert = 0;                     //Gesamtspitzenwert zurücksetzen
         Spitzenwert = 0;                            //Spitzenwert zurücksetzen
@@ -321,11 +303,7 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
         /* Buzzer */
         Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
            
-<<<<<<< HEAD
         for (Messungen_Analog = 0; Messungen_Analog <= 10000; Messungen_Analog++)
-=======
-        for (Messungen_Analog = 0; Messungen_Analog <= Anzahl_Messungen; Messungen_Analog++)
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         {  
           Analogwert[Messungen_Analog] = Aktueller_Wert_Analog;       //Messwert übergeben
           SerialUSB.println();                                 
@@ -353,11 +331,7 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
         {       
           Display.gfx_Button(Status_Touch_Taste, 500, 420, RED, WHITE, Schrifttyp, Textbreite, Textrahmen, "Stopp");                  //Taste anzeigen gedrückt 
 
-<<<<<<< HEAD
           Display.gfx_Button(Status_Touch_Taste, 650, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zrugg");                  //Taste anzeigen nicht drückbar
-=======
-          Display.gfx_Button(Status_Touch_Taste, 650, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zrug");                  //Taste anzeigen nicht drückbar
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           Display.gfx_Button(Status_Touch_Taste, 350, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                 //Taste anzeigen nicht drückbar
           Display.gfx_Button(Status_Touch_Taste, 50, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Export");                 //Taste anzeigen nicht drückbar 
 
@@ -373,29 +347,6 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
     
 /********************************************************************************************************************/
 
-<<<<<<< HEAD
-=======
-    /* Touch Feld abfragen [i] Taste gedrückt */
-    if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
-    {
-      /* Touch Feld [i] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, GRAY, Schrifttyp, Textbreite, Textrahmen, "i");                  //Taste anzeigen gedrückt
-
-        /* Buzzer */
-        Buzzer(100);                          //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-
-        Menue_angewaehlt = 7;                 //Menü Info anwählen
-        Bild_aufgebaut[7] = false;            //Bildschirm Info aufgebaut zurücksetzen
-        Letztes_Menue = 19;                   //Letztes angewähltes Menü   
-        Info_Seite = 17;                      //Info Seite anwählen
-      }
-    }
-      
-/********************************************************************************************************************/
-
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     /* Touch Feld abfragen [▲] Taste gedrückt */
     if ((X_Pos_Touch >= 470) && (X_Pos_Touch <= 570) && (Y_Pos_Touch >= 35) && (Y_Pos_Touch <= 115))    //Überwachung Touch Feld
     {
@@ -430,7 +381,6 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
 
 /********************************************************************************************************************/  
 
-<<<<<<< HEAD
     /* Touch Feld abfragen [i] Taste gedrückt */
     if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
     {
@@ -451,8 +401,6 @@ void Berechnung(bool Bildaufbau, bool Werte_Reset)         //Funktion Analogeanz
       
 /********************************************************************************************************************/
 
-=======
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   }         //Touch Freigabe Ende
 
 /********************************************************************************************************************/

@@ -14,21 +14,12 @@ void mycallback(int ErrCode, unsigned char Errorbyte)
 
     if (ErrCode == Err4D_NAK)
     {
-<<<<<<< HEAD
       SerialUSB.print(F(" returned data= "));
       SerialUSB.println(Errorbyte);
     }
 
     else
       SerialUSB.println(F(""));
-=======
-      Serial.print(F(" returned data= "));
-      Serial.println(Errorbyte);
-    }
-
-    else
-      Serial.println(F(""));
->>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     while (1);               
 
 #else
