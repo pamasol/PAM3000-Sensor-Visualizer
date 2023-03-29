@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* 52.MP3 Player 
 
 - MicroSD Format FAT16, FAT32, maximum 32GB
@@ -5,6 +6,9 @@
   maxiumum 100 Verzeichnisse mit je maximum 255 Files.
 
 */
+=======
+/* 52.MP3 Player */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
 void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Player
 {
@@ -30,7 +34,11 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
     Status_Touch_Taste = BUTTON_UP;   
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                         //Taste anzeigen gedrückt
 
+<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");         //Taste anzeigen ungedrückt        
+=======
+    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");         //Taste anzeigen ungedrückt        
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 105, 200, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " - ");                                       //Taste anzeigen ungedrückt (+ Lautstärke)
     Display.gfx_Button(Status_Touch_Taste, 200, 200, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " + ");                                       //Taste anzeigen ungedrückt (- Lautstärke)
     Display.gfx_Button(Status_Touch_Taste, 360, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Zufall");                                    //Taste anzeigen ungedrückt (Wiederholung zufall)
@@ -43,21 +51,34 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
     {
       /*Rock */
       case 0:
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt        
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt (Equalizer)           
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
           
       /* Pop */
       case 1:
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
 
       /* Jazz */
       case 2:
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
 
       /* Classic */
       case 3:
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Country ");      //Taste anzeigen ungedrückt
         break;    
 
@@ -65,6 +86,10 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
       case 4:
         Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Mix     ");      //Taste anzeigen ungedrückt
         break;    
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Country ");      //Taste anzeigen ungedrückt (Equalizer)
+        break;
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     }
 
     /* Equalizer */
@@ -73,37 +98,61 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
       /* Normal */
       case 0:          
         DFMP3_Player.EQ(DFPLAYER_EQ_NORMAL);
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Normal  ");      //Taste anzeigen ungedrückt       
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Normal  ");      //Taste anzeigen ungedrückt (Equalizer)       
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
 
       /* Pop */
       case 1:
         DFMP3_Player.EQ(DFPLAYER_EQ_POP);
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
 
       /*Rock */
       case 2:
         DFMP3_Player.EQ(DFPLAYER_EQ_ROCK);
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt           
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt (Equalizer)           
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
 
       /* Jazz */
       case 3:
         DFMP3_Player.EQ(DFPLAYER_EQ_JAZZ);
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
 
       /* Classic */
       case 4:
         DFMP3_Player.EQ(DFPLAYER_EQ_CLASSIC);
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Classic ");      //Taste anzeigen ungedrückt
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Classic ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
 
       /* Bass */        
       case 5:
         DFMP3_Player.EQ(DFPLAYER_EQ_BASS);
+<<<<<<< HEAD
         Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Bass    ");      //Taste anzeigen ungedrückt
+=======
+        Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Bass    ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         break;
     }
 
@@ -127,6 +176,7 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
     Display.gfx_MoveTo(490, 270);               //Text Position (x,y)
     Display.print("Lied Nr: ");                 //Aktuelle File Nummer anzeigen
+<<<<<<< HEAD
 
     Display.gfx_MoveTo(540, 310);               //Text Position (x,y)
     Display.print(MP3_File_Nr);                 //Aktuelle MP3 File Nummer anzeigen
@@ -158,6 +208,34 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
     Display.gfx_Triangle(260, 400, 260, 440, 300, 420, WHITE);              //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
     Display.gfx_TriangleFilled(100, 400, 100, 440, 60, 420, BLACK);         //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
     Display.gfx_Triangle(100, 400, 100, 440, 60, 420, WHITE);               //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
+=======
+    
+    /* Grafik anzeigen */
+    Display.gfx_Circle(767, 30, 22, WHITE);                               //Info Kreis zeichnen (Kreis x,y,r)
+    
+    Display.gfx_CircleFilled(550, 200, 40, BLUE);                         //Play Kreis zeichnen (Kreis x,y,r)
+    Display.gfx_Circle(550, 200, 40, WHITE);                              //Play Kreis zeichnen (Kreis x,y,r)
+    Display.gfx_Triangle(530, 185, 530, 215, 560, 200, WHITE);            //Dreieck Play zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_Line(565, 185, 565, 215, WHITE);                          //Pause Linie zeichnen (Linie x1,y1,x2,y2)
+    Display.gfx_Line(575, 185, 575, 215, WHITE);                          //Pause Linie zeichnen (Linie x1,y1,x2,y2)
+       
+    Display.gfx_TriangleFilled(620, 170, 620, 230, 660, 200, BLUE);       //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_Triangle(620, 170, 620, 230, 660, 200, WHITE);            //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_TriangleFilled(480, 170, 480, 230, 440, 200, BLUE);       //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_Triangle(480, 170, 480, 230, 440, 200, WHITE);            //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
+
+    /* Playlist Graphik */
+    Display.gfx_TriangleFilled(260, 300, 260, 340, 300, 320, BLUE);       //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_Triangle(260, 300, 260, 340, 300, 320, WHITE);            //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_TriangleFilled(100, 300, 100, 340, 60, 320, BLUE);        //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_Triangle(100, 300, 100, 340, 60, 320, WHITE);             //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    
+    /* Equalizer Graphik */
+    Display.gfx_TriangleFilled(260, 400, 260, 440, 300, 420, BLUE);       //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_Triangle(260, 400, 260, 440, 300, 420, WHITE);            //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_TriangleFilled(100, 400, 100, 440, 60, 420, BLUE);        //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
+    Display.gfx_Triangle(100, 400, 100, 440, 60, 420, WHITE);             //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     
     Bild_aufgebaut[52] = true;                                            //Bildschirm aufgebaut setzen
   }
@@ -168,6 +246,7 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
   
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
   /* Aktuelle MP3 File Nummer auslesen 
      Alle Sekunden aktuelle MP3 File Nummer auslesen   
   */
@@ -192,6 +271,23 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
     }
   }
   
+=======
+  if (Lied_Nr != DFMP3_Player.readCurrentFileNumber())
+  {
+    Lied_Nr = DFMP3_Player.readCurrentFileNumber();           //Lied Nr aktuell
+    
+    Display.txt_Height(2);                                    //Texthöhe
+    Display.txt_Width(2);                                     //Textweite
+    Display.txt_Set(TEXT_COLOUR, Textfarbe);                  //Textfarbe
+    Display.txt_Inverse(OFF);                                 //Text invetieren
+    Display.txt_Bold(OFF);                                    //Text fett
+
+    Display.gfx_MoveTo(540, 310);                             //Text Position (x,y)
+    Display.print(DFMP3_Player.readCurrentFileNumber());      // Aktuelle File Nummer anzeigen
+    Display.print("    ");   
+  }
+
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 /********************************************************************************************************************/
 
   /* Doppeltaste Goto */
@@ -213,6 +309,7 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
     
+<<<<<<< HEAD
     /* Touch Feld abfragen [Zrugg] Taste gedrückt */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))     //Überwachung Touch Feld
     {
@@ -220,6 +317,15 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");   //Taste anzeigen gedrückt
+=======
+    /* Touch Feld abfragen [Zrug] Taste gedrückt */
+    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [Zrug] Taste ausführen */
+      if (Status_Touch_Taste)
+      {
+        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen gedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Buzzer */
         Buzzer(100);                                    //Aufruf Funktion Buzzer(int Buzzer_Zeit)
@@ -231,10 +337,37 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [-] Taste gedrückt (Lautstärke) */
     if ((X_Pos_Touch >= 100) && (X_Pos_Touch <= 190) && (Y_Pos_Touch >= 170) && (Y_Pos_Touch <= 230))     //Überwachung Touch Feld
     {
       /* Touch Feld [-] Taste ausführen (Lautstärke) */
+=======
+    /* Touch Feld abfragen [i] Taste gedrückt */
+    if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
+    {
+      /* Touch Feld [i] Taste ausführen */
+      if (Status_Touch_Taste)
+      {
+        Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, GRAY, Schrifttyp, Textbreite, Textrahmen, "i");                  //Taste anzeigen gedrückt
+
+        /* Buzzer */
+        Buzzer(100);                          //Aufruf Funktion Buzzer(int Buzzer_Zeit)
+        
+        Menue_angewaehlt = 7;                 //Menü Info anwählen
+        Bild_aufgebaut[7] = false;            //Bildschirm Info aufgebaut zurücksetzen
+        Letztes_Menue = 52;                   //Letztes angewähltes Menü   
+        Info_Seite = 19;                      //Info Seite anwählen
+      }
+    }
+
+/********************************************************************************************************************/
+
+    /* Touch Feld abfragen [ - ] Taste gedrückt (- Lautstärke) */
+    if ((X_Pos_Touch >= 100) && (X_Pos_Touch <= 190) && (Y_Pos_Touch >= 170) && (Y_Pos_Touch <= 230))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ + ] Taste ausführen (- Lautstärke) */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 110, 200, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " - ");   //Taste anzeigen gedrückt
@@ -254,10 +387,17 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [+] Taste gedrückt (Lautstärke) */
     if ((X_Pos_Touch >= 190) && (X_Pos_Touch <= 280) && (Y_Pos_Touch >= 170) && (Y_Pos_Touch <= 230))     //Überwachung Touch Feld
     {
       /* Touch Feld [+] Taste ausführen (Lautstärke) */
+=======
+    /* Touch Feld abfragen [ + ] Taste gedrückt (+ Lautstärke) */
+    if ((X_Pos_Touch >= 190) && (X_Pos_Touch <= 280) && (Y_Pos_Touch >= 170) && (Y_Pos_Touch <= 230))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ - ] Taste ausführen (+ Lautstärke) */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 200, 200, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, " + ");   //Taste anzeigen gedrückt
@@ -277,6 +417,7 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [Zufall] Taste gedrückt (Wiederholen zufall) */
     if ((X_Pos_Touch >= 330) && (X_Pos_Touch <= 460) && (Y_Pos_Touch >= 375) && (Y_Pos_Touch <= 435))     //Überwachung Touch Feld
     {
@@ -286,6 +427,16 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
         Display.gfx_Button(Status_Touch_Taste, 360, 405, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zufall");   //Taste anzeigen gedrückt
 
         MP3_Zufall_aktiv = true;              //MP3 Zufall setzen
+=======
+    /* Touch Feld abfragen [ Zufall ] Taste gedrückt (Wiederholen zufall) */
+    if ((X_Pos_Touch >= 330) && (X_Pos_Touch <= 460) && (Y_Pos_Touch >= 375) && (Y_Pos_Touch <= 435))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ Zufall ] Taste ausführen (Wiederholen zufall) */
+      if (Status_Touch_Taste)
+      {
+        Display.gfx_Button(Status_Touch_Taste, 360, 405, BLUE, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zufall");   //Taste anzeigen gedrückt
+        
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         DFMP3_Player.randomAll();             //Zufallsgenerator alle Files
         
         /* Buzzer */
@@ -297,6 +448,7 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [Play] Taste gedrückt (Abspielen) */
     if ((MP3_aktiv == false) && (X_Pos_Touch >= 530) && (X_Pos_Touch <= 590) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 220))     //Überwachung Touch Feld
     {
@@ -304,12 +456,25 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
       if (Status_Touch_Taste)
       {
         Display.gfx_CircleFilled(550, 200, 40, GREEN);                        //Play Kreis zeichnen (Kreis x,y,r)              
+=======
+    /* Touch Feld abfragen [ Play ] Taste gedrückt (Abspielen) */
+    if ((MP3_Ein == false) && (X_Pos_Touch >= 530) && (X_Pos_Touch <= 590) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 220))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ Play ] Taste ausführen (Abspielen) */
+      if (Status_Touch_Taste)
+      {
+              
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Display.gfx_Circle(550, 200, 40, BLACK);                             //Play Kreis zeichnen (Kreis x,y,r)
         Display.gfx_Triangle(530, 185, 530, 215, 560, 200, BLACK);           //Dreieck Play zeichnen (x, y, x2, y2, x3, y3, Farbe)
         Display.gfx_Line(565, 185, 565, 215, BLACK);                         //Pause Linie zeichnen (Linie x1,y1,x2,y2)
         Display.gfx_Line(575, 185, 575, 215, BLACK);                         //Pause Linie zeichnen (Linie x1,y1,x2,y2)
      
+<<<<<<< HEAD
         MP3_aktiv = true;                       //MP3 aktiv setzen       
+=======
+        MP3_Ein = true;                         //MP3 Ein setzen       
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         DFMP3_Player.start();                   //MP3 Start
         
         /* Buzzer */
@@ -327,6 +492,7 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [Stopp] Taste gedrückt (Pause) */
     if ((MP3_aktiv == true) && (X_Pos_Touch >= 530) && (X_Pos_Touch <= 590) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 220))     //Überwachung Touch Feld
     {
@@ -334,13 +500,26 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
       if (Status_Touch_Taste)
       {
         Display.gfx_CircleFilled(550, 200, 40, BLUE);                        //Play Kreis zeichnen (Kreis x,y,r
+=======
+    /* Touch Feld abfragen [ Stopp ] Taste gedrückt (Pause) */
+    if ((MP3_Ein == true) && (X_Pos_Touch >= 530) && (X_Pos_Touch <= 590) && (Y_Pos_Touch >= 180) && (Y_Pos_Touch <= 220))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ Stopp ] Taste ausführen (Pause) */
+      if (Status_Touch_Taste)
+      {
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Display.gfx_Circle(550, 200, 40, BLACK);                             //Play Kreis zeichnen (Kreis x,y,r)
         Display.gfx_Triangle(530, 185, 530, 215, 560, 200, BLACK);           //Dreieck Play zeichnen (x, y, x2, y2, x3, y3, Farbe)
         Display.gfx_Line(565, 185, 565, 215, BLACK);                         //Pause Linie zeichnen (Linie x1,y1,x2,y2)
         Display.gfx_Line(575, 185, 575, 215, BLACK);                         //Pause Linie zeichnen (Linie x1,y1,x2,y2)
         
+<<<<<<< HEAD
         MP3_aktiv = false;                  //MP3 aktiv zurücksetzen 
         DFMP3_Player.pause();               //MP3 Pause
+=======
+        MP3_Ein = false;                   //MP3 Ein zurücksetzen 
+        DFMP3_Player.pause();              //pause MP3
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         
         /* Buzzer */
         Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit) 
@@ -357,10 +536,17 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [<] Taste gedrückt (Next) */
     if ((X_Pos_Touch >= 420) && (X_Pos_Touch <= 480) && (Y_Pos_Touch >= 150) && (Y_Pos_Touch <= 250))     //Überwachung Touch Feld
     {
       /* Touch Feld [<] Taste ausführen */
+=======
+    /* Touch Feld abfragen [ < ] Taste gedrückt ( < ) */
+    if ((X_Pos_Touch >= 420) && (X_Pos_Touch <= 480) && (Y_Pos_Touch >= 150) && (Y_Pos_Touch <= 250))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ < ] Taste ausführen ( < ) */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Triangle(480, 170, 480, 230, 440, 200, BLACK);           //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
@@ -376,10 +562,17 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [>] Taste gedrückt (Next) */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 680) && (Y_Pos_Touch >= 150) && (Y_Pos_Touch <= 250))     //Überwachung Touch Feld
     {
       /* Touch Feld [>] Taste ausführen */
+=======
+    /* Touch Feld abfragen [ > ] Taste gedrückt ( > ) */
+    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 680) && (Y_Pos_Touch >= 150) && (Y_Pos_Touch <= 250))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ > ] Taste ausführen ( > ) */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Triangle(620, 170, 620, 230, 660, 200, BLACK);           //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
@@ -395,40 +588,64 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [< Playlist] Taste gedrückt */
     if ((X_Pos_Touch >= 40) && (X_Pos_Touch <= 120) && (Y_Pos_Touch >= 280) && (Y_Pos_Touch <= 360))     //Überwachung Touch Feld
     {
       /* Touch Feld [< Playlist] Taste ausführen */
+=======
+    /* Touch Feld abfragen [ < Playlist ] Taste gedrückt ( > Playlist) */
+    if ((X_Pos_Touch >= 40) && (X_Pos_Touch <= 120) && (Y_Pos_Touch >= 280) && (Y_Pos_Touch <= 360))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ < Playlist ] Taste ausführen ( > Playlist) */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Triangle(100, 300, 100, 340, 60, 320, BLACK);           //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
         
         Playlist--;                             //Playlist runter zählen
+<<<<<<< HEAD
         if (Playlist < 0) Playlist = 4;         //Verstellwert begrenzen
+=======
+        if (Playlist < 0) Playlist = 3;         //Verstellwert begrenzen
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         switch(Playlist)                        //Überwachen letztes Menü
         {
           /*Rock */
           case 0:
             DFMP3_Player.loopFolder(1);  //play mp3; Folder Name(1~99); File Name(1~255)
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt         
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt (Equalizer)           
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
           
           /* Pop */
           case 1:
             DFMP3_Player.loopFolder(2);  //play mp3; Folder Name(1~99); File Name(1~255)
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
 
           /* Jazz */
           case 2:
             DFMP3_Player.loopFolder(3);  //play mp3; Folder Name(1~99); File Name(1~255)
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
 
           /* Classic */
           case 3:
             DFMP3_Player.loopFolder(4);  //play mp3; Folder Name(1~99); File Name(1~255)
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Cauntry ");      //Taste anzeigen ungedrückt
             break;
 
@@ -437,6 +654,10 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
             DFMP3_Player.loopFolder(5);  //play mp3; Folder Name(1~99); File Name(1~255)
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Mix     ");      //Taste anzeigen ungedrückt
             break;                
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Cauntry ");      //Taste anzeigen ungedrückt (Equalizer)
+            break;
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         }
           
         /* Buzzer */
@@ -448,15 +669,23 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [> Playlist] Taste gedrückt */
     if ((X_Pos_Touch >= 240) && (X_Pos_Touch <= 320) && (Y_Pos_Touch >= 280) && (Y_Pos_Touch <= 360))     //Überwachung Touch Feld
     {
       /* Touch Feld [> Playlist] Taste ausführen */
+=======
+    /* Touch Feld abfragen [ > Playlist ] Taste gedrückt ( > Playlist) */
+    if ((X_Pos_Touch >= 240) && (X_Pos_Touch <= 320) && (Y_Pos_Touch >= 280) && (Y_Pos_Touch <= 360))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ > Playlist ] Taste ausführen ( > Playlist) */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Triangle(260, 300, 260, 340, 300, 320, BLACK);           //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
 
         Playlist++;                         //Playlist hoch zählen
+<<<<<<< HEAD
         if (Playlist > 4) Playlist = 0;     //Verstellwert begrenzen  
         
         switch(Playlist)                    //Überwachen letztes Menü
@@ -490,6 +719,35 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
             DFMP3_Player.loopFolder(5);  //play mp3; Folder Name(1~99); File Name(1~255)
             Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Mix     ");      //Taste anzeigen ungedrückt
             break;                
+=======
+        if (Playlist > 3) Playlist = 0;     //Verstellwert begrenzen  
+        
+        switch(Playlist)                    //Überwachen letztes Menü
+        {
+        /*Rock */
+        case 0:
+          DFMP3_Player.loopFolder(1);  //play mp3; Folder Name(1~99); File Name(1~255)
+          Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt (Equalizer)           
+          break;
+          
+        /* Pop */
+        case 1:
+          DFMP3_Player.loopFolder(2);  //play mp3; Folder Name(1~99); File Name(1~255)
+          Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt (Equalizer)
+          break;
+
+        /* Jazz */
+        case 2:
+          DFMP3_Player.loopFolder(3);  //play mp3; Folder Name(1~99); File Name(1~255)
+          Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt (Equalizer)
+          break;
+
+        /* Classic */
+        case 3:
+          DFMP3_Player.loopFolder(4);  //play mp3; Folder Name(1~99); File Name(1~255)
+          Display.gfx_Button(Status_Touch_Taste, 110, 305, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Country ");      //Taste anzeigen ungedrückt (Equalizer)
+          break;
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         }
         
         /* Buzzer */
@@ -501,10 +759,17 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [< Equalizer] Taste gedrückt */
     if ((X_Pos_Touch >= 40) && (X_Pos_Touch <= 120) && (Y_Pos_Touch >= 380) && (Y_Pos_Touch <= 460))     //Überwachung Touch Feld
     {
       /* Touch Feld [< Equalizer] Taste ausführen */
+=======
+    /* Touch Feld abfragen [ < Equalizer ] Taste gedrückt ( < Equalizer) */
+    if ((X_Pos_Touch >= 40) && (X_Pos_Touch <= 120) && (Y_Pos_Touch >= 380) && (Y_Pos_Touch <= 460))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ < Equalizer ] Taste ausführen ( < Equalizer) */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Triangle(100, 400, 100, 440, 60, 420, BLACK);           //Dreieck Previous zeichnen (x, y, x2, y2, x3, y3, Farbe)
@@ -517,37 +782,61 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
           /* Normal */
           case 0:          
             DFMP3_Player.EQ(DFPLAYER_EQ_NORMAL);
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Normal  ");      //Taste anzeigen ungedrückt       
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Normal  ");      //Taste anzeigen ungedrückt (Equalizer)       
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
 
           /* Pop */
           case 1:
             DFMP3_Player.EQ(DFPLAYER_EQ_POP);
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Pop     ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
 
           /*Rock */
           case 2:
             DFMP3_Player.EQ(DFPLAYER_EQ_ROCK);
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt           
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Rock    ");      //Taste anzeigen ungedrückt (Equalizer)           
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
 
           /* Jazz */
           case 3:
             DFMP3_Player.EQ(DFPLAYER_EQ_JAZZ);
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Jazz    ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
 
           /* Classic */
           case 4:
             DFMP3_Player.EQ(DFPLAYER_EQ_CLASSIC);
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Classic ");      //Taste anzeigen ungedrückt
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Classic ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
 
           /* Bass */        
           case 5:
             DFMP3_Player.EQ(DFPLAYER_EQ_BASS);
+<<<<<<< HEAD
             Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Bass    ");      //Taste anzeigen ungedrückt
+=======
+            Display.gfx_Button(Status_Touch_Taste, 110, 405, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, " Bass    ");      //Taste anzeigen ungedrückt (Equalizer)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             break;
         }
         
@@ -560,10 +849,17 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Touch Feld abfragen [> Equalizer] Taste gedrückt */
     if ((X_Pos_Touch >= 240) && (X_Pos_Touch <= 320) && (Y_Pos_Touch >= 380) && (Y_Pos_Touch <= 460))     //Überwachung Touch Feld
     {
       /* Touch Feld [> Equalizer] Taste ausführen */
+=======
+    /* Touch Feld abfragen [ > Equalizer ] Taste gedrückt ( > Equalizer) */
+    if ((X_Pos_Touch >= 240) && (X_Pos_Touch <= 320) && (Y_Pos_Touch >= 380) && (Y_Pos_Touch <= 460))     //Überwachung Touch Feld
+    {
+      /* Touch Feld [ > Equalizer ] Taste ausführen ( > Equalizer) */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       if (Status_Touch_Taste)
       {
         Display.gfx_Triangle(260, 400, 260, 440, 300, 420, BLACK);           //Dreieck Next zeichnen (x, y, x2, y2, x3, y3, Farbe)
@@ -618,6 +914,7 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
     }
 
 /********************************************************************************************************************/
+<<<<<<< HEAD
 
     /* Touch Feld abfragen [i] Taste gedrückt */
     if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
@@ -638,6 +935,8 @@ void MP3_Player(bool Bildaufbau, bool Werte_Reset)          //Funktion MP3 Playe
     }
 
 /********************************************************************************************************************/
+=======
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   
   }       //Touch Freigabe Ende
 

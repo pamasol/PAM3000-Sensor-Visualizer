@@ -22,7 +22,10 @@ void Hauptmenue2(bool Bildaufbau, bool Werte_Reset)         //Funktion Hauptmenu
     /* Touch Tasten ungedrückt anzeigen */
     Display.gfx_Button(Status_Touch_Taste, 30, 60, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Neigungs Sensor");          //Taste anzeigen ungedrückt 
     Display.gfx_Button(Status_Touch_Taste, 500, 60, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "MP3 Player");              //Taste anzeigen ungedrückt
+<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 30, 140, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zaehler");                 //Taste anzeigen ungedrückt
+=======
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                                   //Taste anzeigen gedrückt
 
     /* Grafik anzeigen */
@@ -55,6 +58,29 @@ void Hauptmenue2(bool Bildaufbau, bool Werte_Reset)         //Funktion Hauptmenu
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
+=======
+    /* Touch Feld abfragen [i] Taste gedrückt */
+    if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
+    {
+      /* Touch Feld [i] Taste ausführen */
+      if (Status_Touch_Taste)
+      {
+        Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, GRAY, Schrifttyp, Textbreite, Textrahmen, "i");                  //Taste anzeigen gedrückt
+
+        /* Buzzer */
+        Buzzer(100);                          //Aufruf Funktion Buzzer(int Buzzer_Zeit)
+
+        Menue_angewaehlt = 7;                 //Menü Info anwählen
+        Bild_aufgebaut[7] = false;            //Bildschirm Info aufgebaut zurücksetzen
+        Letztes_Menue = 50;                   //Letztes angewähltes Menü
+        Info_Seite = 0;                       //Info Seite anwählen
+      }
+    }
+
+/********************************************************************************************************************/
+
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     /* Touch Feld abfragen [▲] Taste gedrückt */
     if ((X_Pos_Touch >= 350) && (X_Pos_Touch <= 450) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 70))    //Überwachung Touch Feld
     {
@@ -104,6 +130,7 @@ void Hauptmenue2(bool Bildaufbau, bool Werte_Reset)         //Funktion Hauptmenu
         Bild_aufgebaut[52] = false;           //Bildschirm Stoppuhr aufgebaut zurücksetzen
       }
     }
+<<<<<<< HEAD
 
  /********************************************************************************************************************/
 
@@ -144,6 +171,11 @@ void Hauptmenue2(bool Bildaufbau, bool Werte_Reset)         //Funktion Hauptmenu
     }
 
 /********************************************************************************************************************/   
+=======
+    
+/********************************************************************************************************************/
+   
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   }       //Touch Freigabe Ende
     
 /********************************************************************************************************************/

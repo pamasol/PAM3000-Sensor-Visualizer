@@ -1,764 +1,593 @@
+/*--------------------------------------------------------------------------------------------------------------------
+  //******************************************************************************************************************
 
-/******************************************************************************************************************
+    Programm:       PAM3000_Sensor_Visualizer_001
+    Prozessor:      Arduino Due
+    Clock:          16MHz
 
-  Programm:       PAM3000_Sensor_Visualizer_002
-  Prozessor:      Arduino Due
-  Clock:          84MHz
+    Version:        002
+    Datum:          01.05.2020
 
-  Version:        004
-  Datum:          16.01.2023
-    
-  Programmierer:  D.Bernhard, J.Glaus, M.Ruoss
+    Programmierer:  D.Bernhard, J.Glaus
    
-   
-********************************************************************************************************************
+  //******************************************************************************************************************
 
-  Änderungen:     - Programm erstellt
+     Hochladen: - Board:      "Arduino Due"
 
-  Version:        001
-  Datum:          04.12.2019
+                - Port:       "COM03(Arduino Due)"
+                - Programmer: "USBasp"
 
-  Programmierer:  D.Bernhard, J.Glaus, M.Ruoss
+  //******************************************************************************************************************
 
-********************************************************************************************************************
+  Info: - Display Auflösung 800x480pixel
 
-  Änderungen:     - Struktur/Text vereinheitlicht.
-                  - Hauptschalter LED integriert.
-                  - Lichtsensor Akkuladestand integriert.
-                  - Zusätzliche Höchstwertanzeigen bei Geschwindigkeitsanzeige Durchschnitt.
-                  - Anzeige von Listen (Letzte Werte).
-                  - Serielle Geschwindigkeit von 9600 auf 115200 Baud erhöht.
-
-                    
-  Version:        002
-  Datum:          13.08.2020
-
-  Programmierer:  M.Ruoss
-
-********************************************************************************************************************
-
-  Änderungen:     - "Alte" Stoppuhr ist Neu "Doppel-Stoppuhr.
-                  - "Neu" ist Stoppuhr, mit Start und Stop Signal.
-                    
-  Version:        003
-  Datum:          18.08.2021
-
-  Programmierer:  M.Ruoss
-
-********************************************************************************************************************
-
-  Änderungen:     - Datenexport integriert.
-                  - Verschiedene Fehler behoben.
-                  - Zähler integriert.
-
-  Version:        004
-  Datum:          16.01.2023
-
-  Programmierer:  M.Ruoss
-
-********************************************************************************************************************
-
-  Hochladen: - Board:      "Arduino Due"
-             - Port:       "COM07(Arduino Due(Native USB Port))"
-             - Programmer: "USBasp"
-
-********************************************************************************************************************
-
-  Info: 
-  
-  - Display Auflösung 800 x 480 pixel (x =  0 - 799 pixel, y = 0 - 479 pixel)
-  - Display RS232 115200 Baud
- 
-  - Achtung: "Diablo16-Serial-Arduino-Library" auf Version 1.0.0 lassen -> nicht aktualisieren!!
-             "Arduino Due" funktioniert bei der höheren Version nicht mehr mit dem Display!
-
-
-
-  - USB RS2323 9600 Baud
-
-  - SD Karte muss im FAT16 oder FAT32 formatiert sein!
-
-
-            
   Struktur:
   
-  0.Hauptmenü
+  0. Hauptmenü
+  1. Stoppuhr
+  2. Geschwindigkeitsanzeige
+  3. Analogeanzeige
+  4. Magnetpolanzeige
+  5. Einstellungen
   
-    1.Doppel-Stoppuhr
-      13.Doppel-Stoppuhr Liste
-  
-    2.Geschwindigkeitsanzeige Takt
-      14.Geschwindigkeitsanzeige Takt Liste
-    
-    3.Analogeanzeige
-
-    4.Magnetpolanzeige
-
-    5.Einstellungen
-
-    6.IO-Tester
-
-    7.Info
-
-    8.Speed Sensor
-
-    9.Distanz Sensor
- 
-    10.Geschwindigkeitsanzeige Sortierer
-      15.Geschwindigkeitsanzeige Sortierer Liste
-
-    16.Stoppuhr
-      17.Stoppuhr Liste
-
-    18.Graphik
-
-    19.Berechung
-
-  50.Hauptmenü 2
-    51.Neigungs Sensor
-    52.MP3 Player
-    53.Zähler
-
-
-
-  Arduino Due Pinbelegung:
-
-  Pin SCL1 -> (SCL) I2C Bus SCL
-  Pin SDA1 -> (SDA) I2C Bus SDA
-
-  Pin 0 -> (TX0) RS232-0 TX Display Kommunikation
-  Pin 1 -> (RX0) RS232-0 RX Display Kommunikation
-  Pin 2 -> Digital Ausgang Buzzer       
-  Pin 3 -> Digital Ausgang Hauptschalter LED 
-  Pin 4 -> Digital Ausgang Reset Display
-  Pin 5 -> Digital Ausgang Mosfet Versorgung 24VDC
-  Pin 6 -> 
-  Pin 7 -> Digital Eingang Hallsensor
-  Pin 8 -> Digital Eingang Interrupt 8
-  Pin 9 -> Digital Eingang Interrupt 9
-  Pin 10 -> (CS)   SPI CS 
-  Pin 11 -> (MOSI) SPI MOSI
-  Pin 12 -> (MISO) SPI MISO
-  Pin 13 -> (CLK)  SPI CLK
-  Pin 14 -> (TX3) RS232-3 TX
-  Pin 15 -> (RX3) RS232-3 RX
-  Pin 16 -> (TX2) RS232-2 TX
-  Pin 17 -> (RX2) RS232-2 RX
-  Pin 18 -> (TX1) RS232-1 TX MP3 Player Kommunikation
-  Pin 19 -> (RX1) RS232-1 RX MP3 Player Kommunikation
-  Pin 20 -> (SDA) I2C Bus SDA (Standart I2C) Stromsensor INA219 [0x40], Echtzeituhr DS1307 [0x68], Distanzsensor VL53LOX [0x29], 6-Achsen Gyro [0x6A]
-  Pin 21 -> (SCL) I2C Bus SCL (Standart I2C) Stromsensor INA219 [0x40], Echtzeituhr DS1307 [0x68], Distanzsensor VL53LOX [0x29], 6-Achsen Gyro [0x6A]
-  Pin 22 ->
-  Pin 23 ->
-  Pin 24 ->
-  Pin 25 ->
-  Pin 26 ->
-  Pin 27 ->
-  Pin 28 ->  
-  Pin 29 ->
-  Pin 30 ->
-  Pin 31 ->
-  Pin 32 ->
-  Pin 33 ->
-  Pin 34 ->
-  Pin 35 ->
-  Pin 36 ->
-  Pin 37 ->
-  Pin 38 ->
-  Pin 39 ->
-  Pin 40 ->
-  Pin 41 ->
-  Pin 42 ->
-  Pin 43 ->
-  Pin 44 ->
-  Pin 45 ->
-  Pin 46 ->
-  Pin 47 ->
-  Pin 48 ->
-  Pin 49 ->  
-  Pin 50 ->
-  Pin 51 ->
-  Pin 52 ->
-  Pin 53 ->
-
-  Pin A0 -> Analog Eingang Lichtsensor Akkuladestand
-  Pin A1 -> Analog Eingang Magnetfeldsensor SS495A
-  Pin A2 ->
-  Pin A3 ->
-  Pin A4 ->
-  Pin A5 ->
-  Pin A6 ->
-  Pin A7 ->
-  Pin A8 -> Analog Eingang Spannungsteiler Adapter Typ
-  Pin A9 ->
-  Pin A10 ->
-  Pin A11 ->
-
-  Pin DAC0 -> 
-  Pin DAC1 ->
-
-  Pin CANTX ->
-  Pin CANRX ->
-
-  USB -> Native USB Port 9600 Baud
-
-
-
-  Noch zu erledigen: 
-
-- Bei Geschwindigkeitsanzeige Takt noch Kopfanzahl integrieren,
-  imfalle es nur einen Rundenzähler hat!
-
-- IO Tester -> Digital Eingang, 
-            -> Digital Eingang Exi (8VDC)
-            -> Digital Ausgang  
-
-- Akkuladestand auswerten
-
-
-- Funktionen mit Bildaufbau und Reset erweitern!
-
-
-
-- Standbymodus
-
-- Aktuelle Daten speichern
-
-- Datenlogger
-
-        
 */
 
-/********************************************************************************************************************/
-/*      
-  Problemlösungen:  - PAM3000 läst sich nicht aufstarten: - Spannung vom Verteilerboard falsch eingestellt,
-                                                            der kleine Switch muss auf 5VDC sein!
-                                                          - Bibliothek wurde auf neusten Stand aktualisiert,
-                                                            es kann sein das die Neuere Version nicht unterstütz wird!
-                                                            Die betreffenden library auf alte Version zurück wechseln.
- 
-                    - Keine Kommunikation mit Arduino Due: - "erase" Reset drücken auf Board, und dann den "Normalen"
-                                                             Reset drücken, dann sollte die USB Schnittstelle wieder
-                                                             verbinden.
+//********************************************************************************************************************
 
-                    - Keine Kommunikation mit Display: - MP3 Player Modul fehlt, Schnittstelle "hängt" sich auf!
-                                                          
-*/
-/********************************************************************************************************************/
+#define DisplaySerial Serial                  //define für Hallsensor
+#define HALL_SENSOR 7                         //define für Hallsensor
 
-/* SD Karte*/
-#include <SPI.h>
-#include <SD.h>
+#include <Diablo_Const4D.h>                   //include für Display
+#include <Diablo_Serial_4DLib.h>              //include für Display
 
-/* Echtzeituhr DS1307
-   Library "Grove - RTC DS1307" Version 1.0.0 
-*/
-#include <Wire.h>
-#include "DS1307.h"                             
-DS1307 Uhr;                                  
+#include <Wire.h>                             //include für INA219 Analoge Anzeige
+#include <Adafruit_INA219.h>                  //include für INA219 Analoge Anzeige 
 
-/* Display 4D Systems 
-   Library "Diablo16-Serial-Arduino-Library" Version 1.0.0 
-*/
-#include <Diablo_Const4D.h>                  
-#include <Diablo_Serial_4DLib.h>             
-#define DisplaySerial Serial                  
-Diablo_Serial_4DLib Display(&DisplaySerial);  
+Adafruit_INA219 sensor219;                    //Declare für INA219
 
-/* Stromsensor INA219 
-   Library "Adafruit INA219" Version 1.2.0
-*/
-#include <Wire.h>                        
-#include <Adafruit_INA219.h> 
-#include "Filter.h"          //Analogerfilter
-#include "MegunoLink.h"       //Analogerfilter      
-Adafruit_INA219 sensor219;                    
+Diablo_Serial_4DLib Display(&DisplaySerial);  //Serielle Kommunikation mit Display
 
-/* Speed Sensor LM393 */
-//#include "TimerOne.h"
+//********************************************************************************************************************
 
-/* Distanzsensor VL53LOX 
-   Library "Adafruit_VL53L0X" Version 1.1.3
-*/
-#include "Adafruit_VL53L0X.h"
-#define LOX_ADDRESS 0x29        //0x29 Adresse steht auf dem Sensor!
-Adafruit_VL53L0X lox = Adafruit_VL53L0X();
+int interruptPin = 8;               //Pin 8 für Interrupt
+int interruptPin2 = 9;              //Pin 9 für Interrupt
 
-/* 6-Achsen Gyro 
-   Library "Seeed Arduino LSM6DS3" Version 2.0.3
-*/
-#include "SparkFunLSM6DS3.h"
-#include "Wire.h"                      
-#include "SPI.h"                       
-LSM6DS3Core Gyro( I2C_MODE, 0x6A );       //0x6A Adresse steht auf dem Sensor!
-
-/* MP3 Player 
-   Library "DFRobotDFPlayerMini" Version 1.0.5 
-*/
-#include "Arduino.h"   
-#include "DFRobotDFPlayerMini.h"
-
-DFRobotDFPlayerMini DFMP3_Player; 
-void printDetail(uint8_t type, int value);
-
-/********************************************************************************************************************/
-
-/* Ports */
-const byte DA_Buzzer = 2;                  //Digital Ausgang Buzzer
-const byte DA_Hauptschalter_LED = 3;       //Digital Ausgang Hauptschalter LED
-const byte DA_Display_Reset = 4;           //Digital Ausgang Display Reset
-const byte DA_Versorgung_24VDC = 5;        //Digital Ausgang Versorgung 24VDC
-const byte DE_Hallsensor = 7;              //Digital Eingang Hallsensor
-const byte DE_Sensor_1 = 8;                //Digital Eingang Sensor 1
-const byte DE_Sensor_2 = 9;                //Digital Eingang Sensor 2
-const byte AD_Akkuladestand = 0;           //Analog Eingang Lichtsensor Akkuladestand
-const byte AD_Magnetfeldsensor = 1;        //Analog Eingang Magnetfeldsensor
-const byte AD_Adapter_Typ = A8;            //Analog Eingang Spannungsteiler Adapter Typ
-
-/* SD Karte*/
-File Daten_File;          //Daten File
-File buzzer;              //buzzer File
-File Messung;             //Messung File
-
-String Buzzer_String = "";                        //Buzzer
-String Buzzer_Lautstaerke_String = "";            //Buzzer Lautstärke
-String Buzzer_Ein_Aus_String = "";                //Buzzer Ein/Aus
-
-/* Echtzeituhr DS1307 */
-int Stunden;          
-int Minuten;
-int Sekunden;
-int Monat;
-int Tag;
-int Jahr;
-int Wochentag_Nr;
-char Wochentag;
-
-/* Alarm */
-bool Alarm_Ein[10];      
-int Alarm_Stunden[10];
-int Alarm_Minuten[10];
-char Alarm_Wochentag;
-
-/* Display */
 byte Status_Display;                //Status Display
+
+word Kontrast_Display = 10;         //Kontrast Display(1-15)
 
 int Textbreite = 2;                 //Textbreite
 int Textrahmen = 3;                 //Textrahmen
 
-int X_Pos_Text;                     //X Positionswert Text
-int Y_Pos_Text;                     //Y Positionswert Text
+word Schrifttyp = FONT1;            //Schrifttyp (FONT1, FONT2, FONT3)
+word Texthintergrund = GREEN;       //Texthintergrundfarbe (Menüstruktur, Reset)
+word Textfarbe = WHITE;             //Textfarbe (Menüstruktur, Reset)
+word Texthintergrund_2 = GREEN;     //Texthintergrundfarbe 2 (Menüstruktur, Reset)
+word Textfarbe_2 = BLACK;           //Textfarbe 2 (Menüstruktur, Reset)
 
-word Kontrast_Display = 10;         //Kontrast Display (1-15)
+word Status_Taste;                  //Status Touch Taste
+word X_Pos;                         //X Positionswert Touch
+word Y_Pos;                         //Y Positionswert Touch
 
-word Schrifttyp = FONT1;                  //Schrifttyp (FONT1, FONT2, FONT3)
-
-word Texthintergrund_Menue = YELLOW;      //Texthintergrundfarbe Menüstruktur
-word Textfarbe_Menue = BLACK;             //Textfarbe Menüstruktur
-
-word Texthintergrund_Taster = GREEN;      //Texthintergrundfarbe Taster ungedrückt
-word Textfarbe_Taster = WHITE;            //Textfarbe Taster ungedrückt
-
-word Texthintergrund_2_Taster = GREEN;    //Texthintergrundfarbe Taster gedrückt
-word Textfarbe_2_Taster = BLACK;          //Textfarbe Taster gedrückt
-
-word Textfarbe = WHITE;                   //Textfarbe Allgemein
-bool Text_ausblenden;                     //Text ausblenden (Textfarbe schwarz)
- 
-word Status_Touch_Taste;            //Status Touch Taste
-word X_Pos_Touch;                   //X Positionswert Touch
-word Y_Pos_Touch;                   //Y Positionswert Touch
-
-
-/* Allgemein */
-bool Bild_aufgebaut[99];            //Bildschirm aufgebaut (0-99 Bilder)
 int Menue_angewaehlt;               //Menü angewählt
-int Letztes_Menue;                  //Letztes angewähltes Menü
-int Info_Seite;                     //Info Seite
-int Info_Seite_Max = 50;            //Info Seite Max
 
-int Spannung_Adapter_Typ;           //Spannung Adapter Typ
-byte Adapter_Typ;                   //Adapter Typ
+bool Bild_aufgebaut[16];            //Bildschirm aufgebaut (0-15 Bilder)
 
-int Sensor_Akkuladestand;                       //Sensor Akkuladestand
-int Anzahl_Mittelwert_Sensor_Akkuladestand;     //Anzahl Mittelwert Sensor Akkuladestand
-int Zaehler_Mittelwert_Sensor_Akkuladestand;    //Zähler Mittelwert Sensor Akkuladestand
-long Temp_Mittelwert_Sensor_Akkuladestand;      //Temporärer Mittelwert Sensor Akkuladestand
-int Mittelwert_Sensor_Akkuladestand;            //Mittelwert Sensor Akkuladestand
-int Kleinster_Sensor_Akkuladestand;             //Kleinster Sensor Akkuladestand
-int Akkuladestand_Filter;                       //Akkuladestand Filter
-int Akkuladestand_auswerten;                    //Akkuladestand auswerten (warten auf Mittelwert)
-int Akkuladestand;                              //Akkuladestand (0-100%)
-int Akku_leer;                                  //Akkugrenzwert leer
-int Akku_laden;                                 //Akkugrenzwert laden
-int Akku_voll;                                  //Akkugrenzwert voll
+bool Start_speichern[2];            //Zeiten speichern 
+bool Zeiten_speichern[2];           //Zeiten speichern 
+bool Zeit_speichern;                //Zeiten speichern 
 
-char Text_Zurueck = 'Zrugg';         //Text Zurück
+int Stunden;                        //Stunden Anzeige 1
+int Minuten;                        //Minuten Anzeige 1
+int Sekunden;                       //Sekunden Anzeige 1
+int Millisekunden;                  //Millisekunden Anzeige 1
 
+bool Displaystopp;                  //Displaystopp
 
-/* Einstellungen */
-bool Zeit_Button = false;               //Zeit Button
+bool Reset1;                        //Reset Stoppuhr
+bool Reset2;                        //Reset Stoppuhr 2
 
-int Buzzer_Einstellungen = 0;           //Buzzer Einstellungen
-int Buzzer_Lautstaerke = 255;           //Buzzer Lautstärke
+bool Stoppuhrinterrupt;             //Stoppuhr Interrupt
+bool Stoppuhrinterrupt2;            //Stoppuhr Interrupt 2
 
-String Buzzer_Lautstaerke_string;           
+bool Geschwingigkeitinterrupt;      //Geschwindigkeitsanzeige Interrupt
+bool Geschwingigkeitinterrupt2;     //Geschwindigkeitsanzeige Interrupt 2
 
-/* Doppel-Stoppuhr */
-bool Startzeit_speichern_D_Stoppuhr_1;          //Startzeit speichern Doppel-Stoppuhr 1
-bool Startzeit_speichern_D_Stoppuhr_2;          //Startzeit speichern Doppel-Stoppuhr 2
+bool Start_speichern2[2];           //Zeiten speichern 2
+bool Zeiten_speichern2[2];          //Zeiten speichern 2
+bool Zeit_speichern2;               //Zeiten speichern 2
 
-bool Stoppzeit_speichern_D_Stoppuhr_1;          //Stoppzeit speichern Doppel-Stoppuhr 1
-bool Stoppzeit_speichern_D_Stoppuhr_2;          //Stoppzeit speichern Doppel-Stoppuhr 2
+int Stunden2;                       //Stunden Anzeige 2
+int Minuten2;                       //Minuten Anzeige 2
+int Sekunden2;                      //Sekunden Anzeige 2
+int Millisekunden2;                 //Millisekunden Anzeige 2
 
-int Stunden_D_Stoppuhr_1;             //Stunden Doppel-Stoppuhr 1
-int Stunden_D_Stoppuhr_2;             //Stunden Doppel-Stoppuhr 2
-int Minuten_D_Stoppuhr_1;             //Minuten Doppel-Stoppuhr 1
-int Minuten_D_Stoppuhr_2;             //Minuten Doppel-Stoppuhr 2
-int Sekunden_D_Stoppuhr_1;            //Sekunden Doppel-Stoppuhr 1
-int Sekunden_D_Stoppuhr_2;            //Sekunden Doppel-Stoppuhr 2
-int Millisekunden_D_Stoppuhr_1;       //Millisekunden Doppel-Stoppuhr 1
-int Millisekunden_D_Stoppuhr_2;       //Millisekunden Doppel-Stoppuhr 2
+unsigned long Start_Zeit_Stoppuhr[2];         //Start Zeit Stoppuhr 1
+unsigned long Stop_Zeit_Stoppuhr[2];          //Stop Zeit Stoppuhr 1
+unsigned long Zeiten_Stoppuhr_1[9];           //Zeiten Stoppuhr 1 (0-9)
 
-int Listen_Startwert_D_Stoppuhr;      //Listen Startwert Doppel-Stoppuhr
+unsigned long Start_Zeit;                     //Start Stoppuhr 1
+unsigned long Stopp_Zeit;                     //Stopp Stoppuhr 1
 
-int Messungen_D_Stoppuhr_1;           //Messungen Doppel-Stoppuhr 1
-int Messungen_D_Stoppuhr_2;           //Messungen Doppel-Stoppuhr 2
+unsigned long Start_Zeit_Stoppuhr2[2];        //Start Zeit Stoppuhr 2
+unsigned long Stop_Zeit_Stoppuhr2[2];         //Stop Zeit Stoppuhr 2
+unsigned long Zeiten_Stoppuhr_2[9];           //Zeiten Stoppuhr 2 (0-9)
 
-volatile unsigned long Startzeit_D_Stoppuhr_1;     //Startzeit Doppel-Stoppuhr 1
-volatile unsigned long Startzeit_D_Stoppuhr_2;     //Startzeit Doppel-Stoppuhr 2
+unsigned long Start_Zeit2;                    //Start Stoppuhr 2
+unsigned long Stopp_Zeit2;                    //Stopp Stoppuhr 2
 
-volatile unsigned long Zeit_D_Stoppuhr_1;          //Zeit Doppel-Stoppuhr 1
-volatile unsigned long Zeit_D_Stoppuhr_2;          //Zeit Doppel-Stoppuhr 2
+float Start_Zeit_Geschwindigkeit;             //Start Zeit für Geschwindigkeitsanzeige
+unsigned long Stopp_Zeit_Geschwindigkeit;     //Stopp Zeit für Geschwindigkeitsanzeige
+unsigned long Zeiten_Geschwindigkeit_1[9];    //Geschwindigeitswert Speichern
+unsigned long Hoechstwert;                    //Hoechstwert von Geschwindigkeitsanzeige
 
-unsigned long Zeiten_D_Stoppuhr_1[60];    //Zeiten Doppel-Stoppuhr 1 (0-59)
-unsigned long Zeiten_D_Stoppuhr_2[60];    //Zeiten Doppel-Stoppuhr 2 (0-59)
+float Start_Zeit_Geschwindigkeit2;            //Start Zeit für Geschwindigkeitsanzeige 2
+unsigned long Stopp_Zeit_Geschwindigkeit2;    //Stopp Zeit für Geschwindigkeitsanzeige 2
+unsigned long Zeiten_Geschwindigkeit_2[9];    //Geschwindigeitswert 2 Speichern
+unsigned long Hoechstwert2;                   //Hoechstwert von Geschwindigkeitsanzeige 2
 
-unsigned long Hoechstwert_D_Stoppuhr_1;        //Höchstwert Doppel-Stoppuhr 1
-unsigned long Hoechstwert_D_Stoppuhr_2;        //Höchstwert Doppel-Stoppuhr 2
-
-unsigned long Summe_Mittelwert_D_Stoppuhr_1;   //Summe Mittelwert Doppel-Stoppuhr 1
-unsigned long Summe_Mittelwert_D_Stoppuhr_2;   //Summe Mittelwert Doppel-Stoppuhr 1
-
-unsigned long Mittelwert_D_Stoppuhr_1;         //Mittelwert Doppel-Stoppuhr 1
-unsigned long Mittelwert_D_Stoppuhr_2;         //Mittelwert Doppel-Stoppuhr 2
-       
-unsigned long Kleinstwert_D_Stoppuhr_1;        //Kleinstwert Doppel-Stoppuhr 1
-unsigned long Kleinstwert_D_Stoppuhr_2;        //Kleinstwert Doppel-Stoppuhr 2
+unsigned long Start_Zeit3;                    //Start Geschwindikeitsanzeige
+unsigned long Stopp_Zeit3;                    //Stopp Geschwindikeitsanzeige
 
 
-/* Stoppuhr */
-bool Freigabe_Messung_Stoppuhr;             //Freigabe Messung Stoppuhr
-bool Messung_aktiv_Stoppuhr;                //Messung aktiv Stoppuhr
-bool Startzeit_speichern_Stoppuhr;          //Startzeit speichern Stoppuhr
-bool Stoppzeit_speichern_Stoppuhr;          //Stoppzeit speichern Stoppuhr
 
-int Stunden_Stoppuhr;             //Stunden Stoppuhr
-int Minuten_Stoppuhr;             //Minuten Stoppuhr
-int Sekunden_Stoppuhr;            //Sekunden Stoppuhr
-int Millisekunden_Stoppuhr;       //Millisekunden Stoppuhr
-
-int Listen_Startwert_Stoppuhr;      //Listen Startwert Stoppuhr
-int Messungen_Stoppuhr;             //Messungen Stoppuhr
-
-volatile unsigned long Startzeit_Stoppuhr;     //Startzeit Stoppuhr
-volatile unsigned long Zeit_Stoppuhr;          //Zeit Stoppuhr
-
-unsigned long Zeiten_Stoppuhr[60];            //Zeiten Stoppuhr (0-59)
-unsigned long Hoechstwert_Stoppuhr;           //Höchstwert Stoppuhr
-unsigned long Summe_Mittelwert_Stoppuhr;      //Summe Mittelwert Stoppuhr
-unsigned long Mittelwert_Stoppuhr;            //Mittelwert Stoppuhr     
-unsigned long Kleinstwert_Stoppuhr;           //Kleinstwert Stoppuhr
-unsigned long Ref_Wert_Stoppuhr;              //Rererenzwert Stoppuhr
-unsigned long Ref_Wert_abweichung_Stoppuhr;   //Rererenzwert abweichung Stoppuhr
+bool Geschwindigkeit_Stopp;                   //Stoppzeit Geschwindigkeitsanzeige
+bool Geschwindigkeit_Stopp2;                  //Stoppzeit Geschwindigkeitsanzeige 2
 
 
-/* Geschwindgkeitsanzeige Takt */
-bool Startzeit_speichern_Geschw_Takt_1;       //Startzeit speichern Geschwindigkeit Takt 1
-bool Startzeit_speichern_Geschw_Takt_2;       //Startzeit speichern Geschwindigkeit Takt 2
+bool Geschwingigkeitinterrupt_Durchschnitt;   //Durchschnitt Geschwindigkeitsanzeige
+bool Geschwingigkeitinterrupt_Durchschnitt2;  //Durchschnitt Geschwindigkeitsanzeige 2
 
-bool Messung_aktiv_Geschw_Takt_1;               //Messung aktiv Geschwindigkeit Takt 1
-bool Messung_aktiv_Geschw_Takt_2;               //Messung aktiv Geschwindigkeit Takt 2
+bool Zeit_speichern5;                         //Zeiten Speichern5
 
-bool Geschw_Stopp_Takt_1;                     //Geschwindigkeit Stopp Takt 1
-bool Geschw_Stopp_Takt_2;                     //Geschwindigkeit Stopp Takt 2
+bool Geschwingigkeitinterrupt3;               //Geschwindigkeitsanzeige Durchschnitt Interrupt
+bool Geschwingigkeitinterrupt4;               //Geschwindigkeitsanzeige Durchschnitt Interrupt 2
 
-int Listen_Startwert_Gesch_Takt;                //Listen Startwert Geschwindigkeit Takt
+unsigned long Stopp_Zeit_Geschwindigkeit3;    //Stopp Zeit Geschwindigkeitsanzeige
+unsigned long Stopp_Zeit_Geschwindigkeit4;    //Stopp Zeit Geschwindigkeitsanzeige2
+unsigned long Start_Zeit_Geschwindigkeit3;    //Start Zeit Geschwindigkeitsanzeige
+unsigned long Start_Zeit_Geschwindigkeit4;    //Start Zeit Geschwindigkeitsanzeige2
 
-volatile unsigned long Startzeit_Geschw_Takt_1;        //Startzeit Geschwindigkeit Takt 1
-volatile unsigned long Startzeit_Geschw_Takt_2;        //Startzeit Geschwindigkeit Takt 2
+unsigned long Hoechstwert3 = 0;               //Höchstwert Geschwindigkeitsanzeige
+unsigned long Hoechstwert4 = 0;               //Höchstwert Geschwindigkeitsanzeige
 
-volatile unsigned long Stoppzeit_Geschw_Takt_1;        //Stoppzeit Geschwindigkeit Takt 1
-volatile unsigned long Stoppzeit_Geschw_Takt_2;        //Stoppzeit Geschwindigkeit Takt 2
+bool Reset3;                                  //Reset3
 
-unsigned long Hoechstwert_Geschw_Takt_1;      //Höchstwert Geschwindigkeit Takt 1
-unsigned long Hoechstwert_Geschw_Takt_2;      //Höchstwert Geschwindigkeit Takt 2
+unsigned long Zeiten_Geschwindigkeit_3[9];    //Zeiten Geschwindigkeit für Durchschnitt
+long Durchschnittanzahl;                      //Durchschnittanzahl
+bool Interrupt_Durchschnitt;                  //Interrupt Durchschnitt
 
-unsigned long Zeiten_Geschw_Takt_1[60];       //Zeiten Geschwindigkeit Takt 1 (0-59)
-unsigned long Zeiten_Geschw_Takt_2[60];       //Zeiten Geschwindigkeit Takt 2 (0-59)
-
-
-/* Geschwindigkeitsanzeige Sortierer */
-volatile bool Messung_Ein_Geschw_Sort;                   //Messung Ein Geschwindigkeit Sortierer          
- 
-bool Startzeit_speichern_Geschw_Sort_1;         //Startzeit speichern Geschwindigkeit Sortierer 1
-bool Startzeit_speichern_Geschw_Sort_2;         //Startzeit speichern Geschwindigkeit Sortierer 2
-
-bool Messung_aktiv_Geschw_Sort_1;               //Messung aktiv Geschwindigkeit Sortierer 1
-bool Messung_aktiv_Geschw_Sort_2;               //Messung aktiv Geschwindigkeit Sortierer 2
-
-volatile bool Freigabe_Interrupt_Geschw_Sort_1;          //Freigabe Interrupt Geschwindigkeit Sortierer 1
-volatile bool Freigabe_Interrupt_Geschw_Sort_2;          //Freigabe Interrupt Geschwindigkeit Sortierer 2
-
-int Messungen_Geschw_Sort_1;                    //Messungen Geschwindigkeit Sortierer 1
-int Messungen_Geschw_Sort_2;                    //Messungen Geschwindigkeit Sortierer 2
-
-int Zeitsaeule_Gesch_Sort_1;                    //Zeitsäule Geschwindigkeit Sortierer 1
-int Zeitsaeule_Gesch_Sort_2;                    //Zeitsäule Geschwindigkeit Sortierer 2
-
-int Sensor_Logik_Sort_1;                        //Sensor Logik Geschwindigkeit Sortierer 1
-int Sensor_Logik_Sort_2;                        //Sensor Logik Geschwindigkeit Sortierer 2
-
-int Listen_Startwert_Gesch_Sort;                //Listen Startwert Geschwindigkeit Sortierer
-      
-volatile unsigned long Startzeit_Geschw_Sort_1;          //Startzeit Geschwindigkeit Sortierer 1
-volatile unsigned long Startzeit_Geschw_Sort_2;          //Startzeit Geschwindigkeit Sortierer 2
-
-volatile unsigned long Stoppzeit_Geschw_Sort_1;          //Stoppzeit Geschwindigkeit Sortierer 1
-volatile unsigned long Stoppzeit_Geschw_Sort_2;          //Stoppzeit Geschwindigkeit Sortierer 2
-
-unsigned long Hoechstwert_Geschw_Sort_1;        //Höchstwert Geschwindigkeit Sortierer 1
-unsigned long Hoechstwert_Geschw_Sort_2;        //Höchstwert Geschwindigkeit Sortierer 2
-
-unsigned long Hoechstwert_50_Geschw_Sort_1;        //Höchstwert 50% Geschwindigkeit Sortierer 1
-unsigned long Hoechstwert_50_Geschw_Sort_2;        //Höchstwert 50% Geschwindigkeit Sortierer 2
-
-unsigned long Summe_Mittelwert_Geschw_Sort_1;   //Summe Mittelwert Geschwindigkeit Sortierer 1
-unsigned long Summe_Mittelwert_Geschw_Sort_2;   //Summe Mittelwert Geschwindigkeit Sortierer 1
-
-unsigned long Mittelwert_Geschw_Sort_1;         //Mittelwert Geschwindigkeit Sortierer 1
-unsigned long Mittelwert_Geschw_Sort_2;         //Mittelwert Geschwindigkeit Sortierer 2
-       
-unsigned long Kleinstwert_Geschw_Sort_1;        //Kleinstwert Geschwindigkeit Sortierer 1
-unsigned long Kleinstwert_Geschw_Sort_2;        //Kleinstwert Geschwindigkeit Sortierer 2
-
-unsigned long Wertbegrenzung_Geschw_Sort = 9999;       //Wertbegrenzung Geschwindigkeit Sortierer
-
-volatile unsigned long Zaehlwert_Geschw_Sort_1;          //Zählwert Geschwindigkeit Sortierer 1
-volatile unsigned long Zaehlwert_Geschw_Sort_2;          //Zählwert Geschwindigkeit Sortierer 2
-
-unsigned long Zaehlwerte_Geschw_Sort_1[60];     //Zählwerte Geschwindigkeit Sortierer 1 (0-59)
-unsigned long Zaehlwerte_Geschw_Sort_2[60];     //Zählwerte Geschwindigkeit Sortierer 2 (0-59)
-
-
-/* Analogeanzeige */
-bool Messung_Ein_Analog;                      //Messung Ein Analog
-long Min_mA_Analog;                           //Min Strom Analog
-long Max_mA_Analog;                           //Max Strom Analog
-long Max_Wert_Analog;                         //Max Wert Analog
 long Leistung;                                //Leistung für Analogeanzeige
 
-float Aktueller_Wert_Analog;                  //Aktueller Wert Analog
+bool Reset4;                                  //Reset4
+
+bool Zeit_speichern6;                         //Zeitspeichern6
+unsigned long Zeiten_Geschwindigkeit_4[9];    //Zeiten Geschwindigkeit für Durchschnitt2
+long Durchschnittanzahl2;                     //Durchschnittanzahl2
+bool Interrupt_Durchschnitt2;                 //Interrupt Durchschnitt2
+
+float DruckSensor;                            //DruckSensor wert für Analogeanzeige
+long Max_Bar;                                 //Max Bar von DruckSensor
+long Max_mA;                                  //Max Strom von DruckSensor
+long Min_mA;                                  //Min Strom von DruckSensor
+
 float busVoltage = 0;                         //Spannung INA219
 float current = 0;                            //Strom INA219 in mA
 float power = 0;                              //Leistung INA219
 
-float offset_current = 0;                     //Offset Strom
+//********************************************************************************************************************
 
-word Log_X;
-word Log_Y;
-
-int Einheit_Analog;                           //Einheit Analog (0=Nichts Angewählt, 1=Druck 10bar, 2=Druck 20bar, 3=Druck 50bar, 4=Druck 100bar,
-                                              //                10=Durchfluss 10000Nl/min, 
-                                              //                20=Temperatur 100Grad, 21=Temperatur 150Grad, 22=Temperatur 350Grad) 
-
-int Zeitraster_Messung;                         //Zeitraster Messung
-long Messungen_Analog;                          //Messungen Analog
-int Letzte_Messung_Analog;                      //Letzte Messung Analog
-float Analogwert_Zeit[10000];                   //Analogwerte Zeit (0-10000)
-float Analogwert[10000];                        //Analogwerte (0-10000)
-float Analogwert_Max;                           //Analogwert Max
-float Analogwert_Min;                           //Analogwert Min
-
-bool Mess_Auswahl_Liste_aufgebaut = false;      //Mess Auswahl Liste aufgebaut
-int Mess_Auswahl_Liste = 0;                     //Mess Auswahl Liste
-bool Druck_Liste_1_anzeigen = false;            //Druck Liste 1 anzeigen
-bool Druck_Liste_2_anzeigen = false;            //Druck Liste 2 anzeigen
-bool Durchfluss_Liste_1_anzeigen = false;       //Durchfluss List 1 anzeigen
-bool Temperatur_Liste_1_anzeigen = false;       //Temperatur Liste 1 anzeigen
-
-/* Analoge Anzeige Berechnungs Funktion */
-bool Merker_DE_Sensor_1 = false;                //Merker DE Sensor 1
-bool Hoch_Runter_Merker = false;                //Runter Merker
-bool Display_Gedrueckt = false;                 //Display Gedrückt Merker
-
-int Aktueller_Zaehlwert = 0;                    //Berechnung Zählwert
-int Spitzenwert = 0;                            //Berechunung Spitzenwert
-int Gesamt_Spitzenwert = 0;                     //Gesamtspitzenwert
-int Anzahl_Durchschnitt_Messung = 0;            //Anzahl Durchschnitt Messung
-int Anzahl_Messungen_Impuls = 0;                //Anzahl Impuls Messungen Option
-int Zaehlwert_Max = 1000;                       //Zählwert Max Grundeinstellung 1000
-int Durchfluss_Menge = 0;                       //Durchfluss Menge
-int Zeit_Start_Messung_Minuten = 0;            //Zeit seit Start Messung Minuten
-int Zeit_Start_Messung_Sekunden = 0;           //Zeit seit Start Messung Sekunden
-
-float Durchschnitt_Messung = 0;                 //Durchschnitt Messung setzen
-float Durchschnitt_Messung_Berechnung = 0;      //Durchschnitt Messung Berechnung
-float Zeit_Start_Messung_Sekunden_float = 0;           //Zeit seit Start Messung Sekunden float
-
-long Zeit_Start = 0;                            //Start Zeit
-long Hoch_Runter_Zeit = 0;                      //Hoch Runter Zeit
-
-unsigned long Zeit_Start_Impuls = 0;            //Zeit Start Impuls
-
-/* Magnetpolanzeige */
-float Magnetfeld_bit = 0.0;                   //Magnetfeldsensor Wert bit
-float Offset_Magnetfeld_bit;                  //Umrechnungsfaktor Magnetfeldsensor Wert bit in Gs     
-float Magnetfeld_Gs = 0.0;                    //Magnetfeldsensor Wert Gs
-float Nullpunkt_Magnetfeld_bit;               //Nullpunkt Magnetfeldsensor bit
-
-/* IO Tester */
-bool Buzzer_Ein_IO_Tester;                            //Buzzer Ein IO Tester
-bool Start_Buzzer_Sensor_1_IO_Tester;                //Start Buzzer Sensor 1 IO Tester
-bool Start_Buzzer_Sensor_2_IO_Tester;                //Start Buzzer Sensor 2 IO Tester
-
-volatile unsigned long Startzeit_Buzzer_Sensor_1_IO_Tester;    //Startzeit Buzzer Sensor 1 IO Tester
-volatile unsigned long Startzeit_Buzzer_Sensor_2_IO_Tester;    //Startzeit Buzzer Sensor 2 IO Tester
-
-/* 6-Achsen Gyro */
-bool Buzzer_Ein = false;            //Buzzer Ein 
-
-int16_t Ist_X_Gyro;                 //Ist Wert X Achse Gyro 
-int16_t Ist_Y_Gyro;                 //Ist Wert Y Achse Gyro
-int16_t Ist_Z_Gyro;                 //Ist Wert Z Achse Gyro
-uint16_t Gyro_Fehlerzaehler;        //Gyro Fehlerzähler
-
-float Ist_X_Grad_Gyro;              //Ist Wert X Achse Grad Gyro
-float Ist_Y_Grad_Gyro;              //Ist Wert X Achse Grad Gyro
-float Ist_Z_Grad_Gyro;              //Ist Wert X Achse Grad Gyro
-
-float Buzzer_Gyro;                        //Buzzer Gyro
-float Ist_X_Grad_Gyro_Merker = 1000;      //X Gyro Merker
-float Ist_Y_Grad_Gyro_Merker = 1000;      //Y Gyro Merker
-
-long Buzzer_Time;                         //Buzzer Zeit setzen
-
-/* Graphik */
-bool Graphik_Anzeige = false;             //Graphik Anzeige
-bool Graphik_Freigabe = false;            //Graphik Freigabe
-bool Graph_Messung_Start = false;         //Graphik Messung Start
-bool Graphik_x_Einheit = false;           //Graphik x Einheit (false=s, true=min)
-bool Endlos_Ein = false;                  //Graphik Endlos Taster Abfrage
-bool Analog_Filter_Ein = false;           //Analog Filter Ein/Aus
-bool Graph_Raster = false;                //Graphik Raster Abfrage
-bool Graphik_Stopp = false;               //Graphik Stopp
-
-int Graphik_Text_Anzeige;                 //Graphik Text Anzeige
-int Graph_Auswahl_Liste = 0;              //Graphik Auswahl Liste
-int x;                                    //x Achse Zeit
-int x_Cursor;                             //x Cursor
-int y_Cursor;                             //y Cursor
-int Ports_Graphik = 0;                    //Ports Graphik
-
-int y_Offset = 0;                         //y Offset              
-int y_auslesen = 0;                       //y auslesen
-
-
-long Graphik_Zeit;                        //Graphik Zeitachse Zeit
-
-float y_Achse_Float;                      //y Achse als float deklarieren
-
-unsigned long Vorherige_Zeit_Graphik = 0; //Vorherige Graphik Zeit
-unsigned long Vorherige_Zeit = 0;         //Vorherige Graphik Zeit
-
-/* Speed Sensor */
-bool Speed_Messung_Ein = false;           //Speed Messung Ein
-bool Speed_Merker = false;                //Speed Merker
-
-int Frequenz_Anpassung = 0;               //Frequenz Anpassung
-
-float Speed_Inputs = 0;                   //Speed Sensor Inputs
-float Speed = 0;                          //Speed
-float Ref_Wert_Speed = 0;                 //Referenz Wert Speed Sensor
-
-unsigned long Speed_Zeit = 0;             //Speed Zeit
-
-/* MP3 Player */
-bool MP3_aktiv = false;                   //MP3 aktiv
-bool MP3_Zufall_aktiv = false;            //MP3 Zufall aktiv
-
-byte MP3_Lautstaerke;                     //MP3 Player Lautstärke (0-30)
-
-int Equalizer = 0;                        //Equalizer
-int Playlist = 0;                         //Playlist
-int MP3_File_Nr = 1;                      //MP3 File Nummer
-
-unsigned long letzte_millis_MP3_File_Nr;    //letze millis MP3 File Nummer
-
-
-/* Zähler */
-volatile bool High_Speed_Zaehler;           //High Speed Zähler (0=Normal, 1=High Speed)
-volatile bool Messung_Ein_Zaehler;          //Messung Ein Zähler          
-volatile bool Master_1_Zaehler;             //Master 1 Zähler
-
-bool Wert_addiert_Zaehler_1;                //Wert addiert Zähler 1
-bool Wert_addiert_Zaehler_2;                //Wert addiert Zähler 2
-
-volatile bool Freigabe_Interrupt_Zaehler_1;          //Freigabe Interrupt Zähler 1
-volatile bool Freigabe_Interrupt_Zaehler_2;          //Freigabe Interrupt Zähler 2
-
-bool Zaehlwerte_gespeichert_Zaehler;        //Zählwerte gespeichert Zähler
-int Listen_Startwert_Zaehler;               //Listen Startwert Zähler
-             
-volatile unsigned long Zaehlwert_Zaehler_1;          //Zählwert Zähler 1
-volatile unsigned long Zaehlwert_Zaehler_2;          //Zählwert Zähler 2
-
-unsigned long Wertbegrenzung_Zaehler = 9999;        //Wertbegrenzung Zähler
-
-unsigned long Zaehlwerte_Zaehler_1[60];     //Zählwerte Zähler 1 (0-59)
-unsigned long Zaehlwerte_Zaehler_2[60];     //Zählwerte Zähler 2 (0-59)
-
-
-/* Analogfilter Analogeanzeige */
-ExponentialFilter<float> Filter_Wert_Analog(10, 0);          //Analogfilter (0-100) stärke des Filters 0=stark, 100=schwach 
-
-/* Analogfilter Neigungssensor */
-ExponentialFilter<float> Ist_X_Filter_Gyro(40, 0);          //Analogfilter (0-100) stärke des Filters 0=stark, 100=schwach                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        0, 0);          //Analogfilter 0 - 100 stärke des Filters 0 stark / 100 schwach
-ExponentialFilter<float> Ist_Y_Filter_Gyro(40, 0);          //Analogfilter (0-100) stärke des Filters 0=stark, 100=schwach
-ExponentialFilter<float> Ist_Z_Filter_Gyro(40, 0);          //Analogfilter (0-100) stärke des Filters 0=stark, 100=schwach
-
-/********************************************************************************************************************/
-
-/* Setup 
-   Setup wird nur einmal beim aufstarten ausgeführt! */
-   
-void setup()              //Funktion Setup
+void setup()
 {
-  /* Ports */
-  pinMode(DA_Buzzer, OUTPUT);               //Digital Ausgang Pin 2 Buzzer zuordnen
-  pinMode(DA_Hauptschalter_LED, OUTPUT);    //Digital Ausgang Pin 3 Hauptschalter LED zuordnen
-  pinMode(DA_Display_Reset, OUTPUT);        //Digital Ausgang Pin 4 Display Reset zuordnen
-  pinMode(DA_Versorgung_24VDC, OUTPUT);     //Digital Ausgang Pin 5 Mosfet Versorgung 24VDC zuordnen  
-  pinMode(DE_Hallsensor, INPUT);            //Digital Eingang Pin 7 Hallsensor zuordnen 
-//  pinMode(AD_Akkuladestand, INPUT);         //Analoger Eingang PIN A0 Akkuladestand Lichtsensor zuordnen 
-//  pinMode(AD_Magnetfeldsensor, INPUT);      //Analoger Eingang PIN A1 Magnetfeldsensor zuordnen
+  
+  pinMode(interruptPin, INPUT);                          // Interrupt Pin 8 Input
+  attachInterrupt(interruptPin, Interrupt, RISING);      // Interrupt Void Interrupt
 
-  /* Interrupt
-     RISING Interrupt wird getriggert, wenn der Pin von LOW auf HIGH wechselt. */
-  pinMode(DE_Sensor_1, INPUT);              //Digital Eingang Pin 8 Sensor 1 zuordnen
-  pinMode(DE_Sensor_2, INPUT);              //Digital Eingang Pin 9 Sensor 2 zuordnen
+  pinMode(interruptPin2, INPUT);                         // Interrupt Pin 9 Input
+  attachInterrupt(interruptPin2, Interrupt2, RISING);    // Interrupt Void Interrupt2
 
-  /* INA219 Stromsensor */
-  sensor219.begin();                      //Start INA219 Stromsensor
+  pinMode(2, OUTPUT);                                    // Pin für Buzzer
 
-  /* Serieller Monitor */
-  SerialUSB.begin(9600);                   //Start des seriellen Monitors
- 
-  /* Display */ 
-  Serial.begin(115200);                   //Serial Monitor Start  
-  DisplaySerial.begin(115200);            //115200 Geschwindigkeit Serielle Schnittstelle
+  DisplaySerial.begin(9600);              //9600 Geschwindigkeit Serielle Schnittstelle
   Display.TimeLimit4D = 5000;             //Timout 5000ms
-  Display.Callback4D = mycallback;        //Fehler Auswertung Serielle Schnittstelle
+  Display.Callback4D = mycallback;        //Fehler Auswertung
+
+  pinMode(4, OUTPUT);                     //D4 auf Output
+  digitalWrite(4, HIGH);                  //Reset den Display via D4
+  delay(100);                             //Verzögerung 100ms
+  digitalWrite(4, LOW);                   //unReset den Display via D4
+
+  delay(5000);                            //Verzögerung 5000ms
+
+  Display.gfx_ScreenMode(LANDSCAPE);      //Display quer ausrichtung
+  Display.gfx_BGcolour(BLACK);            //Hintergrundfarbe bestimmen
+  Display.gfx_BevelShadow(2);             //Schatten Tasten
+  Display.touch_Set(TOUCH_ENABLE);        //Freigabe Touch Screen
+
+  Display.txt_Height(1);                                //Texthöhe
+  Display.gfx_MoveTo(160, 350);                         //Text Position x,y
+  Display.print("PAM3000-Sensor-Visualizer");           //Text Anzeigen
+  Display.print(" Version 001 / 05.12.2019 / MR");      //Text Anzeigen
+
+  delay(3000);                                          //Verzögerung 3000ms
+
+  Display.gfx_Cls();                                    //Display löschen
+
+  Zeit_speichern = true;                                //Zeiten speichern
+  Zeit_speichern2 = true;                               //Zeiten speichern 2 
+  Zeit_speichern3 = true;                               //Zeiten speichern 3
+  Zeit_speichern4 = true;                               //Zeiten speichern 4
+  Zeit_speichern5 = true;                               //Zeiten speichern 5
+  Zeit_speichern6 = true;                               //Zeiten speichern 6
+  
+  Reset1 = true;                                        //Reset
+  Reset2 = true;                                        //Reset2
+  Reset3 = true;                                        //Reset3
+  Reset4 = true;                                        //Reset4
+  
+  Stoppuhrinterrupt = false;                            //Stoppuhrinterrupt auf false setzen
+  Stoppuhrinterrupt2 = false;                           //Stoppuhrinterrupt2 auf false setzen
+  Geschwingigkeitinterrupt = false;                     //Geschwingigkeitinterrupt auf false setzen
+  Geschwingigkeitinterrupt2 = false;                    //Geschwingigkeitinterrupt2 auf false setzen
+  Geschwingigkeitinterrupt3 = false;                    //Geschwingigkeitinterrupt3 auf false setzen
+  Geschwingigkeitinterrupt4 = false;                    //Geschwingigkeitinterrupt4 auf false setzen
+  
+  Geschwindigkeit_Stopp = true;                         //Geschwingigkeit_Stopp setzen
+  
+  Interrupt_Durchschnitt = true;                        //Interrupt_Durchschnitt setzen
+  Interrupt_Durchschnitt2 = true;                       //Interrupt_Durchschnitt2 setzen
+
+  Stopp_Zeit_Geschwindigkeit3 = 0;                      //Stopp_Zeit_Geschwindigkeit3 auf 0 setzen
+  Stopp_Zeit_Geschwindigkeit4 = 0;                      //Stopp_Zeit_Geschwindigkeit4 auf 0 setzen
+
+  Leistung = 0;                                         //Leistung für Analogeanzeige auf 0 setzen
+
+  pinMode(HALL_SENSOR, INPUT);                          //Pin Hall_Sensor auf Input setzen
+
+  Serial.begin(9600);                                   //Serial Monitor Start
+  sensor219.begin();                                    //INA219 Start
+}
+
+//********************************************************************************************************************
+
+void loop()
+{
+
+  Display.gfx_Contrast(Kontrast_Display);       //Kontrast Display
+
+  switch (Menue_angewaehlt)
+  {
+ 
+//Hauptmenue
+    
+    case 0:
+    
+    Hauptmenue();               //Aufruf Funktion Hauptmenü
+      
+    break;
+
+//Stoppuhr
+
+    case 1:
+
+    Stoppuhr();                 //Aufruf Funktion Stoppuhr
+
+    break;
+
+//Geschwindigkeitsanzeige
+
+    case 2:
+
+    Geschwindigkeitsanzeige();  //Aufruf Funktion Geschwindigkeitsanzeige
+
+    break;
+
+//Analogeanzeige
+
+    case 3:
+
+    Analogeanzeige();           //Aufruf Funktion Analogeanzeige
+
+    break;
+
+//Magnetpolanzeige
+
+    case 4:
+
+    Magnetpolanzeige();         //Aufruf Funktion Magnetpolanzeige
+
+    break;
+
+//Einstellungen
+
+    case 5:
+
+    Einstellungen();            //Aufruf Funktion Einstellungen
+
+    break;
+
+//Stoppuhr Interrupt
+
+    case 6:
+
+      if (Displaystopp == true) //Überwachung Bildschirm aufgebaut
+      {
+        
+      Start_Zeit = 0;           //Start Zeit Reset
+      Stopp_Zeit = 0;           //Stopp Zeit Reset
+
+     
+        if (Zeit_speichern == true)
+        {
+          
+        Display.gfx_CircleFilled(40, 120, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen
+
+        Start_Zeit_Stoppuhr[0] = millis();                                                            //Zeit Ablesen seit Start von Arduino
+
+        Zeit_speichern = false;                                                                       //Zeit Speichern auf false setzen
+        }
+
+
+        if (digitalRead(8) == LOW)
+        {
+
+        Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
+
+        Stop_Zeit_Stoppuhr[0]=(millis())- Start_Zeit_Stoppuhr[0];                                     //Stoppzeit ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr
+
+        Zeiten_Stoppuhr_1[9]=Zeiten_Stoppuhr_1[8];                                                    //History
+        Zeiten_Stoppuhr_1[8]=Zeiten_Stoppuhr_1[7];
+        Zeiten_Stoppuhr_1[7]=Zeiten_Stoppuhr_1[6];
+        Zeiten_Stoppuhr_1[6]=Zeiten_Stoppuhr_1[5];
+        Zeiten_Stoppuhr_1[5]=Zeiten_Stoppuhr_1[4];
+        Zeiten_Stoppuhr_1[4]=Zeiten_Stoppuhr_1[3];
+        Zeiten_Stoppuhr_1[3]=Zeiten_Stoppuhr_1[2];
+        Zeiten_Stoppuhr_1[2]=Zeiten_Stoppuhr_1[1];
+        Zeiten_Stoppuhr_1[1]=Zeiten_Stoppuhr_1[0];
+        Zeiten_Stoppuhr_1[0]=Stop_Zeit_Stoppuhr[0];                
+
+        Display.txt_Height(2);                        //Texthöhe
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(580, 100);                 //Text Position x,y
+        Display.print(Zeiten_Stoppuhr_1[0]);          //Wert Anzeigen
+        Display.print(" ms    ");
+        Display.gfx_MoveTo(580, 125);                 //Text Position x,y
+        Display.print(Zeiten_Stoppuhr_1[1]);          //Wert Anzeigen
+        Display.print(" ms    ");
+        Display.gfx_MoveTo(580, 150);                 //Text Position x,y
+        Display.print(Zeiten_Stoppuhr_1[2]);          //Wert Anzeigen
+        Display.print(" ms    ");
+
+        Zeiten_speichern[0]=false;                   //Zeiten_speichern auf false setzen
+
+        Display.txt_Height(4);                       //Texthöhe
+        Display.txt_Width(3);                        //Textweite
+        Display.txt_Inverse(OFF);                    //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);         //Textfarbe Weiss
+        Display.gfx_MoveTo(80, 100);                 //Text Position x,y
+        Display.print("");
+        Display.print(Zeiten_Stoppuhr_1[0]);         //Wert Anzeigen
+        Display.print(" ms       ");   
+
+        Stunden=(Zeiten_Stoppuhr_1[0]/3600000)%24;   //Stunden, Minuten, Sekunden, Millisekunden ausrechnen
+        Minuten=(Zeiten_Stoppuhr_1[0]/60000)%60;     //Das Zeichen: "%" ist der Modulo-Operator
+        Sekunden=(Zeiten_Stoppuhr_1[0]/1000)%60;
+        Millisekunden=Zeiten_Stoppuhr_1[0];
+
+        Display.txt_Height(2);              //Texthöhe
+        Display.txt_Width(2);               //Textweite
+        Display.gfx_MoveTo(80, 150);        //Text Position x,y
+        Display.print(Stunden);             //Wert Anzeigen
+        Display.print(" : ");
+        Display.print(Minuten);             //Wert Anzeigen
+        Display.print(" : ");
+        Display.print(Sekunden);            //Wert Anzeigen
+        Display.print("      ");
+
+        Zeit_speichern = true;              //Zeit_speichern setzen
+
+        Menue_angewaehlt = 1;               //Menue_angewaehlt setzen
+        }
+
+      }
+
+      else
+      {
+        
+      Menue_angewaehlt = 0;                 //Hauptmenü
+      }
+
+    break;
+
+//Stoppuhr 2 Interrupt
+
+    case 7:
+
+      if (Displaystopp == true)        //Überwachung Bildschirm aufgebaut
+      {
+        
+      Start_Zeit2 = 0;                 //Start Zeit 2 Reset
+      Stopp_Zeit2 = 0;                 //Stopp Zeit 2 Reset      
+
+                                                                            
+        if (Zeit_speichern2 == true)
+        {
+          
+        Display.gfx_CircleFilled(40, 250, 20, GREEN); //Status Anzeigen grüner Punkt (Kreis x,y,r)    //Display Gruener Punkt Anzeigen
+
+        Start_Zeit_Stoppuhr2[0] = millis();                                                           //Zeit Ablesen seit Start von Arduino
+
+        Zeit_speichern2 = false;                                                                      //Zeit Speichern 2 auf 0 setzen
+        }
+
+
+        if (digitalRead(9) == LOW)
+        {
+
+        Display.gfx_CircleFilled(40, 250, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
+
+        Stop_Zeit_Stoppuhr2[0]=(millis())- Start_Zeit_Stoppuhr2[0];                                   //Stoppzeit 2 ausrechnen, aus aktuelle Zeit Minus Start_Zeit_Stoppuhr 2
+
+        Zeiten_Stoppuhr_2[9]=Zeiten_Stoppuhr_2[8];                                                    //History 2
+        Zeiten_Stoppuhr_2[8]=Zeiten_Stoppuhr_2[7];
+        Zeiten_Stoppuhr_2[7]=Zeiten_Stoppuhr_2[6];
+        Zeiten_Stoppuhr_2[6]=Zeiten_Stoppuhr_2[5];
+        Zeiten_Stoppuhr_2[5]=Zeiten_Stoppuhr_2[4];
+        Zeiten_Stoppuhr_2[4]=Zeiten_Stoppuhr_2[3];
+        Zeiten_Stoppuhr_2[3]=Zeiten_Stoppuhr_2[2];
+        Zeiten_Stoppuhr_2[2]=Zeiten_Stoppuhr_2[1];
+        Zeiten_Stoppuhr_2[1]=Zeiten_Stoppuhr_2[0];
+        Zeiten_Stoppuhr_2[0]=Stop_Zeit_Stoppuhr2[0];               
+
+        Display.txt_Height(2);                        //Texthöhe
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(580, 225);                 //Text Position x,y
+        Display.print(Zeiten_Stoppuhr_2[0]);          //Wert Anzeigen
+        Display.print(" ms    ");
+        Display.gfx_MoveTo(580, 250);                 //Text Position x,y
+        Display.print(Zeiten_Stoppuhr_2[1]);          //Wert Anzeigen
+        Display.print(" ms    ");
+        Display.gfx_MoveTo(580, 275);                 //Text Position x,y
+        Display.print(Zeiten_Stoppuhr_2[2]);          //Wert Anzeigen
+        Display.print(" ms    ");
+
+        Zeiten_speichern2[0]=false;
+        
+        Display.txt_Height(4);                        //Texthöhe
+        Display.txt_Width(3);                         //Textweite
+        Display.txt_Inverse(OFF);                     //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);          //Textfarbe Weiss
+        Display.gfx_MoveTo(80, 230);                  //Text Position x,y
+        Display.print("");
+        Display.print(Zeiten_Stoppuhr_2[0]);          //Wert Anzeigen
+        Display.print(" ms       ");
+
+        Stunden2=(Zeiten_Stoppuhr_2[0]/3600000)%24;   //Stunden, Minuten, Sekunden, Millisekunden ausrechnen 
+        Minuten2=(Zeiten_Stoppuhr_2[0]/60000)%60;     //Das Zeichen: "%" ist der Modulo-Operator
+        Sekunden2=(Zeiten_Stoppuhr_2[0]/1000)%60;
+        Millisekunden2=Zeiten_Stoppuhr_2[0];
+
+        Display.txt_Height(2);                        //Texthöhe 
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(80, 280);                  //Text Position x,y
+        Display.print(Stunden2);                      //Wert Anzeigen
+        Display.print(" : ");
+        Display.print(Minuten2);                      //Wert Anzeigen
+        Display.print(" : ");
+        Display.print(Sekunden2);                     //Wert Anzeigen
+        Display.print("      ");
+
+        //Display.print(" . ");
+        //Display.print(Millisekunden);
+
+        Zeit_speichern2 = true;            //Zeit_speichern 2 setzen
+
+        Menue_angewaehlt = 1;              //Menue_angewaehlt setzen
+
+        }
+      }
+      
+      else 
+      {
+        
+      Menue_angewaehlt = 0;                //Hauptmeü
+      }
+
+    break;
+
+//Geschwindigkeitsanzeige
+
+    case 8:
+
+      if (Displaystopp == true)     
+      {
+        
+     
+        if (Zeit_speichern3 == true)
+        {
+          
+        Display.gfx_CircleFilled(40, 120, 20, GREEN);                                                 //Display Gruener Punkt Anzeigen
+
+        Start_Zeit_Geschwindigkeit = millis();                                                        //Zeit Ablesen seit Start von Arduino
+
+        Zeit_speichern3 = false;                                                                      //Zeit Speichern3 auf false setzen
+
+        Geschwindigkeit_Stopp = false;                                                                //Geschwindigkeit Stopp auf flase setzen
+        }
+
+        if (Geschwindigkeit_Stopp == true)
+        {    
+
+        Display.gfx_CircleFilled(40, 120, 20, RED); //Status Anzeigen roter Punkt (Kreis x,y,r)       //Display Roter Punkt Anzeigen
+  
+        Stopp_Zeit_Geschwindigkeit=(60/((millis()- Start_Zeit_Geschwindigkeit)/1000));                //Stoppzeit ausrechnen, aus 60 durch aktuelle Zeit Minus Start_Zeit_Geschwindigkeit
+
+  
+          if (Stopp_Zeit_Geschwindigkeit >= Hoechstwert)
+          {
+            
+          Hoechstwert = Stopp_Zeit_Geschwindigkeit;     //Höchstwert Stopp_Zeit_Geschwindigkeit gleichsetzen
+          
+          Display.txt_Height(2);                        //Texthöhe
+          Display.txt_Width(2);                         //Textweite
+          Display.gfx_MoveTo(83, 160);                  //Text Position x,y
+          Display.print(Hoechstwert);                   //Wert Anzeigen
+          Display.print(" Hoechstwert  ");
+          }
+  
+        Zeiten_Geschwindigkeit_1[9]=Zeiten_Geschwindigkeit_1[8];                                      //History
+        Zeiten_Geschwindigkeit_1[8]=Zeiten_Geschwindigkeit_1[7];
+        Zeiten_Geschwindigkeit_1[7]=Zeiten_Geschwindigkeit_1[6];
+        Zeiten_Geschwindigkeit_1[6]=Zeiten_Geschwindigkeit_1[5];
+        Zeiten_Geschwindigkeit_1[5]=Zeiten_Geschwindigkeit_1[4];
+        Zeiten_Geschwindigkeit_1[4]=Zeiten_Geschwindigkeit_1[3];
+        Zeiten_Geschwindigkeit_1[3]=Zeiten_Geschwindigkeit_1[2];
+        Zeiten_Geschwindigkeit_1[2]=Zeiten_Geschwindigkeit_1[1];
+        Zeiten_Geschwindigkeit_1[1]=Zeiten_Geschwindigkeit_1[0];
+        Zeiten_Geschwindigkeit_1[0]=Stopp_Zeit_Geschwindigkeit;                
+  
+        Display.txt_Height(2);                        //Texthöhe
+        Display.txt_Width(2);                         //Textweite
+        Display.gfx_MoveTo(580, 100);                 //Text Position x,y
+        Display.print(Zeiten_Geschwindigkeit_1[0]);   //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 125);                 //Text Position x,y
+        Display.print(Zeiten_Geschwindigkeit_1[1]);   //Wert Anzeigen
+        Display.print(" cpm    ");
+        Display.gfx_MoveTo(580, 150);                 //Text Position x,y
+        Display.print(Zeiten_Geschwindigkeit_1[2]);   //Wert Anzeigen
+        Display.print(" cpm    ");
+  
+        Display.txt_Height(4);                        //Texthöhe
+        Display.txt_Width(3);                         //Textweite
+        Display.txt_Inverse(OFF);                     //Text invetieren
+        Display.txt_Bold(OFF);
+        Display.txt_Set(TEXT_COLOUR, WHITE);          //Textfarbe Weiss
+        Display.gfx_MoveTo(80, 100);                  //Text Position x,y
+        Display.print("");
+        Display.print(Zeiten_Geschwindigkeit_1[0]);   //Wert Anzeigen
+        Display.print(" cpm       ");   
+
+        Zeit_speichern3 = true;                       //Zeit_speichern3 setzen
+  
+        Menue_angewaehlt = 2;                         //Menue_angewaehlt auf 2 setzen
+  
+        Geschwindigkeit_Stopp = true;                 //Geschwindigkeitstopp setzen
+        } 
+        
+        else
+        {
+          
+        Menue_angewaehlt = 2;                         //Geschwindigkeitsanzeige
+        }
+      }
+   
+    
+    break;
+
+//Geschwindigkeitsanzeige
 
   /* Display Reset */
   digitalWrite(DA_Display_Reset, HIGH);   //Digital Ausgang Display Reset setzen
@@ -790,70 +619,12 @@ void setup()              //Funktion Setup
   /* MP3 Player */
   Serial1.begin(9600);                     //Serielle Schnittstelle 1 öffnen
 
-//  SerialUSB.println();
-//  SerialUSB.println(F("DFRobot DFPlayer Mini Demo"));
-//  SerialUSB.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
+        Geschwindigkeit_Stopp2 = false;                                                               //Geschwindigkeit_Stopp2 auf false setzen
+        }
 
-  //Use softwareSerial to communicate with mp3.
-  if (!DFMP3_Player.begin(Serial1)) 
-  {  
-    SerialUSB.println(F("Unable to begin:"));
-    SerialUSB.println(F("1.Please recheck the connection!"));
-    SerialUSB.println(F("2.Please insert the SD card!"));
-    while(true);
-  } 
     
-/********************************************************************************************************************/
-
-  /* Einschaltbildschirm */ 
-  
-  /* Buzzer */
-//  Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-
-  /* Hauptschalter LED */ 
-  digitalWrite(DA_Hauptschalter_LED, HIGH);         //Digital Ausgang Hauptschalter LED setzen
-  
-  /* Text Format */ 
-  Display.gfx_ScreenMode(LANDSCAPE);      //Display quer ausrichtung
-  Display.gfx_BGcolour(BLACK);            //Hintergrundfarbe bestimmen
-  Display.gfx_BevelShadow(2);             //Schatten Tasten
-  Display.touch_Set(TOUCH_ENABLE);        //Freigabe Touch Screen
-
-  /* Version anzeigen */
-  Display.txt_Height(1);                    //Texthöhe
-  Display.txt_Set(BLACK, WHITE);            //Textfarbe
-  Display.gfx_MoveTo(160, 410);             //Text Position (x,y)
-  Display.print("PAM3000-Sensor-Visualizer Version 004 / 16.01.2023 / MR");           //Text anzeigen
-
-  /* Pamasol anzeigen */
-  Display.txt_Height(10);                   //Texthöhe
-  Display.txt_Width(9);                     //Textweite        
-  Display.gfx_MoveTo(40, 100);              //Text Position (x,y)
-  Display.print("pamasol");                 //Text anzeigen
-
-  Display.txt_Height(5);                    //Texthöhe
-  Display.txt_Width(4);                     //Textweite       
-  Display.gfx_MoveTo(40, 250);              //Text Position (x,y)
-  Display.print("Swiss Aerosol Solutions"); //Text anzeigen
-
-  delay(3000);                              //Verzögerung 3000ms
-  Display.gfx_Cls();                        //Display löschen
-
-/********************************************************************************************************************/
-
-  /* SD Karte */
-  /* Überwachung keine Karte gesteckt */
-  if (!SD.begin(10))      //Überwachung keine Karte gesteckt
-  {
-    Display.gfx_Cls();                              //Display löschen
-    Display.txt_Height(2);                          //Texthöhe
-    Display.txt_Width(2);                           //Textweite
-    Display.txt_Set(TEXT_COLOUR, RED);              //Textfarbe
-    Display.gfx_MoveTo(100, 10);                    //Text Position (x,y)
-    Display.println("Bitte SD Karte einschieben!");   //Text anzeigen
-    Buzzer(1000);                                   //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-    delay(3000);                                    //Verzögerung 3000ms
-  }
+        if (Geschwindigkeit_Stopp2 == true)
+        {
 
   /* Daten lesen */  
   if (SD.begin(10))      //Überwachung Karte gesteckt
@@ -944,30 +715,8 @@ void setup()              //Funktion Setup
   
 /********************************************************************************************************************/
 
-  /*Einstellungen SD */
-  buzzer = SD.open("Settings/buzzer.txt", FILE_READ);                 //datalog Datei auf SD Karte öffnen
-  Buzzer_String = "";                                                 //Buzzer String zurücksetzen
-  Buzzer_Lautstaerke_String = "";                                     //Buzzer Laustärke String zurücksetzen
-  Buzzer_Ein_Aus_String = "";                                         //Buzzer Ein/Aus zurücksetzen
- 
-  while (buzzer.available())                                          //Solange das File lesbarer Text beinhaltet
-  {
-    Buzzer_String += (char)buzzer.read();                             //Buchstaben auslesen und am String anhängen
-    if (Buzzer_String == "Buzzer_Ein/Aus:") 
-    {
-      Buzzer_Ein_Aus_String = buzzer.readStringUntil('\n');           //String lesen bis Abstand
-      Buzzer_Einstellungen = Buzzer_Ein_Aus_String.toInt();           //String auf Variable Schreiben
-      Buzzer_String = "";                                             //Buzzer String zurücksetzen
-      Buzzer_Ein_Aus_String = "";                                     //Buzzer Ein/Aus zurücksetzen
-    }
-    if (Buzzer_String == "Buzzer_Lautstaerke:") 
-    {   
-      Buzzer_Lautstaerke_String = buzzer.readStringUntil('\n');       //String lesen bis Abstand
-      Buzzer_Lautstaerke = Buzzer_Lautstaerke_String.toInt();         //String auf Variable Schreiben
-      Buzzer_String = "";                                             //Buzzer String zurücksetzen
-      Buzzer_Lautstaerke_String = "";                                 //Buzzer Laustärke String zurücksetzen
-    }
-  }
+        Geschwindigkeit_Stopp2 = true;               //Geschwindigkeit_Stopp2 setzen
+        }
 
 /********************************************************************************************************************/
   
@@ -1026,32 +775,21 @@ void setup()              //Funktion Setup
   Startzeit_speichern_Geschw_Sort_1 = true;             //Startzeit speichern Geschwindigkeit Sortierer 1 setzen
   Startzeit_speichern_Geschw_Sort_2 = true;             //Startzeit speichern Geschwindigkeit Sortierer 2 setzen
 
-  Freigabe_Interrupt_Geschw_Sort_1 = true;              //Freigabe Interrupt Geschwindigkeit Sortierer 1 
-  Freigabe_Interrupt_Geschw_Sort_2 = true;              //Freigabe Interrupt Geschwindigkeit Sortierer 2
-   
-  Geschw_Stopp_Takt_1 = true;                           //Geschwingigkeit_Stopp Takt 1 setzen
-  Geschw_Stopp_Takt_2 = true;                           //Geschwingigkeit_Stopp Takt 2 setzen
-    
-  Stoppzeit_Geschw_Sort_1 = 0;                        //Stoppzeit Geschwindigkeit Sortierer 1 zurücksetzen
-  Stoppzeit_Geschw_Sort_2 = 0;                        //Stoppzeit Geschwindigkeit Sortierer 2 zurücksetzen
+      if (Displaystopp == true)                     //Überwachung Bildschirm aufgebaut
+      {
+        
+     
+        if (Zeit_speichern5 == true)
+        {
+          
+        Display.gfx_CircleFilled(40, 120, 20, GREEN);    //Display Gruener Punkt Anzeigen 
 
-  Kleinstwert_Geschw_Sort_1 = 9999;                   //Kleinstwert Geschwindigkeit Sortierer 1 auf maximumwert setzen
-  Kleinstwert_Geschw_Sort_2 = 9999;                   //Kleinstwert Geschwindigkeit Sortierer 2 auf maximumwert setzen
+        Start_Zeit_Geschwindigkeit3 = millis();          //Zeit Ablesen seit Start von Arduino
+                        
+        Zeit_speichern5 = false;                         //Zeit_speichern5 auf false setzen                                             
 
-  Sensor_Logik_Sort_1 = 1;                            //Sensor Logik Geschwindigkeit Sortierer 1 (0= - o -, 1= = o)
-  Sensor_Logik_Sort_2 = 1;                            //Sensor Logik Geschwindigkeit Sortierer 2 (0= - o -, 1= = o)
-
-  Freigabe_Interrupt_Zaehler_1 = true;                //Freigabe Interrupt Zähler 1 setzen
-  Freigabe_Interrupt_Zaehler_2 = true;                //Freigabe Interrupt Zähler 2 setzen
-
-  Leistung = 0;                                       //Leistung für Analogeanzeige auf 0 setzen
-
-  MP3_Lautstaerke = 10;                               //MP3 Player Lautstärke setzen
-  DFMP3_Player.volume(MP3_Lautstaerke);               //MP3 Player Lautstärke (0-30)
-
-  /* Startmenü anwahl */
-  Menue_angewaehlt = 0;     //Hauptmenü anwählen  
-}
+        Durchschnittanzahl = 0;                          //Durchschnittanzahl Reset
+        }
 
 /********************************************************************************************************************/
 
@@ -1171,66 +909,7 @@ void loop()         //Funktion loop
 
 /********************************************************************************************************************/
 
-    /* 17.Stoppuhr Liste */
-    case 17:
-      Stoppuhr_Liste(true, true);                 //Aufruf Funktion Stoppuhr Liste (bool Bildaufbau, bool Werte_Reset)
-      break; 
-
-/********************************************************************************************************************/
-
-    /* 18.Graphik Analogeanzeige */
-    case 18:
-      Graphik(true, true);                        //Aufruf Funktion Graphik (bool Bildaufbau, bool Werte_Reset)
-      break; 
-
-/********************************************************************************************************************/
-
-    /* 19.Berechnen Analogeanzeige */
-    case 19:
-      Berechnung(true, true);                        //Aufruf Funktion Graphik (bool Bildaufbau, bool Werte_Reset)
-      break; 
-
-/********************************************************************************************************************/
-
-    /* 50.Hauptmenü 2 */
-    case 50:
-      Hauptmenue2(true, true);                    //Aufruf Funktion Hauptmenü 2 (bool Bildaufbau, bool Werte_Reset)
-      break; 
-
-/********************************************************************************************************************/
-
-    /* 51.Neigungs Sensor */
-    case 51:
-      Neigungs_Sensor(true, true);                 //Aufruf Funktion Neigungs Sensor (bool Bildaufbau, bool Werte_Reset)
-      break; 
-
-/********************************************************************************************************************/
-
-    /* 52.MP3 Player */
-    case 52:
-      MP3_Player(true, true);                 //Aufruf Funktion MP3 Player (bool Bildaufbau, bool Werte_Reset)
-      break; 
-
-/********************************************************************************************************************/
-
-    /* 53.Zähler */
-    case 53:
-      Zaehler(true, true);                 //Aufruf Funktion Zähler (bool Bildaufbau, bool Werte_Reset)
-      break; 
-
-/********************************************************************************************************************/
-
-    /* 54.Zähler Liste */
-    case 54:
-      Zaehler_Liste(true, true);                 //Aufruf Funktion Zähler Liste (bool Bildaufbau, bool Werte_Reset)
-      break; 
-
-/********************************************************************************************************************/
-      
-  }   //loop Ende
-
-/********************************************************************************************************************/
-
+    break;
+    
+  }
 }
-
-/********************************************************************************************************************/

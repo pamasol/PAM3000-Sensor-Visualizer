@@ -30,11 +30,19 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
+<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");    //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Liste");                                  //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                                //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                     //Taste anzeigen gedrückt
+=======
+    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                             //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Liste");                                //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                              //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                   //Taste anzeigen gedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
     /* [- o -] Taste aktiv */
     if (Sensor_Logik_Sort_1 == 0)         //Überwachung Sensor Logik Geschwindigkeit Sortierer 1 (0= - o -, 1= = o)
@@ -198,11 +206,19 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
      RISING Interrupt wird getriggert, wenn der Pin von LOW auf HIGH wechselt.   
      FALLING Interrupt wird getriggert, wenn der Pin von HIGH auf LOW wechselt. */  
      
+<<<<<<< HEAD
  //   attachInterrupt(DE_Sensor_1, Interrupt_Pin_8, RISING);      //Interrupt Funktion -> Void (Interrupt_Pin_8)
  //   attachInterrupt(DE_Sensor_2, Interrupt_Pin_9, RISING);      //Interrupt Funktion -> Void (Interrupt_Pin_9)
 
     attachInterrupt(digitalPinToInterrupt(DE_Sensor_1), Interrupt_Pin_8, RISING);     //Interrupt Funktion -> Void (Interrupt_Pin_8)
     attachInterrupt(digitalPinToInterrupt(DE_Sensor_2), Interrupt_Pin_9, RISING);     //Interrupt Funktion -> Void (Interrupt_Pin_9)   
+=======
+    attachInterrupt(DE_Sensor_1, Interrupt_Pin_8, RISING);      //Interrupt Funktion -> Void (Interrupt_Pin_8)
+    attachInterrupt(DE_Sensor_2, Interrupt_Pin_9, RISING);      //Interrupt Funktion -> Void (Interrupt_Pin_9)
+
+//    attachInterrupt(DE_Sensor_1, Interrupt_Pin_8, FALLING);      //Interrupt Funktion -> Void (Interrupt_Pin_8)
+//    attachInterrupt(DE_Sensor_2, Interrupt_Pin_9, FALLING);      //Interrupt Funktion -> Void (Interrupt_Pin_9)    
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     
 //    digitalWrite(DA_Versorgung_24VDC, HIGH);     //Digital Ausgang Versorgung 24VDC setzen
 //    delay(1000);                              //Verzögerung 1000ms   
@@ -224,7 +240,11 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
     /* Messung aktiv Geschwindigkeit Sortierer 1 und 2 */
+=======
+    /* Messung aktiv Geschwindigkeit Sortierer 1 */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     if ((Messung_Ein_Geschw_Sort == true) && ((digitalRead(DE_Sensor_1) == HIGH) || (digitalRead(DE_Sensor_2) == HIGH)))           //Überwachung Eingang Pin 8 und Pin 9
     {    
       /* Geschwindigkeit Sortierer 1 und 2 gestartet
@@ -306,10 +326,17 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
 /********************************************************************************************************************/
 
     /* Zählwert addiert Geschwindigkeit Sortierer 1 zurücksetzen */
+<<<<<<< HEAD
     if ((Messung_aktiv_Geschw_Sort_1 == true) && (digitalRead(DE_Sensor_1) == LOW)) Freigabe_Interrupt_Geschw_Sort_1 = true;         //Freigabe Interrupt zurücksetzen
   
     /* Zählwert addiert Geschwindigkeit Sortierer 2 zurücksetzen */
     if ((Messung_aktiv_Geschw_Sort_2 == true) && (digitalRead(DE_Sensor_2) == LOW)) Freigabe_Interrupt_Geschw_Sort_2 = true;         //Freigabe Interrupt zurücksetzen
+=======
+    if ((Messung_aktiv_Geschw_Sort_1 == true) && (digitalRead(DE_Sensor_1) == LOW)) Zaehler_Geschw_Sort_1 = true;         //Zählwert addiert zurücksetzen
+  
+    /* Zählwert addiert Geschwindigkeit Sortierer 2 zurücksetzen */
+    if ((Messung_aktiv_Geschw_Sort_2 == true) && (digitalRead(DE_Sensor_2) == LOW)) Zaehler_Geschw_Sort_2 = true;         //Zählwert addiert zurücksetzen
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
  
 /********************************************************************************************************************/
 
@@ -498,6 +525,11 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
             Zaehlwerte_Geschw_Sort_1[21] = Zaehlwerte_Geschw_Sort_1[20];
             Zaehlwerte_Geschw_Sort_1[20] = Zaehlwerte_Geschw_Sort_1[19];
                   
+<<<<<<< HEAD
+=======
+            /* History 
+               Schieberegister letzten zwanzig Werte. */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             Zaehlwerte_Geschw_Sort_1[19] = Zaehlwerte_Geschw_Sort_1[18];
             Zaehlwerte_Geschw_Sort_1[18] = Zaehlwerte_Geschw_Sort_1[17];
             Zaehlwerte_Geschw_Sort_1[17] = Zaehlwerte_Geschw_Sort_1[16];
@@ -547,7 +579,11 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
         /* Verzögerung für nächste Messung */
         delay(100);                                   //Verzögerung 100ms
       
+<<<<<<< HEAD
         Freigabe_Interrupt_Geschw_Sort_1 = true;      //Freigabe Interrupt Geschwindigkeit Sortierer 1 setzen
+=======
+        Zaehler_Geschw_Sort_1 = true;
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Startzeit_speichern_Geschw_Sort_1 = true;     //Startzeit speichern Geschwindigkeit Sortierer 1 setzen     
       }  
   
@@ -664,6 +700,11 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
             Zaehlwerte_Geschw_Sort_2[21] = Zaehlwerte_Geschw_Sort_2[20];
             Zaehlwerte_Geschw_Sort_2[20] = Zaehlwerte_Geschw_Sort_2[19];
       
+<<<<<<< HEAD
+=======
+            /* History 
+               Schieberegister letzten zwanzig Werte. */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
             Zaehlwerte_Geschw_Sort_2[19] = Zaehlwerte_Geschw_Sort_2[18];
             Zaehlwerte_Geschw_Sort_2[18] = Zaehlwerte_Geschw_Sort_2[17];
             Zaehlwerte_Geschw_Sort_2[17] = Zaehlwerte_Geschw_Sort_2[16];
@@ -706,7 +747,11 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
         /* Verzögerung für nächste Messung */
         delay(100);                                   //Verzögerung 100ms
 
+<<<<<<< HEAD
         Freigabe_Interrupt_Geschw_Sort_2 = true;      //Freigabe Interrupt Geschwindigkeit Sortierer 2 setzen
+=======
+        Zaehler_Geschw_Sort_2 = true;
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         Startzeit_speichern_Geschw_Sort_2 = true;     //Startzeit speichern Geschwindigkeit Sortierer 2 setzen
       } 
      
@@ -738,7 +783,11 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
           Display.gfx_Button(Status_Touch_Taste, 500, 420, RED, WHITE, Schrifttyp, Textbreite, Textrahmen, "Stopp");                  //Taste anzeigen gedrückt 
 
           /* Taste anzeigen nicht drückbar */
+<<<<<<< HEAD
           Display.gfx_Button(Status_Touch_Taste, 650, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zrugg");        //Taste anzeigen nicht drückbar
+=======
+          Display.gfx_Button(Status_Touch_Taste, 650, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Zrug");        //Taste anzeigen nicht drückbar
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           Display.gfx_Button(Status_Touch_Taste, 350, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");       //Taste anzeigen nicht drückbar
           Display.gfx_Button(Status_Touch_Taste, 50, 420, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "Liste");        //Taste anzeigen nicht drückbar
 
@@ -748,15 +797,24 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
           Display.gfx_Button(Status_Touch_Taste, 480, 355, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "= o  ");       //Taste anzeigen nicht drückbar
           Display.gfx_Button(Status_Touch_Taste, 380, 355, GRAY, BLACK, Schrifttyp, Textbreite, Textrahmen, "- o -");       //Taste anzeigen ungedrückt
 
+<<<<<<< HEAD
+=======
+          /* Messung Ein */
+          Messung_Ein_Geschw_Sort = true;         //Messung Ein Geschwindigkeit Sortierer setzen
+
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           /* Buzzer */
           Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
 
           digitalWrite(DA_Versorgung_24VDC, HIGH);      //Digital Ausgang Versorgung 24VDC setzen
           delay(1000);                                  //Verzögerung 1000ms
           
+<<<<<<< HEAD
           /* Messung Ein */
           Messung_Ein_Geschw_Sort = true;         //Messung Ein Geschwindigkeit Sortierer setzen
 
+=======
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           Statusanzeige();              //Aufruf Funktion Statusanzeige           
         }
       }
@@ -775,7 +833,11 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
           Display.gfx_Button(Status_Touch_Taste, 500, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Start");                  //Taste anzeigen gedrückt
 
           /* Taste anzeigen ungedrückt anzeigen */
+<<<<<<< HEAD
           Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");   //Taste anzeigen ungedrückt
+=======
+          Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen ungedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");               //Taste anzeigen ungedrückt
           Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Liste");                  //Taste anzeigen ungedrückt
 
@@ -825,13 +887,18 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
           /* Buzzer */
           Buzzer(500);                        //Aufruf Funktion Buzzer(int Buzzer_Zeit) 
 
+<<<<<<< HEAD
           digitalWrite(DA_Versorgung_24VDC, LOW);     //Digital Ausgang Versorgung 24VDC zurücksetzen
+=======
+          digitalWrite(DA_Versorgung_24VDC, LOW);     //Digital Ausgang Versorgung 24VDC setzen
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
           delay(1000);                                //Verzögerung 1000ms                        
         }
       }
         
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
       /* Touch Feld abfragen [Zrugg] Taste gedrückt */
       if ((Messung_Ein_Geschw_Sort == false) && (X_Pos_Touch >= 620) && (X_Pos_Touch <= 720) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
       {
@@ -839,6 +906,15 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
         if (Status_Touch_Taste)
         {     
           Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");     //Taste anzeigen gedrückt
+=======
+      /* Touch Feld abfragen [Zrug] Taste gedrückt */
+      if ((Messung_Ein_Geschw_Sort == false) && (X_Pos_Touch >= 620) && (X_Pos_Touch <= 720) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
+      {
+        /* Touch Feld [Zrug] Taste ausführen */
+        if (Status_Touch_Taste)
+        {     
+          Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen gedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         
           /* Buzzer */
           Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
@@ -921,8 +997,13 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
           Messung_aktiv_Geschw_Sort_1 = false;              //Messung aktiv Geschwindigkeit Sortierer 1 zurücksetzen
           Messung_aktiv_Geschw_Sort_2 = false;              //Messung aktiv Geschwindigkeit Sortierer 2 zurücksetzen
 
+<<<<<<< HEAD
           Freigabe_Interrupt_Geschw_Sort_1 = false;         //Freigabe Interrupt Geschwindigkeit Sortierer 1 zurücksetzen
           Freigabe_Interrupt_Geschw_Sort_2 = false;         //Freigabe Interrupt Geschwindigkeit Sortierer 2 zurücksetzen
+=======
+          Zaehler_Geschw_Sort_1 = false;
+          Zaehler_Geschw_Sort_2 = false;
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
           /* Buzzer */
           Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
@@ -934,6 +1015,29 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
 
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
+=======
+      /* Touch Feld abfragen [i] Taste gedrückt */
+      if ((Messung_Ein_Geschw_Sort == false) && (X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
+      {
+        /* Touch Feld [i] Taste ausführen */
+        if (Status_Touch_Taste)
+        {
+          Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, GRAY, Schrifttyp, Textbreite, Textrahmen, "i");                  //Taste anzeigen gedrückt
+
+          /* Buzzer */
+          Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
+        
+          Menue_angewaehlt = 7;               //Menü Info anwählen
+          Bild_aufgebaut[7] = false;          //Bildschirm Info aufgebaut zurücksetzen
+          Letztes_Menue = 10;                 //Letztes angewähltes Menü
+          Info_Seite = 10;                    //Info Seite anwählen        
+        }
+      }
+            
+/********************************************************************************************************************/
+
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       /* Touch Feld abfragen [- o -] Taste gedrückt */
       if ((Messung_Ein_Geschw_Sort == false) && (X_Pos_Touch >= 350) && (X_Pos_Touch <= 450) && (Y_Pos_Touch >= 165) && (Y_Pos_Touch <= 225))   //Überwachung Touch Feld
       {      
@@ -1018,6 +1122,7 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
             
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
       /* Touch Feld abfragen [i] Taste gedrückt */
       if ((Messung_Ein_Geschw_Sort == false) && (X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
       {
@@ -1038,6 +1143,8 @@ void Geschwindigkeitsanzeige_Sort(bool Bildaufbau, bool Werte_Reset)           /
             
 /********************************************************************************************************************/
 
+=======
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     }       //Touch Freigabe Ende
 
 /********************************************************************************************************************/

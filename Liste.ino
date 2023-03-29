@@ -23,7 +23,11 @@ void Liste(int X_Pos, int Y_Pos, int Start, int Anzahl, unsigned long Wert[],uns
 //    Display.txt_Set(TEXT_COLOUR, WHITE);          //Textfarbe
 
     /* Schlaufe */
+<<<<<<< HEAD
     for (int i = Start; i < (Start + Anzahl); i++)      //Schlaufe 
+=======
+    for (int i = Start; i < (Start+Anzahl); i++)      //Schlaufe 
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     {             
       Display.txt_Set(TEXT_COLOUR, WHITE);        //Textfarbe   
       Display.gfx_MoveTo(X_Pos, Y_Pos);           //Text Position (x,y)

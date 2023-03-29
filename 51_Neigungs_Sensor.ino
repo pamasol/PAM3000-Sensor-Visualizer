@@ -22,7 +22,11 @@
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
+<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");     //Taste anzeigen ungedrückt
+=======
+    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");     //Taste anzeigen ungedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 200, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Buzzer");                               //Taste anzeigen ungedrückt 
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                     //Taste anzeigen gedrückt
@@ -206,6 +210,7 @@
     
 /********************************************************************************************************************/  
     
+<<<<<<< HEAD
       /* Touch Feld abfragen [Zrugg] Taste gedrückt */       
       if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))     //Überwachung Touch Feld^
       {      
@@ -213,6 +218,15 @@
         if (Status_Touch_Taste)
         {      
           Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");  //Zurücktaste anzeigen gedrückt
+=======
+      /* Touch Feld abfragen [Zrug] Taste gedrückt */       
+      if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))     //Überwachung Touch Feld^
+      {      
+        /* Touch Feld [Zrug] Taste ausführen */    
+        if (Status_Touch_Taste)
+        {      
+          Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");  //Zurücktaste anzeigen gedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         
           /* Buzzer */
           Buzzer(100);                          //Aufruf Funktion Buzzer(int Buzzer_Zeit)
@@ -255,7 +269,11 @@
           Menue_angewaehlt = 7;                 //Menü Info anwählen
           Bild_aufgebaut[7] = false;            //Bildschirm Info aufgebaut zurücksetzen
           Letztes_Menue = 51;                   //Letztes angewähltes Menü   
+<<<<<<< HEAD
           Info_Seite = 20;                      //Info Seite anwählen
+=======
+          Info_Seite = 18;                      //Info Seite anwählen
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         }
       }
 

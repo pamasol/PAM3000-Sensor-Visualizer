@@ -25,10 +25,17 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
+<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");          //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                                     //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 450, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Buzzer");                                     //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                           //Taste anzeigen gedrückt
+=======
+    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");           //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                       //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 450, 420, GREEN, WHITE, Schrifttyp, Textbreite, Textrahmen, "Buzzer");                   //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                  //Taste anzeigen gedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
         
     /* Grafik anzeigen */
     Display.gfx_Rectangle(0, 70, 799, 265, Texthintergrund_Menue);        //Rahmen zeichnen (Rechteck x1,y1,x2,y2)
@@ -76,7 +83,11 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
   
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
   if ((sensor219.getCurrent_mA() >= current + 0.5) || (sensor219.getCurrent_mA() <= current - 0.5) || (sensor219.getBusVoltage_V() >= busVoltage + 0.5) || (sensor219.getBusVoltage_V() <= busVoltage - 0.5))   
+=======
+  if ((sensor219.getCurrent_mA()>=current+0.5)||(sensor219.getCurrent_mA()<=current-0.5)||(sensor219.getBusVoltage_V()>=busVoltage+0.5)||(sensor219.getBusVoltage_V()<=busVoltage-0.5))   
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   {   
     Min_mA_Analog = 4;                          //Wert eintragen von Min Strom ausgabe von Sensor
     Max_mA_Analog = 20;                         //Wert eintragen vom Max Strom ausgabe von Sensor
@@ -116,6 +127,7 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
   {               
     /* Grüner Punkt anzeigen */
     Display.gfx_CircleFilled(40, 120, 20, GREEN);         //Status anzeigen grüner Punkt (Kreis x,y,r)
+<<<<<<< HEAD
 
     /* Buzzer einschalten */
     if ((Buzzer_Ein_IO_Tester == true) && (Start_Buzzer_Sensor_1_IO_Tester == false))
@@ -131,6 +143,13 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
     Display.gfx_CircleFilled(40, 120, 20, RED);         //Status anzeigen roter Punkt (Kreis x,y,r) 
 
     Start_Buzzer_Sensor_1_IO_Tester = false;          //Start Buzzer zurücksetzen 
+=======
+  }  
+  else
+  {                   
+    /* Roter Punkt anzeigen */
+    Display.gfx_CircleFilled(40, 120, 20, RED);         //Status anzeigen roter Punkt (Kreis x,y,r)        
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   }
 
 /********************************************************************************************************************/
@@ -139,6 +158,7 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
   if (digitalRead(DE_Sensor_2) == HIGH)
   {               
     /* Grüner Punkt anzeigen */
+<<<<<<< HEAD
     Display.gfx_CircleFilled(40, 215, 20, GREEN);       //Status anzeigen grüner Punkt (Kreis x,y,r) 
 
     /* Buzzer einschalten */
@@ -149,17 +169,25 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
     }  
   }
   
+=======
+    Display.gfx_CircleFilled(40, 215, 20, GREEN);       //Status anzeigen grüner Punkt (Kreis x,y,r)   
+  }
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   else
   {                 
     /* Roter Punkt anzeigen */
     Display.gfx_CircleFilled(40, 215, 20, RED);         //Status anzeigen roter Punkt (Kreis x,y,r)
+<<<<<<< HEAD
 
     Start_Buzzer_Sensor_2_IO_Tester = false;          //Start Buzzer zurücksetzen
+=======
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   }
 
 /********************************************************************************************************************/
 
   /* Buzzer */
+<<<<<<< HEAD
   if (Buzzer_Ein_IO_Tester == true)
   { 
     /* Buzzer setzen */
@@ -188,6 +216,17 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
     digitalWrite(DA_Buzzer, LOW);                     //Buzzer zurücksetzen
     Start_Buzzer_Sensor_1_IO_Tester = false;          //Start Buzzer zurücksetzen
     Start_Buzzer_Sensor_2_IO_Tester = false;          //Start Buzzer zurücksetzen 
+=======
+  if ((digitalRead(DE_Sensor_1) == HIGH) || (digitalRead(DE_Sensor_2) == HIGH))
+  {   
+    /* Buzzer Ein */
+    if (Buzzer_Ein_IO_Tester == true) digitalWrite(DA_Buzzer, HIGH);      //Digital Ausgang Buzzer setzen              
+  }  
+  else
+  {    
+    /* Buzzer Aus */
+    digitalWrite(DA_Buzzer, LOW);                                         //Digital Ausgang Buzzer zurücksetzen 
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
   }
 
 /********************************************************************************************************************/
@@ -211,6 +250,7 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
 
 /********************************************************************************************************************/
     
+<<<<<<< HEAD
     /* Touch Feld abfragen [Zrugg] Taste gedrückt */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
     {
@@ -218,6 +258,15 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
       if (Status_Touch_Taste)
       {
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");   //Taste anzeigen gedrückt
+=======
+    /* Touch Feld abfragen [Zrug] Taste gedrückt */
+    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
+    {
+      /* Touch Feld [Zrug] Taste ausführen */
+      if (Status_Touch_Taste)
+      {
+        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen gedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         /* Buzzer */
         Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
@@ -313,7 +362,10 @@ void IO_Tester(bool Bildaufbau, bool Werte_Reset)         //Funktion IO Tester
         Menue_angewaehlt = 7;               //Menü Info anwählen
         Bild_aufgebaut[7] = false;          //Bildschirm Info aufgebaut zurücksetzen
         Letztes_Menue = 6;                  //Letztes angewähltes Menü   
+<<<<<<< HEAD
         Info_Seite = 8;                     //Info Seite anwählen  
+=======
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       }
     }
 

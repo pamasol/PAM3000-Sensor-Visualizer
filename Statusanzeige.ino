@@ -82,6 +82,7 @@ void Statusanzeige()
   if (Akkuladestand_auswerten >= Anzahl_Mittelwert_Sensor_Akkuladestand)            //Überwachung Akkuladestand 
   {
     /* Warnung Akku schwach */
+<<<<<<< HEAD
     if (Akkuladestand <= Akku_laden)            //Überwachung Akkuladestand 
     {
       Display.txt_Height(2);                    //Texthöhe
@@ -98,6 +99,24 @@ void Statusanzeige()
       delay(500);                               //Verzögerung 500ms       
       Display.gfx_MoveTo(200, 35);              //Text Position (x,y) 
       Display.print("           ");             //Text löschen     
+=======
+    if (Akkuladestand <= Akku_laden)           //Überwachung Akkuladestand 
+    {
+      Display.txt_Height(2);                            //Texthöhe
+      Display.txt_Width(2);                             //Textweite
+      Display.txt_Set(TEXT_COLOUR, RED);                //Textfarbe
+      Display.gfx_MoveTo(200,35);                      //Text Position (x,y)
+      Display.print("Akku laden!");                     //Text anzeigen
+           
+      digitalWrite(DA_Buzzer, HIGH);            //Buzzer setzen
+      delay(100);                               //Verzögerung 100ms
+      digitalWrite(DA_Buzzer, LOW);             //Buzzer zurücksetzen
+      delay(100);                               //Verzögerung 100ms
+      
+      Display.gfx_MoveTo(200, 35);              //Text Position (x,y) 
+      Display.print("           ");             //Text löschen
+      delay(100);                               //Verzögerung 100ms      
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     }
    
     /* Anzeige Akkuladestand */
@@ -107,6 +126,7 @@ void Statusanzeige()
     if (Text_ausblenden == true) Display.txt_Set(TEXT_COLOUR, BLACK);                //Text ausblenden      
 
     /* Batterien Symbol */
+<<<<<<< HEAD
     Display.gfx_Rectangle(425, 13, 452, 27, WHITE);               //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
     Display.gfx_RectangleFilled(452, 17, 456, 23, WHITE);         //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
 
@@ -143,6 +163,35 @@ void Statusanzeige()
     {
       Display.gfx_RectangleFilled(426, 14, 451, 26, BLACK);       //Rahmen zeichnen  (Rechteck x1,y1,x2,y2))
       Display.gfx_RectangleFilled(426, 14, 430, 26, RED);         //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+=======
+    Display.gfx_Rectangle(425, 13, 452, 27, WHITE);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    Display.gfx_RectangleFilled(452, 17, 456, 23, WHITE);          //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    
+    if((Akkuladestand <= 100) && (Akkuladestand >= 75))
+    {
+      Display.gfx_RectangleFilled(426, 14, 451, 26, BLACK);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2))
+      Display.gfx_RectangleFilled(426, 14, 451, 26, GREEN);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2))
+    }
+    if((Akkuladestand <= 75) && (Akkuladestand >= 50))
+    {
+      Display.gfx_RectangleFilled(426, 14, 451, 26, BLACK);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2))
+      Display.gfx_RectangleFilled(426, 14, 445, 26, GREEN);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    }
+    if((Akkuladestand <= 50) && (Akkuladestand >= 25))
+    {
+      Display.gfx_RectangleFilled(426, 14, 451, 26, BLACK);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2))
+      Display.gfx_RectangleFilled(426, 14, 440, 26, GREEN);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    }
+    if((Akkuladestand <= 25) && (Akkuladestand >= Akku_laden))
+    {
+      Display.gfx_RectangleFilled(426, 14, 451, 26, BLACK);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2))
+      Display.gfx_RectangleFilled(426, 14, 435, 26, YELLOW);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+    }
+    if(Akkuladestand <= Akku_laden)
+    {
+      Display.gfx_RectangleFilled(426, 14, 451, 26, BLACK);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2))
+      Display.gfx_RectangleFilled(426, 14, 430, 26, RED);                //Rahmen zeichnen  (Rechteck x1,y1,x2,y2)
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     }
   
     Display.gfx_MoveTo(465, 10);                      //Text Position (x,y)
@@ -157,8 +206,11 @@ void Statusanzeige()
   /* Adapter Typ einlesen */
   Spannung_Adapter_Typ = analogRead(AD_Adapter_Typ);    //Spannungsteiler Adapter Typ am Pin A8 einlesen
 
+<<<<<<< HEAD
   //SerialUSB.println();                                 
   //SerialUSB.print(Spannung_Adapter_Typ);                      //Ausgabe Aktuelle Messung
+=======
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
   /* Adapter Typ anzeigen */
   Display.txt_Set(TEXT_COLOUR, Textfarbe);          //Textfarbe
@@ -166,6 +218,7 @@ void Statusanzeige()
 
   switch (Spannung_Adapter_Typ)
   {  
+<<<<<<< HEAD
      /* Adapter - */
     case 0 ... 9:   
       Display.print("Adapter -");                       //Text anzeigen    
@@ -173,6 +226,10 @@ void Statusanzeige()
      
      /* Adapter A */
     case 10 ... 85:   
+=======
+     /* Adapter A */
+    case 0 ... 85:   
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
       Display.print("Adapter A");                       //Text anzeigen    
       break;
 

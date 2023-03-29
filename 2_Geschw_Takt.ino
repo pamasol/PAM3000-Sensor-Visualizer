@@ -31,11 +31,18 @@ void Geschw_Takt(bool Bildaufbau, bool Werte_Reset)      //Funktion Geschwindigk
     
     /* Touch Tasten ungedrückt anzeigen */
     Status_Touch_Taste = BUTTON_UP;
+<<<<<<< HEAD
     Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");    //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                               //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Liste");                                  //Taste anzeigen ungedrückt    
     Display.gfx_Button(Status_Touch_Taste, 500, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Live");                                  //Taste anzeigen ungedrückt
     Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                     //Taste anzeigen gedrückt
+=======
+    Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_Taster, Textfarbe_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");   //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 350, 420, YELLOW, BLACK, Schrifttyp, Textbreite, Textrahmen, "Reset");                             //Taste anzeigen ungedrückt
+    Display.gfx_Button(Status_Touch_Taste, 50, 420, BLUE, WHITE, Schrifttyp, Textbreite, Textrahmen, "Liste");                                //Taste anzeigen ungedrückt    
+    Display.gfx_Button(Status_Touch_Taste, 755, 15, BLACK, WHITE, Schrifttyp, Textbreite, Textrahmen, "i");                                   //Taste anzeigen gedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
     /* Text anzeigen */
     Display.txt_Height(2);                                      //Texthöhe
@@ -306,6 +313,11 @@ void Geschw_Takt(bool Bildaufbau, bool Werte_Reset)      //Funktion Geschwindigk
     Zeiten_Geschw_Takt_1[21] = Zeiten_Geschw_Takt_1[20];
     Zeiten_Geschw_Takt_1[20] = Zeiten_Geschw_Takt_1[19]; 
     
+<<<<<<< HEAD
+=======
+    /* History 
+       Schieberegister letzten zwanzig Werte. */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Zeiten_Geschw_Takt_1[19] = Zeiten_Geschw_Takt_1[18];
     Zeiten_Geschw_Takt_1[18] = Zeiten_Geschw_Takt_1[17];
     Zeiten_Geschw_Takt_1[17] = Zeiten_Geschw_Takt_1[16];
@@ -431,6 +443,11 @@ void Geschw_Takt(bool Bildaufbau, bool Werte_Reset)      //Funktion Geschwindigk
     Zeiten_Geschw_Takt_2[21] = Zeiten_Geschw_Takt_2[20];
     Zeiten_Geschw_Takt_2[20] = Zeiten_Geschw_Takt_2[19];  
     
+<<<<<<< HEAD
+=======
+    /* History 
+       Schieberegister letzten zwanzig Werte. */
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     Zeiten_Geschw_Takt_2[19] = Zeiten_Geschw_Takt_2[18];
     Zeiten_Geschw_Takt_2[18] = Zeiten_Geschw_Takt_2[17];
     Zeiten_Geschw_Takt_2[17] = Zeiten_Geschw_Takt_2[16];
@@ -488,6 +505,7 @@ void Geschw_Takt(bool Bildaufbau, bool Werte_Reset)      //Funktion Geschwindigk
     
 /********************************************************************************************************************/
     
+<<<<<<< HEAD
     /* Touch Feld abfragen [Zrugg] Taste gedrückt */
     if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
     {
@@ -495,6 +513,15 @@ void Geschw_Takt(bool Bildaufbau, bool Werte_Reset)      //Funktion Geschwindigk
       if (Status_Touch_Taste)
       {            
         Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrugg");  //Taste anzeigen gedrückt
+=======
+    /* Touch Feld abfragen [Zrug] Taste gedrückt */
+    if ((X_Pos_Touch >= 620) && (X_Pos_Touch <= 750) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
+    {
+      /* Touch Feld [Zrug] Taste ausführen */
+      if (Status_Touch_Taste)
+      {            
+        Display.gfx_Button(Status_Touch_Taste, 650, 420, Texthintergrund_2_Taster, Textfarbe_2_Taster, Schrifttyp, Textbreite, Textrahmen, "Zrug");  //Taste anzeigen gedrückt
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
 
         Stoppzeit_Geschw_Takt_1 = 0;                  //Stoppzeit Geschwindigkeit Takt 1 zurücksetzen
         Stoppzeit_Geschw_Takt_2 = 0;                  //Stoppzeit Geschwindigkeit Takt 2 zurücksetzen
@@ -568,6 +595,7 @@ void Geschw_Takt(bool Bildaufbau, bool Werte_Reset)      //Funktion Geschwindigk
     
 /********************************************************************************************************************/
 
+<<<<<<< HEAD
   /* Touch Feld abfragen [Live] Taste gedrückt */
     if ((X_Pos_Touch >= 470) && (X_Pos_Touch <= 570) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 450))   //Überwachung Touch Feld
     {     
@@ -605,6 +633,8 @@ void Geschw_Takt(bool Bildaufbau, bool Werte_Reset)      //Funktion Geschwindigk
     
 /********************************************************************************************************************/
 
+=======
+>>>>>>> d61c2949d2cb683a9d6c18a7d70fbc5298e0635e
     /* Touch Feld abfragen [i] Taste gedrückt */
     if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
     {

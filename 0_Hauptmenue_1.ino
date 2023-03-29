@@ -241,22 +241,6 @@ void Hauptmenue(bool Bildaufbau, bool Werte_Reset)         //Funktion Hauptmenu
 
 /********************************************************************************************************************/
 
-    /* Touch Feld abfragen [▼] Taste gedrückt */
-    if ((X_Pos_Touch >= 350) && (X_Pos_Touch <= 450) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 500))    //Überwachung Touch Feld
-    {
-      /* Touch Feld [▼] Taste ausführen */
-      if (Status_Touch_Taste)
-      {
-        /* Buzzer */
-        Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
-
-        Menue_angewaehlt = 50;               //Menü Info anwählen
-        Bild_aufgebaut[50] = false;          //Bildschirm Info aufgebaut zurücksetzen
-      }
-    }
-
-/********************************************************************************************************************/
-
     /* Touch Feld abfragen [i] Taste gedrückt */
     if ((X_Pos_Touch >= 720) && (X_Pos_Touch <= 799) && (Y_Pos_Touch >= 0) && (Y_Pos_Touch <= 45))    //Überwachung Touch Feld
     {
@@ -275,7 +259,24 @@ void Hauptmenue(bool Bildaufbau, bool Werte_Reset)         //Funktion Hauptmenu
       }
     }
 
-/********************************************************************************************************************/    
+/********************************************************************************************************************/
+
+    /* Touch Feld abfragen [▼] Taste gedrückt */
+    if ((X_Pos_Touch >= 350) && (X_Pos_Touch <= 450) && (Y_Pos_Touch >= 390) && (Y_Pos_Touch <= 500))    //Überwachung Touch Feld
+    {
+      /* Touch Feld [▼] Taste ausführen */
+      if (Status_Touch_Taste)
+      {
+        /* Buzzer */
+        Buzzer(100);                         //Aufruf Funktion Buzzer(int Buzzer_Zeit)
+
+        Menue_angewaehlt = 50;               //Menü Info anwählen
+        Bild_aufgebaut[50] = false;          //Bildschirm Info aufgebaut zurücksetzen
+      }
+    }
+
+/********************************************************************************************************************/
+    
   }     //Touch Freigabe Ende
     
 /********************************************************************************************************************/
