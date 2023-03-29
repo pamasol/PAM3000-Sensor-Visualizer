@@ -1,6 +1,131 @@
 # PAM3000-Sensor-Visualizer
 
-ToDo: About this project
+**Stoppuhr:** Clicking on menu Stoppuhr leads to the function time measurement with start and stop signals.
+
+Sensor 1 = Start signal
+
+Sensor 2 = Stop signal
+
+All measurements over middle range are marked blue.
+
+The button Referenz saves the current measurement as a reference. It will show the diference for the following meassurements.
+
+Needed adapter type A
+
+**Doppel-Stoppuhr:** Time measurements for Absenkstationen
+
+All measurements over middle range are marked blue.
+
+Needed adapter type A
+
+**Geschwindigkeitsanzeige Takt:**Speed measurement for machines with internal tact sensors.
+
+Needed adapter type ?
+
+**Sortierer:** Speed measurment with light barrier on the outlet side of the sorter.
+
+Only measurements with minimum 50% of the highest value are taken in to consideration. All values under the middles range are marked red.
+
+Light barrier type:
+[= o  ] Light barrier for reflection
+[- o -] Light barrier for interruption
+
+Needed adapter type B
+
+**Analogeanzeige:** Clicking on menu Analogeanzeige leads to the function read analog input. Clicking the following options will show you the current measurement form 4-20mA.
+
+Preassure measurement:
+10bar, 20bar, 40bar, 50bar, 100bar
+
+Needed adapter type C
+
+
+Temperature measurement:
+100C, 150C, 350C
+
+Needed adapter type C
+
+Flow measuremnet:
+2500 Nl/min
+
+Needed adapter type F
+
+Set 0 will set the current value back to 4mA.
+
+The function Berechnung is used for calculating a flow measurement.
+
+The function Graphik will draw a graph with the current selected sensor measurements. The time frame can be selected. 
+
+The funtion Export can be used after a completed measurement of a graph. It will export all measurements in to a text file on the SD card. The values get directly imported to an excel file with a graph. Pushing the button Export deletes the previous file and creates a new one.
+
+
+**IO Tester:** Signal test of sensors.
+
+Needed adapter type U
+
+**Magnetpolanzeige:** Displays the Southpol/Northpol.
+
+The sensor is built-in to the side of the Pam3000. The magnet gets detected inside of the circle area.
+
+**Speed Sensor:** Displays speed of the adapter.
+
+1. Press Start button
+2. Hold the speed sensor wheel on the surface you want to measure
+3. Speed is displayed in m/min
+
+The function Referenz saves the current speed. The next meassurement at 50Hz displays the needed frequency adjustment.
+
+Needed adapter type V
+
+**Einstellungen:** Adjustments to time and beeper volume.
+
+**Distanz Sensor:** Measures the distance between 30-1000mm with an accuracy of 1mm.
+
+Needed adapter type D
+
+
+**Neigungs Sensor:** Shows current inclination of the Sensor.
+
+Needed adapter type N
+
+
+**MP3 Player:** Plays selected music playlist in the background.
+
+**Adaptor:**
+
+Adapter type A:
+Adapter with two PE-converters for pneumatic measurements.
+
+Adapter type B:
+Adapter for two matrix light barriers.
+
+Adapter type C:
+Adapter for analog signal 0-20mA.
+
+Adapter type D:
+Adapter for distance measurement 30-1000mm.
+
+Adapter type F:
+Adapter for flow measurement with ifm SD9000
+sensor.
+
+Adapter type N:
+Adapter to align machines.
+
+Adapter type U:
+Universal clamp adapter.
+
+Adapter type V:
+Adapter to measure speed.
+
+Adapter type Y:
+Adapter with the possibility to combine different adapters.
+
+Adapter type I2C:
+Adapter to connect I2C sensors externaly.
+
+Adapter type Klemmen:
+Universal clamp adapter.
 
 ## Hardware
 
@@ -10,9 +135,9 @@ ToDo: About this project
 
 ## IDE installation and preparation
 
-1. Download and install the open-source Arduino Software (IDE) from [arduino.cc](https://www.arduino.cc/en/main/software).
+1. Download and install the open-source Arduino Software (IDE) from [arduino.cc](https://www.arduino.cc/en/main/software) in version `1.8.*`.
 
-2. Clone this project with `git clone https://github.com/pamasol/PAM3000-Sensor-Visualizer.git` and open the *PAM3000-Sensor-Visualizer.ino* file with the Arduino IDE.
+2. Clone this project with `git clone https://github.com/pamasol/PAM3000-Sensor-Visualizer.git` and open the `PAM3000-Sensor-Visualizer.ino` file with the Arduino IDE.
 
 3. Update Arduino IDE settings according wiki page [Arduino IDE Setup](https://github.com/pamasol/PAM3000-Sensor-Visualizer/wiki/Arduino-IDE-Setup).
 

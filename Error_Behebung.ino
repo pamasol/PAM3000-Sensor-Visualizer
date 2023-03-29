@@ -8,22 +8,19 @@ void mycallback(int ErrCode, unsigned char Errorbyte)
 
   const char*Error4DTeX_Post[] = {"OK\0", "Timeout\0", "NAK\0", "Length\0", "Invalid\0"};
 
-  Serial.print(F("Serial 4D Library reports error "));
-  Serial.print(Error4DTeX_Post[ErrCode]);
+  SerialUSB.print(F("Serial 4D Library reports error "));
+  SerialUSB.print(Error4DTeX_Post[ErrCode]);
 
 
     if (ErrCode == Err4D_NAK)
     {
-
-    Serial.print(F(" returned data= "));
-    Serial.println(Errorbyte);
+      SerialUSB.print(F(" returned data= "));
+      SerialUSB.println(Errorbyte);
     }
 
     else
-
-    Serial.println(F(""));
-
-      while (1);               
+      SerialUSB.println(F(""));
+    while (1);               
 
 #else
                                
@@ -31,11 +28,10 @@ void mycallback(int ErrCode, unsigned char Errorbyte)
 
         while (1)
         {
-
-        digitalWrite(led, HIGH);   //LED 13 auf HIGH
-        delay(200);                //Verzögerung 200ms
-        digitalWrite(led, LOW);    //LED 13 auf LOW
-        delay(200);                //Verzögerung 200ms
+          digitalWrite(led, HIGH);   //LED 13 auf HIGH
+          delay(200);                //Verzögerung 200ms
+          digitalWrite(led, LOW);    //LED 13 auf LOW
+          delay(200);                //Verzögerung 200ms
         }
 
 #endif
